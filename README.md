@@ -7,4 +7,11 @@ Bu problem günümüz sosyal medyalarında(instagram vs.) kullanılmasına rağm
 
 ## Projenin tanıtımı
 
+Votedress'i kısaca tanımlamak gerekirse klasik e-ticaret sistemlerindeki gibi sepete, ekle sipariş ver gibi sığ bir yaklaşım kullanarak ürün satmak yerine kullanıcıya ürünlerle etkileşim haline girebileceği bir plartform sunmak yani sistemi kullanan kullanıcı gözünde, amaç kişiye ürün satmak değil ona keyifli bir plartform sunmak. Kullanıcı plartformun tatını çıkarırken arka planda ürün reklamı ve satımı kullanıcının dikkatinden kaçmakta bu özellik diğer e-ticaret sistemlerinden votedressi ayırmaktadır
+
+
+Sisteme girdiğimizde  bizi ilk olarak giriş sayfası karşılıyor önce burdan hesap oluşturmalı veya sosyal medya hesaplarımızdan birisiyle giriş yapmalıyız. Sistemde iki tip hesap bulunmakta bunlardan birincisi Bireysel hesap diğeri ise kurumsal hesap. Kurumsal hesap bir şirketin votedressdeki hesabıdır. Kurumsal hesap oluşturan kişi sisteme ürünlerini ekleyip bu ürünlerini takip etmekte işte bu noktada votedress'in kurumsal kullanıcay sunduğu en etkili avantajlardan birisi devreye girmekte bu avantaj, kurumsal kullanıcının hiçbir uğraş veya emek harcamaksızın ürünlerinin reklamını yapabilmesidir, bunu nasıl yaptığını ileride anlatağım. 
+
+#### Giriş Ekranı
+
 ![giris](https://user-images.githubusercontent.com/24223180/40380404-ab7814a6-5e01-11e8-832c-47d626173c60.png)
