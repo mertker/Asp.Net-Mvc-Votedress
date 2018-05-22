@@ -1,0 +1,17 @@
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.BusinessLayer.dll.config
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.BusinessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.BusinessLayer.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\EntityFramework.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.DataAccessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\FakeData.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.DataAccessLayer.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\EntityFramework.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Release\FakeData.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Release\Votedress.BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Release\Votedress.BusinessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Release\Votedress.BusinessLayer.pdb

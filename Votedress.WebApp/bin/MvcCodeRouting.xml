@@ -1,0 +1,760 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcCodeRouting</name>
+    </assembly>
+    <members>
+        <member name="T:MvcCodeRouting.CodeRoutingExtensions">
+            <summary>
+            Provides the extension methods to register and configure modules in a host ASP.NET MVC application.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.EnableCodeRouting(System.Web.Mvc.ViewEngineCollection)">
+            <summary>
+            Enables namespace-aware views location. Always call after you are done adding view engines.
+            </summary>
+            <param name="engines">The view engine collection.</param>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.EnableCodeRouting(System.Web.Mvc.ControllerBuilder)">
+            <summary>
+            Sets a custom <see cref="T:System.Web.Mvc.DefaultControllerFactory"/> implementation that provides a more
+            direct access to the controller types for routes created by MvcCodeRouting.
+            It enables a scenario where routes are created for controllers that are dynamically loaded at runtime.
+            </summary>
+            <param name="controllerBuilder">The controller builder.</param>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.BindRouteProperties(System.Web.Mvc.ControllerBase)">
+            <summary>
+            Binds controller properties decorated with <see cref="T:MvcCodeRouting.FromRouteAttribute"/>
+            using the current route values.
+            </summary>
+            <param name="controller">The controller to bind.</param>
+            <remarks>You can call this method from <see cref="M:System.Web.Mvc.ControllerBase.Initialize(System.Web.Routing.RequestContext)"/>.</remarks>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.String,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingExtensions.MapCodeRoutes(System.Web.Routing.RouteCollection,System.String,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="routes">A collection of routes for the application.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.CustomRouteAttribute">
+            <summary>
+            Represents an attribute that is used to customize the URL for the decorated
+            action method or controller class.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.CustomRouteAttribute">
+            <summary>
+            Represents an attribute that is used to customize the URL for the decorated
+            action method or controller class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CustomRouteAttribute"/> class, 
+            using the provided URL pattern.
+            </summary>
+            <param name="url">
+            The URL pattern. Constraints can be specified using the <see cref="T:MvcCodeRouting.FromRouteAttribute"/>
+            on the action method parameters or controller class properties.
+            </param>
+        </member>
+        <member name="P:MvcCodeRouting.CustomRouteAttribute.Url">
+            <summary>
+            The URL pattern.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.CustomRouteAttribute"/> class, 
+            using the provided URL pattern.
+            </summary>
+            <param name="url">
+            The URL pattern. Constraints can be specified using the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/>
+            on the action method parameters or controller class properties.
+            </param>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.CustomRouteAttribute.Url">
+            <summary>
+            The URL pattern.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.DefaultActionAttribute">
+            <summary>
+            Represents an attribute that is used to specify which action method should be treated as default action,
+            which means making the action segment of the URL optional.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute">
+            <summary>
+            Represents an attribute that is used to mark action method parameters and 
+            controller properties, whose values must be bound using <see cref="T:System.Web.Mvc.RouteDataValueProvider"/>.
+            It also instructs the route creation process to add route parameters after the {action} segment 
+            for each decorated action method parameter, and after the {controller} segment for each 
+            decorated controller property.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.FromRouteAttribute">
+            <summary>
+            Represents an attribute that is used to mark action method parameters and 
+            controller properties, whose values must be bound using <see cref="T:System.Web.Mvc.RouteDataValueProvider"/>.
+            It also instructs the route creation process to add route parameters after the {action} segment 
+            for each decorated action method parameter, and after the {controller} segment for each 
+            decorated controller property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.FromRouteAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.FromRouteAttribute"/> class 
+            using the specified name.
+            </summary>
+            <param name="tokenName">The name of the route parameter.</param>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.GetBinder">
+            <summary>
+            Gets the model binder used to bind the decorated parameter or property.
+            </summary>
+            <returns>The model binder.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.FromRouteAttribute.BindModel(System.Web.Mvc.ControllerContext,System.Web.Mvc.ModelBindingContext)">
+            <summary>
+            Binds the decorated parameter or property to a value by using the specified controller context and
+            binding context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="bindingContext">The binding context.</param>
+            <returns>The bound value.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.Name">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.TokenName">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.Constraint">
+            <summary>
+            Gets or sets a regular expression that specify valid values for the decorated parameter or property.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.CatchAll">
+            <summary>
+            true if the parameter represents a catch-all parameter; otherwise, false.
+            This setting is ignored when used on controller properties.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.FromRouteAttribute.BinderType">
+            <summary>
+            Gets or sets the type of the binder.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.FromRouteAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.FromRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/> class 
+            using the specified name.
+            </summary>
+            <param name="name">The name of the route parameter.</param>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.Name">
+            <summary>
+            Gets or sets the route parameter name. The default name used is the parameter or property name.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.Constraint">
+            <summary>
+            Gets or sets a regular expression that specify valid values for the decorated parameter or property.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.CatchAll">
+            <summary>
+            true if the parameter represents a catch-all parameter; otherwise, false.
+            This setting is ignored when used on controller properties.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Mvc.FromRouteAttribute.BinderType">
+            <summary>
+            Gets or sets the type of the binder.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.MvcExtensions">
+            <summary>
+            Extensions methods that provide utility functions for various ASP.NET MVC classes.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Mvc.MvcExtensions.BindRouteProperties(System.Web.Mvc.ControllerBase)">
+            <summary>
+            Binds controller properties decorated with <see cref="T:MvcCodeRouting.Web.Mvc.FromRouteAttribute"/>
+            using the current route values.
+            </summary>
+            <param name="controller">The controller to bind.</param>
+            <remarks>You can call this method from <see cref="M:System.Web.Mvc.ControllerBase.Initialize(System.Web.Routing.RequestContext)"/>.</remarks>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Mvc.RequireRouteParametersAttribute">
+            <summary>
+            An <see cref="T:System.Web.Mvc.ActionMethodSelectorAttribute"/> for overloaded action methods, used 
+            to help the ASP.NET MVC runtime disambiguate and choose the appropriate overload.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.RequireRouteParametersAttribute">
+            <summary>
+            An <see cref="T:System.Web.Mvc.ActionMethodSelectorAttribute"/> for overloaded action methods, used 
+            to help the ASP.NET MVC runtime disambiguate and choose the appropriate overload.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.RequireRouteParametersAttribute.IsValidForRequest(System.Web.Mvc.ControllerContext,System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether the action method selection is valid for the specified
+            controller context.
+            </summary>
+            <param name="controllerContext">The controller context.</param>
+            <param name="methodInfo">Information about the action method.</param>
+            <returns>
+            true if the <see cref="P:System.Web.Mvc.ControllerContext.RouteData"/> has values for
+            all parameters decorated with <see cref="T:MvcCodeRouting.FromRouteAttribute"/>, and if all keys
+            in <see cref="P:System.Web.Mvc.ControllerContext.RouteData"/> match any of the decorated parameters,
+            excluding controller, action and other route parameters that do not map to action method parameters.
+            </returns>
+        </member>
+        <member name="T:MvcCodeRouting.RouteDebugHandler">
+            <summary>
+            Serves representations of the routes in <see cref="P:System.Web.Routing.RouteTable.Routes"/> 
+            for visualization and debugging purposes.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.RouteDebugHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            Serves representations of the routes in <see cref="P:System.Web.Routing.RouteTable.Routes"/>.
+            </summary>
+            <param name="context">The HTTP context.</param>
+        </member>
+        <member name="P:MvcCodeRouting.RouteDebugHandler.IsReusable">
+            <summary>
+            Gets a value indicating whether another request can use the <see cref="T:System.Web.IHttpHandler"/>
+            instance.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteDebugHandler.DefaultFormat">
+            <summary>
+            Gets or sets the default format that the handler should use.
+            Valid values are: "csharp", "vb".
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.CodeRoutingSettings">
+            <summary>
+            Specifies a set of features that affect the way modules are exposed in a host application.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> class,
+            using the values from the <see cref="P:MvcCodeRouting.CodeRoutingSettings.Defaults"/> property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.#ctor(MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> class,
+            using the values from the provided settings instance.
+            </summary>
+            <param name="settings">Another <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> instance to copy the settings from.</param>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingSettings.Reset">
+            <summary>
+            Resets the members of the settings class to their original default values, that is,
+            the values from the <see cref="P:MvcCodeRouting.CodeRoutingSettings.Defaults"/> property before any
+            changes were made.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.Defaults">
+            <summary>
+            The settings that all new <see cref="T:MvcCodeRouting.CodeRoutingSettings"/> instances inherit.
+            Use this property to affect the behavior of the <c>MapCodeRoutes</c> 
+            methods without having to pass a settings instance for each call.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.DefaultConstraints">
+            <summary>
+            Gets default constraints used for route parameters that represents action parameters
+            and controller properties.
+            </summary>
+            <remarks>
+            Consider using <see cref="P:MvcCodeRouting.CodeRoutingSettings.ParameterBinders"/> instead, for a more flexible constraining
+            mechanism.
+            </remarks>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.ParameterBinders">
+            <summary>
+            Gets the default binders used for route parameters that represent action parameters 
+            and controller properties.
+            </summary>
+            <remarks>
+            This collection includes default binders for <see cref="T:System.Boolean"/>, <see cref="T:System.Guid"/>,
+            <see cref="T:System.Decimal"/>, <see cref="T:System.Double"/>, <see cref="T:System.Single"/>, <see cref="T:System.SByte"/>,
+            <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Byte"/>,
+            <see cref="T:System.UInt16"/>, <see cref="T:System.UInt32"/> and <see cref="T:System.UInt64"/>.
+            </remarks>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.IgnoredControllers">
+            <summary>
+            Gets a collection of controller types that must be ignored by the route creation process.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.RouteFormatter">
+            <summary>
+            Gets or sets a delegate for custom route formatting.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.EnableEmbeddedViews">
+            <summary>
+            true to look for views embedded in assemblies.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.UseImplicitIdToken">
+            <summary>
+            true to include an {id} route parameter for actions with a parameter named id.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.RootOnly">
+            <summary>
+            true to create routes for the root controller only.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.CodeRoutingSettings.Configuration">
+            <summary>
+            Gets or sets an object that is associated to each created route as a data token
+            named 'Configuration'. Use to provide configuration settings to controllers.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.BooleanParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Boolean"/> route parameters.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.ParameterBinder">
+            <summary>
+            Parses route parameters to the type expected by the controller.
+            </summary>
+            <remarks>
+            Implementations should be thread-safe.
+            </remarks>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.ParameterBinder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.ParameterBinding.ParameterBinder"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of the <see cref="T:System.Type"/> specified in <see cref="P:MvcCodeRouting.ParameterBinding.ParameterBinder.ParameterType"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.ParameterBinder.ParameterType">
+            <summary>
+            The <see cref="T:System.Type"/> of the instances that this binder creates.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.BooleanParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Boolean"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.BooleanParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Boolean"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.ByteParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Byte"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.ByteParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Byte"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.ByteParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Byte"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.DecimalParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Decimal"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.DecimalParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Decimal"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.DecimalParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Decimal"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.DoubleParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Double"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.DoubleParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Double"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.DoubleParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Double"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.EnumParameterBinder`1">
+            <summary>
+            Binds <see cref="T:System.Enum"/> route parameters.
+            </summary>
+            <typeparam name="TEnum">The enumeration type.</typeparam>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.EnumParameterBinder`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.ParameterBinding.Binders.EnumParameterBinder`1"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.EnumParameterBinder`1.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <typeparamref name="TEnum"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.EnumParameterBinder`1.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <typeparamref name="TEnum"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.GuidParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Guid"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.GuidParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Guid"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.GuidParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Guid"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.Int16ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Int16"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.Int16ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Int16"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.Int16ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Int16"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.Int32ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Int32"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.Int32ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Int32"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.Int32ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Int32"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.Int64ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Int64"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.Int64ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Int64"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.Int64ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Int64"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.SByteParameterBinder">
+            <summary>
+            Binds <see cref="T:System.SByte"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.SByteParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.SByte"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.SByteParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.SByte"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.SingleParameterBinder">
+            <summary>
+            Binds <see cref="T:System.Single"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.SingleParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.Single"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.SingleParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.Single"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.UInt16ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.UInt16"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.UInt16ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.UInt16"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.UInt16ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.UInt16"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.UInt32ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.UInt32"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.UInt32ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.UInt32"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.UInt32ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.UInt32"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.Binders.UInt64ParameterBinder">
+            <summary>
+            Binds <see cref="T:System.UInt64"/> route parameters.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.Binders.UInt64ParameterBinder.TryBind(System.String,System.IFormatProvider,System.Object@)">
+            <summary>
+            Attempts to bind a route parameter.
+            </summary>
+            <param name="value">The value of the route parameter.</param>
+            <param name="provider">The format provider to be used.</param>
+            <param name="result">The bound value, an instance of <see cref="T:System.UInt64"/>.</param>
+            <returns>true if the parameter is successfully bound; else, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.Binders.UInt64ParameterBinder.ParameterType">
+            <summary>
+            Returns the <see cref="T:System.Type"/> for <see cref="T:System.UInt64"/>.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.ParameterBinderAttribute">
+            <summary>
+            Represents an attribute that is used to associate a route parameter type
+            to a <see cref="T:MvcCodeRouting.ParameterBinding.ParameterBinder"/> implementation that can parse it.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.ParameterBinderAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.ParameterBinding.ParameterBinderAttribute"/> class,
+            using the provided <paramref name="binderType"/>.
+            </summary>
+            <param name="binderType">The type of the binder.</param>
+        </member>
+        <member name="P:MvcCodeRouting.ParameterBinding.ParameterBinderAttribute.BinderType">
+            <summary>
+            Gets the type of the binder.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.ParameterBinding.ParameterBinderCollection">
+            <summary>
+            Represents a collection of parameter binders. Each item in this collection
+            must have a unique <see cref="P:MvcCodeRouting.ParameterBinding.ParameterBinder.ParameterType"/>.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.ParameterBinderCollection.GetKeyForItem(MvcCodeRouting.ParameterBinding.ParameterBinder)">
+            <summary>
+            Extracts the key from the specified <paramref name="item"/>.
+            </summary>
+            <param name="item">The item from which to extract the key.</param>
+            <returns>The key for the specified item.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.ParameterBinding.ParameterBinderCollection.TryGetItem(System.Type,MvcCodeRouting.ParameterBinding.ParameterBinder@)">
+            <summary>
+            Gets the item associated with the specified key.
+            </summary>
+            <param name="key">The key whose item to get.</param>
+            <param name="item">
+            When this method returns, the item associated with the specified key, if
+            the key is found; otherwise, the default value for the type of the <paramref name="item"/>
+            parameter. This parameter is passed uninitialized.
+            </param>
+            <returns>true if an item with the specified key is found; otherwise, false.</returns>
+        </member>
+        <member name="T:MvcCodeRouting.RouteFormatterArgs">
+            <summary>
+            Provides data for custom route formatting.
+            </summary>
+            <seealso cref="P:MvcCodeRouting.CodeRoutingSettings.RouteFormatter"/>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.OriginalSegment">
+            <summary>
+            Gets the original segment.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.SegmentType">
+            <summary>
+            Gets the segment type.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.RouteFormatterArgs.ControllerType">
+            <summary>
+            Gets the controller type.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.RouteSegmentType">
+            <summary>
+            Represents the mapping source of a route segment.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Namespace">
+            <summary>
+            The route segment maps to a namespace segment.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Controller">
+            <summary>
+            The route segment maps to a controller name.
+            </summary>
+        </member>
+        <member name="F:MvcCodeRouting.RouteSegmentType.Action">
+            <summary>
+            The route segment maps to an action name.
+            </summary>
+        </member>
+    </members>
+</doc>

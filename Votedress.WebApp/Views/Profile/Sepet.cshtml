@@ -1,0 +1,83 @@
+﻿@model object
+<script>
+    var sepetimModel =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model));
+</script>
+<style>
+    .contine-shopping-mert:hover{
+
+        background-color:whitesmoke;
+
+    }
+</style>
+<div class="container mb-4"  ng-controller="SepetimCtrl" >
+    <div class="row" ng-if="SepetBos">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Ürün Rengi</th>
+                            <th scope="col">Ürün Boyutu</th>
+                            <th scope="col" class="text-center">Adet</th>
+                            <th scope="col" class="text-right">Fiyat</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cart in Carts">
+                            <td><img class="img-circle" height="50" width="50" ng-src="{{cart.ProductImage}}" /> </td>
+                            <td>{{cart.ProductName}}</td>
+                            <td><span ng-repeat="color in cart.ProductColor">{{color.colorName}}</span></td>
+                            <td>{{cart.productSize}}</td>
+                            <td><input class="form-control" style="width:50%;margin-left:30%" type="text" ng-model="cart.Count" ng-change="SepetAdediDegisti(cart.id,cart.Count)" /></td>
+                            <td class="text-right">{{cart.Count * cart.ProductPrice}} (x1 {{cart.ProductPrice}})</td>
+                            <td class="text-right"><button class="btn btn-sm btn-danger" ng-click="SepettenSil(cart.id)"><i class="fa fa-trash"></i> </button> </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Sub-Total</td>
+                            <td class="text-right">255,90 ₺</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Shipping</td>
+                            <td class="text-right">6,90 ₺</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Toplam</strong></td>
+                            <td class="text-right"><strong>{{ToplamTutar}} ₺</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a href="@Url.Action("Index","Gardrop")" class="btn btn-lg btn-block contine-shopping-mert" style="background-color:azure">Alışverişe Devamet</a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <a class="btn btn-lg btn-block btn-success text-uppercase" href="@Url.Action("OdemeYeri","Gardrop")">Ödeme Yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="!SepetBos">
+        <h1 style="margin-top:200px;text-align:center">Sepetiniz boş</h1>
+    </div>
+</div>

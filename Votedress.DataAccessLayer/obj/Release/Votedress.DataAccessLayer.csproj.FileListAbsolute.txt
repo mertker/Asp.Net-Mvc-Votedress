@@ -1,0 +1,14 @@
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\Votedress.DataAccessLayer.dll.config
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\Votedress.DataAccessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\Votedress.DataAccessLayer.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\FakeData.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\bin\Release\FakeData.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\obj\Release\Votedress.DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\obj\Release\Votedress.DataAccessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.DataAccessLayer\obj\Release\Votedress.DataAccessLayer.pdb

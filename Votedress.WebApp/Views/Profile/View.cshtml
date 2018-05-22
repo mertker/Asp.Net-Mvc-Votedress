@@ -1,0 +1,389 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ANA SAYFA</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/cycle2.js"></script>
+    <link href="css/stil.css" rel="stylesheet" type="text/css">
+    <link href="font/Phenomena-Regular.otf.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link href="css/ilet.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script>
+
+    </script>
+    <style type="text/css">
+        .col-md-offset-3-duzenleme {
+            margin-left: -15%;
+        }
+
+        .mal-erdogan {
+            background: #009b72;
+            border-color: #009b72;
+        }
+
+            .mal-erdogan:hover {
+                background: #2BCC9E !important;
+            }
+
+            .mal-erdogan:active {
+                color: #009b72 !important;
+            }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 100%;
+            height: 785px;
+            overflow: hidden;
+            margin-top: -16px;
+        }
+
+        #slideshow {
+            height: 100%;
+            width: 100%;
+        }
+
+            #slideshow img {
+                height: 100%;
+                width: 100%;
+            }
+
+        #pager {
+            text-align: center;
+            height: 120px;
+            width: 100%;
+            position: absolute;
+            bottom: 19.5%;
+            background: rgba(0,0,0,.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+            #pager:hover {
+                opacity: 1;
+            }
+
+        #prev {
+            height: 120px;
+            width: 120px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto 10px;
+            z-index: 1000;
+        }
+
+        #next {
+            height: 120px;
+            width: 120px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto 10px;
+            z-index: 1000;
+        }
+
+        #pager img {
+            margin: 10px 5px;
+            opacity: 0.3;
+            transition: all .3s ease-in-out 0s;
+        }
+
+            #pager img:hover {
+                opacity: 1;
+                transform: scale(1.05);
+                z-index: 100;
+            }
+    </style>
+</head>
+
+<body style="background: #C7DBD0;">
+    <div class="max-w">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Signin & Signup -->
+                    <a style="margin-left: 982px;" class="btn btn-primary mal-erdogan" href="#" data-toggle="modal" data-target=".login-register-form">
+                        Kayıt Ol - Giriş Yap
+                    </a>
+
+                    <!-- Login / Register Modal-->
+                    <div class="modal fade login-register-form" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#login-form"> Giriş Yap <span class="glyphicon glyphicon-user"></span></a></li>
+                                        <li><a data-toggle="tab" href="#registration-form"> Kayıt Ol <span class="glyphicon glyphicon-pencil"></span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="tab-content">
+                                        <div id="login-form" class="tab-pane fade in active">
+                                            <form action="/">
+                                                <div class="form-group">
+                                                    <label for="email">E-mail:</label>
+                                                    <input type="email" class="form-control" id="email" placeholder="E-mailiniz Giriniz" name="email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pwd">Şifre:</label>
+                                                    <input type="password" class="form-control" id="pwd" placeholder="Şifrenizi Giriniz" name="pwd">
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" name="remember"> Beni Hatırla</label>
+                                                </div>
+                                                <button type="submit" class="btn btn-default">Giriş</button>
+                                            </form>
+                                        </div>
+                                        <div id="registration-form" class="tab-pane fade">
+                                            <form action="/">
+                                                <div class="form-group">
+                                                    <label for="name">Ad:</label>
+                                                    <input type="text" class="form-control" id="name" placeholder="Adınızı Giriniz" name="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="newemail">E-mail:</label>
+                                                    <input type="email" class="form-control" id="newemail" placeholder="E-mailiniz Giriniz" name="newemail">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="newpwd">Şifre:</label>
+                                                    <input type="password" class="form-control" id="newpwd" placeholder="Yeni Şifre" name="newpwd">
+                                                </div>
+                                                <button type="submit" class="btn btn-default">Kayıt Ol</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--                                    <div class="modal-footer">-->
+                                <!--                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                <!--                                    </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+        </div>
+        <header class="main-header">
+            <div class="bottom-area">
+                <div class="wrapper">
+                    <div class="main-header-logo"><a href="index.php"></a></div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.php"><p class="font-style">ANA SAYFA</p></a></li>
+                            <li>
+                                <a href="#"><p>OKULUMUZ</p></a>
+                                <ul style="left: 1120px;" class="menu-position-two">
+                                    <div class="triangle"></div>
+                                    <li><a class="post-style" href="kadro.php"><p>Kadromuz</p></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><p>ALANLARIMIZ</p></a>
+                                <ul style="left: 1250px;" class="menu-position-one">
+                                    <div class="triangle"></div>
+                                    <li><a class="post-style" href="bilisim.php"><p>Bilişim Teknolojileri Alanı</p></a></li>
+                                    <li><a class="post-style" href="elektrik.php"><p>Elektrik Elektronik Teknolojleri Alanı</p></a></li>
+                                    <li><a class="post-style" href="insaat.php"><p>İnşaat Teknolojileri Alanı</p></a></li>
+                                    <li><a class="post-style" href="makine.php"><p>Makine Teknolojileri alanı</p></a></li>
+                                    <li><a class="post-style" href="metal.php"><p>Metal Teknolojileri Alanı</p></a></li>
+                                    <li><a class="post-style" href="mobilya.php"><p>Mobilya ve İç Tasarım Alanı</p></a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li><a href="hakkında.php"><p>HAKKIMIZDA</p></a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div id="container">
+        <div id="slideshow" class="cycle-slideshow"
+             data-cycle-fx="fade"
+             data-cycle-speed="600"
+             data-cycle-timeout="3000"
+             data-cycle-pager="#pager"
+             data-cycle-pager-template="<a herf='#'><img src='{{src}}' height=100 width=150/>"
+             data-cycle-next="#next"
+             data-cycle-prev="#prev"
+             data-cycle-manual-fx="scrollHorz"
+             data-cycle-manual-speed="400"
+             data-cycle-pager-fx="fade">
+            <img src="img/slider-one.png" alt="">
+            <img src="img/slider-two.jpg" alt="">
+            <img src="img/slider-three.png" alt="">
+            <img src="img/slider-four.jpg" alt="">
+            <img src="img/slider-four.jpg" alt="">
+            <img src="img/slider-four.jpg" alt="">
+            <img src="img/slider-four.jpg" alt="">
+            <img src="img/slider-four.jpg" alt="">
+        </div>
+        <div id="pager"></div>
+        <img id="prev" src="img/prev1.svg" />
+        <img id="next" src="img/next1.svg" />
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="column-1-of-1 wow slideInLeft" data-wow-duration="2s" data-wow-delay="0.4s"><a href="hakkımızda.php"><img src="img/hakkımızda.jpg"></a></div>
+            <div class="column-1-of-2 wow slideInRight" data-wow-duration="2s" data-wow-delay="0.4s"><a href="iletisim.php"><img src="img/contact.jpg"></a></div>
+
+        </div>
+    </div>
+
+    <div class="container-mid">
+        <div class="row">
+            <div class="columns">
+                <ul class="price wow slideInLeft" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">BilişimTeknolojileri</li>
+                    <li class="grey"><a href="bilisim.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="img/image one.jpg" alt=""></a></li>
+                    <li class="grey"><a href="bilisim.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+
+            <div class="columns-two">
+                <ul class="price wow slideInDown" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">ElektrikElektronik</li>
+                    <li class="grey"><a href="elektrik.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="img/image five.jpg" alt=""></a></li>
+                    <li class="grey"><a href="elektrik.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+
+            <div class="columns-three">
+                <ul class="price wow slideInRight" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">MakineTeknolojileri</li>
+                    <li class="grey"><a href="makine.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="img/image four.jpg" alt=""></a></li>
+                    <li class="grey"><a href="makine.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns-four">
+                <ul class="price wow slideInLeft" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">MetalTeknolojileri</li>
+                    <li class="grey"><a href="metal.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="img/image three.jpg" alt=""></a></li>
+                    <li class="grey"><a href="metal.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="margin-top: -535px;" class="columns-five">
+                <ul class="price wow  bounceInUp" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">İnşaatTeknolojileri</li>
+                    <li class="grey"><a href="insaat.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="" alt=""></a></li>
+                    <li class="grey"><a href="insaat.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="margin-top: -535px;" class="columns-six">
+                <ul class="price wow slideInRight" data-wow-duration="2.5s" data-wow-delay="0.5s">
+                    <li class="header">MobilyaTeknolojileri</li>
+                    <li class="grey"><a href="mobilya.php"><img style="position: relative; margin-left: -21px;margin-top: -21px;" src="img/image two.jpg" alt=""></a></li>
+                    <li class="grey"><a href="mobilya.php" class="button">Hakkında</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-container">
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="widgettitle">OKULUMUZ</h2>
+                <hr style="width: 100x; background-color:#1f8657;  margin-top: 15px; margin-right: -50px;">
+                <ul>
+                    <li><a href="kadro.php">Kadromuz</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h2 style="margin-top: 0px;" class="widgettitle">ALANLARIMIZ</h2>
+                <hr style="width: 100x; background-color:#1f8657;  margin-top: 15px; margin-right: -50px;">
+                <ul>
+                    <li><a href="bilisim.php">Bilişim Teknolojileri Alanı</a></li>
+                    <li><a href="elektrik.php">Elektrik Elektronik Alanı</a></li>
+                    <li><a href="makine.php">Makine Teknolojileri Alanı</a></li>
+                    <li><a href="metal.php">Metal Teknolojileri Alanı</a></li>
+                    <li><a href="insaat.php">İnşaat Teknolojileri Alanı</a></li>
+                    <li><a href="mobilya.php">Mobilya ve İç Tasarım Alanı</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-3">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="well well-sm">
+                                <form class="form-horizontal" action="" method="post">
+                                    <fieldset>
+                                        <legend class="text-center">İletiişime Geçin</legend>
+                                       <!-- Name input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="name">Ad</label>
+                                            <div class="col-md-9">
+                                                <input id="name" name="name" type="text" placeholder="İsminiz" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="email">E-mail</label>
+                                            <div class="col-md-9">
+                                                <input id="email" name="email" type="text" placeholder="E-mailiniz" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Message body -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="message">Mesajınız</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" id="message" name="message" placeholder="Mesajı girmek için tıklayınız" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Form actions -->
+                                        <div class="form-group">
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

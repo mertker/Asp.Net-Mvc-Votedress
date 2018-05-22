@@ -1,0 +1,698 @@
+﻿
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/global/plugins/bootstrap-markdown/lib/markdown.js" type="text/javascript"></script>
+<script src="~/Content/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+<link href="~/Content/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+
+<style>
+    .panel-title {
+        padding: 0 0px;
+    }
+
+    .control-toggle {
+        position: relative;
+        display: inline-block;
+        width: 35px;
+        height: 20px;
+        margin-bottom: 0px;
+        float: left;
+    }
+
+        .control-toggle input {
+            display: none;
+        }
+
+    .toggle-button {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 35px!important;
+    }
+
+        .toggle-button:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 0px;
+            bottom: 0px;
+            background-color: #ffffff;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+    input:checked + .toggle-button {
+        background-color: #36b1e5;
+    }
+
+    input:focus + .toggle-button {
+        box-shadow: 0 0 1px #36b1e5;
+    }
+
+    input:checked + .toggle-button:before {
+        -webkit-transform: translateX(15px);
+        -ms-transform: translateX(15px);
+        transform: translateX(15px);
+    }
+
+    .control-toggle-label {
+        position: relative;
+        top: -10px;
+        padding: 0 10px;
+    }
+
+
+
+
+
+
+</style>
+
+<div class="portlet light ">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="icon-settings font-dark"></i>
+            <span class="caption-subject bold uppercase">Ürün Ekle</span>
+        </div>
+        <div class="tools"> </div>
+    </div>
+    <div class="portlet-body" style="height:690px;overflow-y: scroll;padding:30px 30px 30px 30px">
+        <div class="portlet box purple ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> Yeni Ürün Ekle
+                </div>
+                <div class="tools">
+                    <a href="#" class="collapse"> </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                    <a href="#" class="reload"> </a>
+                    <a href="#" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form" id="UrunEkle">
+                @using (Html.BeginForm("UrunEkle", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+                    <h1 style="color:blueviolet">@ViewBag.UrunEklendiMi</h1>
+                    <div class="form-body" style="padding-right:30px;">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Yeni Ürün Adı</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" name="urun_bilgileri.UrunAdi" placeholder="Ürün Adı">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Kısa Ürün Açıklaması</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="urun_bilgileri.KisaUrunAciklamasi" placeholder="Kısa Ürün Açıklaması">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Uzun Ürün Açıklaması</label>
+                            <div class="col-md-9">
+                                <textarea name="urun_bilgileri.UzunUrunAciklamasi" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
+                                <div id="editor_error"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Satılık mı ?
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <div class="mt-radio-list" data-error-container="#form_2_membership_error">
+                                    <label class="mt-radio">
+                                        <input type="radio" name="urun_bilgileri.SatilikMi" value="true" checked> Evet
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-radio">
+                                        <input type="radio" name="urun_bilgileri.SatilikMi" value="false"> Hayır
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div id="form_2_membership_error"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Ürün Maliyeti</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" name="urun_bilgileri.UrunMaliyeti" placeholder="Ürün Maliyeti">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Ürün Fiyatı</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control input-lg" name="urun_bilgileri.UrunFiyati" placeholder="Ürün Fiyatı">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Kategori Seç
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("KategoriId", ViewBag.Kategoriler as IEnumerable<SelectListItem>, new { @class = "form-control" ,id="urun_bilgileri.KategoriId" ,Name= "urun_bilgileri.KategoriId" })
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn red btn-outline sbold" data-toggle="modal" href="#basic"> Kategori Ekle </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Ürünün Kapak Resmi</label>
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                    <div>
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-new"> Select image </span>
+                                            <span class="fileinput-exists"> Change </span>
+                                            <input type="file" name="urun_bilgileri.KapakResmi">
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Ürün bedenleri</label>
+                            <div class="col-md-9">
+                                <div class="panel-group driving-license-settings" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <label data-toggle="collapse" data-target="#collapseSbeden" class="control-toggle">
+                                                    <input type="checkbox" id="sBeden" name="urun_bilgileri.urunIcerigi[0].Beden" value="true">
+                                                    <div class="toggle-button"></div>
+                                                </label>
+                                                <span style="margin-left:10px">S Beden</span>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseSbeden" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="driving-license-kind" id="sBedenRenkleri">
+                                                    <div class="row">
+                                                        <a onclick="renkKombinasyonuEkle('SrenkKombinasyonlari',0)">
+                                                            <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:45px;"></i></h1>
+                                                            <h4 style="text-align:center;margin-top:0px">Renk Kombinasyonu Ekle</h4>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" id="SrenkKombinasyonlari">
+                                                        <div class="col-md-4" style="height:auto;">
+                                                            <h3 style="text-align:center;">1. Renk Kombinasyonu</h3>
+                                                            <a onclick="renkEkle('renkSecenekleriS_0',0,0)">
+                                                                <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:25px;"></i></h1>
+                                                                <h4 style="text-align:center;margin-top:0px">Renk Ekle</h4>
+                                                            </a>
+                                                            <div class="row" id="renkSecenekleriS_0" style="padding-left:15px">
+                                                                <input type="color" value="#ff0000" name="urun_bilgileri.urunIcerigi[0].BedenRenkleri[0].renkleri[0]">
+                                                            </div>
+                                                            <div class="row" style="padding-left:15px"><h5>Stok Adeti</h5><input type="text" name="urun_bilgileri.urunIcerigi[0].BedenRenkleri[0].stokAdeti"></div>
+                                                            <div class="row">
+                                                                <h4 style="font-size:15px;padding-left:15px">Ürün Galerisi</h4>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[0].BedenRenkleri[0].urunResimleri[0]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[0].BedenRenkleri[0].urunResimleri[1]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[0].BedenRenkleri[0].urunResimleri[2]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-group driving-license-settings" id="accordion2">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <label data-toggle="collapse" data-target="#collapseMbeden" class="control-toggle">
+                                                    <input type="checkbox" id="mBeden" name="urun_bilgileri.urunIcerigi[1].Beden" value="true">
+                                                    <div class="toggle-button"></div>
+                                                </label>
+                                                <span style="margin-left:10px">M Beden</span>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseMbeden" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="driving-license-kind" id="mBedenRenkleri">
+                                                    <div class="row">
+                                                        <a onclick="renkKombinasyonuEkle('MrenkKombinasyonlari',0)">
+                                                            <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:45px;"></i></h1>
+                                                            <h4 style="text-align:center;margin-top:0px">Renk Kombinasyonu Ekle</h4>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" id="MrenkKombinasyonlari">
+                                                        <div class="col-md-4" style="height:850px;">
+                                                            <h3 style="text-align:center;">1. Renk Kombinasyonu</h3>
+                                                            <a onclick="renkEkle('renkSecenekleriM_0',1,0)">
+                                                                <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:25px;"></i></h1>
+                                                                <h4 style="text-align:center;margin-top:0px">Renk Ekle</h4>
+                                                            </a>
+                                                            <div class="row" id="renkSecenekleriM_0">
+                                                                <input type="color" value="#ff0000" name="urun_bilgileri.urunIcerigi[1].BedenRenkleri[0].renkleri[0]">
+                                                            </div>
+                                                            <div class="row"><h6>Stok Adeti</h6><input type="text" name="urun_bilgileri.urunIcerigi[1].BedenRenkleri[0].stokAdeti"></div>
+                                                            <div class="row">
+                                                                <h4 style="font-size:15px;padding-left:15px">Ürün Galerisi</h4>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[1].BedenRenkleri[0].urunResimleri[0]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[1].BedenRenkleri[0].urunResimleri[2]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[1].BedenRenkleri[0].urunResimleri[3]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-group driving-license-settings" id="accordion3">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <label data-toggle="collapse" data-target="#collapseLbeden" class="control-toggle">
+                                                    <input type="checkbox" id="mBeden" name="urun_bilgileri.urunIcerigi[2].Beden" value="true">
+                                                    <div class="toggle-button"></div>
+                                                </label>
+                                                <span style="margin-left:10px">L Beden</span>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseLbeden" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="driving-license-kind" id="LBedenRenkleri">
+                                                    <div class="row">
+                                                        <a onclick="renkKombinasyonuEkle('LrenkKombinasyonlari',0)">
+                                                            <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:45px;"></i></h1>
+                                                            <h4 style="text-align:center;margin-top:0px">Renk Kombinasyonu Ekle</h4>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" id="LrenkKombinasyonlari">
+                                                        <div class="col-md-4" style="height:850px;">
+                                                            <h3 style="text-align:center;">1. Renk Kombinasyonu</h3>
+                                                            <a onclick="renkEkle('renkSecenekleriL_0',2,0)">
+                                                                <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:25px;"></i></h1>
+                                                                <h4 style="text-align:center;margin-top:0px">Renk Ekle</h4>
+                                                            </a>
+                                                            <div class="row" id="renkSecenekleriL_0">
+                                                                <input type="color" value="#ff0000" name="urun_bilgileri.urunIcerigi[2].BedenRenkleri[0].renkleri[0]">
+                                                            </div>
+                                                            <div class="row"><h6>Stok Adeti</h6><input type="text" name="urun_bilgileri.urunIcerigi[2].BedenRenkleri[0].stokAdeti"></div>
+                                                            <div class="row">
+                                                                <h4 style="font-size:15px;padding-left:15px">Ürün Galerisi</h4>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[2].BedenRenkleri[0].urunResimleri[0]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[2].BedenRenkleri[0].urunResimleri[1]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[2].BedenRenkleri[0].urunResimleri[2]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-group driving-license-settings" id="accordion4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <label data-toggle="collapse" data-target="#collapseXLbeden" class="control-toggle">
+                                                    <input type="checkbox" id="xlBeden" name="urun_bilgileri.urunIcerigi[3].Beden" value="true">
+                                                    <div class="toggle-button"></div>
+                                                </label>
+                                                <span style="margin-left:10px">XL Beden</span>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseXLbeden" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="driving-license-kind" id="xlBedenRenkleri">
+                                                    <div class="row">
+                                                        <a onclick="renkKombinasyonuEkle('XLrenkKombinasyonlari',0)">
+                                                            <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:45px;"></i></h1>
+                                                            <h4 style="text-align:center;margin-top:0px">Renk Kombinasyonu Ekle</h4>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" id="XLrenkKombinasyonlari">
+                                                        <div class="col-md-4" style="height:850px;">
+                                                            <h3 style="text-align:center;">1. Renk Kombinasyonu</h3>
+                                                            <a onclick="renkEkle('renkSecenekleriXL_0',3,0)">
+                                                                <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:25px;"></i></h1>
+                                                                <h4 style="text-align:center;margin-top:0px">Renk Ekle</h4>
+                                                            </a>
+                                                            <div class="row" id="renkSecenekleriXL_0">
+                                                                <input type="color" value="#ff0000" name="urun_bilgileri.urunIcerigi[3].BedenRenkleri[0].renkleri[0]">
+                                                            </div>
+                                                            <div class="row"><h6>Stok Adeti</h6><input type="text" name="urun_bilgileri.urunIcerigi[3].BedenRenkleri[0].stokAdeti"></div>
+                                                            <div class="row">
+                                                                <h4 style="font-size:15px;padding-left:15px">Ürün Galerisi</h4>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[3].BedenRenkleri[0].urunResimleri[0]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi30].BedenRenkleri[0].urunResimleri[1]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[3].BedenRenkleri[0].urunResimleri[2]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-group driving-license-settings" id="accordion5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <label data-toggle="collapse" data-target="#collapseXXLbeden" class="control-toggle">
+                                                    <input type="checkbox" id="xxlBeden" name="urun_bilgileri.urunIcerigi[4].Beden" value="true">
+                                                    <div class="toggle-button"></div>
+                                                </label>
+                                                <span style="margin-left:10px">XXL Beden</span>
+                                            </h4>
+
+                                        </div>
+                                        <div id="collapseXXLbeden" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <div class="driving-license-kind" id="xxlBedenRenkleri">
+                                                    <div class="row">
+                                                        <a onclick="renkKombinasyonuEkle('XXLrenkKombinasyonlari',0)">
+                                                            <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:45px;"></i></h1>
+                                                            <h4 style="text-align:center;margin-top:0px">Renk Kombinasyonu Ekle</h4>
+                                                        </a>
+                                                    </div>
+                                                    <div class="row" id="XXLrenkKombinasyonlari">
+                                                        <div class="col-md-4" style="height:850px;">
+                                                            <h3 style="text-align:center;">1. Renk Kombinasyonu</h3>
+                                                            <a onclick="renkEkle('renkSecenekleriXXL_0',4,0)">
+                                                                <h1 style="text-align:center;margin-bottom:0px"><i class="fa fa-plus" style="font-size:25px;"></i></h1>
+                                                                <h4 style="text-align:center;margin-top:0px">Renk Ekle</h4>
+                                                            </a>
+                                                            <div class="row" id="renkSecenekleriXXL_0">
+                                                                <input type="color" value="#ff0000" name="urun_bilgileri.urunIcerigi[4].BedenRenkleri[0].renkleri[0]">
+                                                            </div>
+                                                            <div class="row"><h6>Stok Adeti</h6><input type="text" name="urun_bilgileri.urunIcerigi[4].BedenRenkleri[0].stokAdeti"></div>
+                                                            <div class="row">
+                                                                <h4 style="font-size:15px;padding-left:15px">Ürün Galerisi</h4>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[4].BedenRenkleri[0].urunResimleri[0]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[4].BedenRenkleri[0].urunResimleri[1]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                                        </div>
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> Select image </span>
+                                                                                <span class="fileinput-exists"> Change </span>
+                                                                                <input type="file" name="urun_bilgileri.urunIcerigi[4].BedenRenkleri[0].urunResimleri[2]">
+                                                                            </span>
+                                                                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-2">
+                                <button type="button" class="btn default">Cancel</button>
+                                <button type="submit" class="btn green">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+                <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Modal Title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Kategori Adı</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="EkleKategoriAdi" placeholder="Kategori Adı">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-2 control-label">Açıklama</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="Aciklama" placeholder="Açıklama">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn dark btn-outline" data-dismiss="modal">İptal</button>
+                                <button type="submit" onclick="kategoriEkle()" class="btn green">Kaydet</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

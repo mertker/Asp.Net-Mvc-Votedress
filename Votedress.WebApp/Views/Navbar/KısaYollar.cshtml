@@ -1,0 +1,221 @@
+﻿@model Votedress.Entities.ViewModellerim.KısaYollarViewModel
+@using Votedress.Entities.VeritabaniModellerim
+@{
+    VotedressUser kullanici = Session["login"] as VotedressUser;
+}
+<script type="text/javascript">
+    var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.Bahsedenler));
+    var modelArkadaslikIstekleri =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.ArkadaslikIsteklerim));
+    var modelSepetim =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.Cart_Sades));
+    var kullaniciResmi=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(kullanici.ProfileImage));
+    app.value("viewModel2", model);
+</script>
+<li class="dropdown dropdown-extended dropdown-inbox" id="arkadaslik_istekleri2" tabindex="" ng-controller="ArkadaslikIstekleriCtrl">
+    <a href="javascript:;" class="dropdown-toggle" id="arkadaslik_istekleri">
+        <i class="fa fa-user-plus"></i>
+        <span class="badge badge-default"> {{arkadaslikIstekleri.length}} </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="external">
+            <h3>
+                <span class="bold">Arkadaşlık İstekleri</span> <br />
+            </h3>
+
+        </li>
+        <li>
+            <ul class="dropdown-menu-list scroller" style="height: 324px;background-color:white;overflow-y:scroll">
+                <li class="arkadaslik_istegi" ng-repeat="arkadaslikIstegi in arkadaslikIstekleri"> 
+                    <span class="photo">
+                        <img ng-src="{{arkadaslikIstegi.UserProfileImage}}" class="img-circle" alt="">
+                    </span>
+                    <span class="subject">
+                        <span class="from">{{arkadaslikIstegi.UserNameSurname}}</span>
+                    </span>
+                    <button class="btn-success" ng-click="ArkadaslikIstegiKabulEt(arkadaslikIstegi)">Kabul Et</button>
+                    <button class="btn-success" ng-click="ArkadaslikIstegiSil(arkadaslikIstegi)">İsteği Sil</button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<li class="dropdown dropdown-extended dropdown-inbox" id="bahsedildiginiz_oylamalar2" ng-controller="BahsedenlerCtrl">
+    <a id="bahsedildiginiz_oylamalar" href="javascript:;" class="dropdown-toggle">
+        <i class="icon-bell"></i>
+        <span class="badge badge-default"> {{BahsedilgimYerler.length}} </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="external">
+            <h3>
+                <span class="bold">Bahsedildiğiniz Yerler</span> <br />
+            </h3>
+
+        </li>
+        <li>
+            <ul class="dropdown-menu-list " style="height: 275px;overflow-y:scroll;background-color:white;">
+                <li ng-repeat="x in BahsedilgimYerler">
+                    <a href="#" ng-click="OylamayaGit(x.OylamaId)">
+                        <span class="photo">
+                            <img ng-src="{{x.Bahseden.ProfileImage}}" class="img-circle" alt="">
+                        </span>
+                        <span class="subject">
+                            <span class="from">{{x.Bahseden.Name}} {{x.Bahseden.SurName}},</span>
+                            <span class="from">{{x.bahsedilenYerAdi}}'da Sizden Bahsetti </span>
+
+
+                        </span>
+                        <span class="message" ng-bind-html="x.Mesaj | trustAsHtmlBahsedilme"></span>
+
+                        <span style="margin-left:45px">{{x.BahsetmeTarihi | mydate | date:'medium'}} </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<!-- END NOTIFICATION DROPDOWN -->
+<!-- BEGIN INBOX DROPDOWN -->
+<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+<li class="dropdown dropdown-extended dropdown-inbox" id="mesajlar2">
+    <a id="mesajlar" href="javascript:;" class="dropdown-toggle">
+        <i class="icon-envelope-open"></i>
+        <span class="badge badge-default" id="gorulmemis_mesajlar1">@Model.GorulmemisMesajlar.Count</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="external">
+            <h3>
+                <span class="bold" id="gorulmemis_mesajlar2">@Model.GorulmemisMesajlar.Count </span> Yeni mesajınız var
+            </h3>
+        </li>
+        <li>
+            <ul id="gorulmemis_mesajlar" class="dropdown-menu-list scroller" style="height: 275px;background-color:white;">
+                @for (int i = 0; i < Model.GorulmemisMesajlar.Count; i++)
+                {
+                    <li id="gorulmemis_mesaj_@Model.GorulmemisMesajlar[i].userId" data-id="@Model.GorulmemisMesajlar[i].userId">
+                        <a href="#">
+                            <span class="photo">
+                                <img src="@Model.GorulmemisMesajlar[i].ProfilImage" class="img-circle" alt="">
+                            </span>
+                            <span class="subject">
+                                <span class="from"> @Model.GorulmemisMesajlar[i].adSoyad</span>
+
+                            </span>
+                            <span class="time" style="font-size:11px">@Model.GorulmemisMesajlar[i].GonderilmeTarihi</span>
+                            @if (Model.GorulmemisMesajlar[i].Message.Length > 30)
+                            {
+                                <span class="message" style="font-size:15px">@Model.GorulmemisMesajlar[i].Message.Substring(0, 30)  </span>
+                            }
+                            else
+                            {
+                                <span class="message" style="font-size:15px">@Model.GorulmemisMesajlar[i].Message  </span>
+                            }
+
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
+</li>
+<!-- END INBOX DROPDOWN -->
+<!-- BEGIN TODO DROPDOWN -->
+<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+<li class="dropdown dropdown-extended dropdown-tasks" id="takip_edilenler2">
+    <a id="takip_edilenler" href="javascript:;" class="dropdown-toggle">
+        <i class="fa fa-tags"></i>
+        <span class="badge badge-default"> 0 </span>
+    </a>
+    <ul class="dropdown-menu extended tasks">
+        <li class="external">
+            <h3>
+                <span class="bold">Takip Ettiğiniz Oylamalar</span>
+            </h3>
+            <a href="app_todo.html"></a>
+        </li>
+        <li>
+            <ul class="dropdown-menu-list scroller" style="height: 275px;background-color:white;">
+     
+            </ul>
+        </li>
+    </ul>
+</li>
+<!-- END TODO DROPDOWN -->
+<li class="dropdown dropdown-extended dropdown-inbox" id="sepet2" tabindex="">
+    <a href="javascript:;" class="dropdown-toggle" id="sepet">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="badge badge-default"> {{Sepetim.length}} </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="external">
+            <h3>
+                <span class="bold">Sepetim</span> <br />
+            </h3>
+
+        </li>
+        <li>
+            <ul class="dropdown-menu-list" style="height: 310px;background-color:white;overflow-y:scroll">
+                <li class="arkadaslik_istegi" style="padding-bottom:12px" ng-repeat="sepet in Sepetim">
+                    <span class="photo">
+                        <img ng-src="{{sepet.ProductImage}}" class="img-circle" style="margin-top:-10px">
+                    </span>
+                    <span class="subject" style="margin-top:-8px">
+                        <span class="from" style="margin-top:-10px"> {{sepet.ProductName}} </span>
+                        <i class="fa fa-close" style="float:right;margin-top:5px;font-size:20px" ng-click="SepettenSil(sepet.id)"></i>
+                        <span style="float:right;margin-right:25px;margin-top:3px">x{{sepet.Count}}</span>
+                    </span>
+                    <span class="subject">
+                        <span> {{sepet.ProductPrice}} ₺ </span>
+                    </span>
+                </li>
+            </ul>
+            <div class="row">
+                <span style="float:right;margin-right:95px">Toplam:{{ToplamTutar}} ₺</span>
+            </div>
+
+            <div class="row" style="margin-bottom:10px">
+                <a href="@Url.Action("OdemeYeri","Gardrop")" class="btn  btn-success btn-sm" style="float:right;margin-right:80px">Alışverişi tamamla</a>
+            </div>
+        </li>
+    </ul>
+</li>
+<!-- BEGIN USER LOGIN DROPDOWN -->
+<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+
+<li class="dropdown dropdown-user" style="margin-left:-11px">
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <img alt="" class="img-circle" src="@kullanici.ProfileImage" />
+
+        <span class="username username-hide-on-mobile"> @kullanici.UserDetail.Name </span>
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-default">
+        <li>
+            <a href="@Url.Action("Index","Profile")">
+                <i class="icon-user"></i> Profil
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("OylamaBaslat","Oylama")">
+                <i class="fa fa-hourglass-start"></i> Oylama Başlat
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Oylamalarim","Profile")">
+                <i class="fa fa-balance-scale"></i> Oylamalarım
+                <span class="badge badge-danger"> 3 </span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Profile",new { sekme="siparisler"})">
+                <i class="fa fa-truck"></i> Siparişlerim
+                <span class="badge badge-success"> 1 </span>
+            </a>
+        </li>
+        <li class="divider"> </li>
+        <li id="Cikis">
+            <a>
+                <i class="icon-key"></i>Çıkış
+            </a>
+        </li>
+    </ul>
+</li>

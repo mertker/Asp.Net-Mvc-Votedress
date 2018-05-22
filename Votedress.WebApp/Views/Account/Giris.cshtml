@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+}
+@model Votedress.Entities.Modellerim.GirisEkrainModellerim.Giris
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>VOTEDRESS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Preview page of Metronic Admin Theme #2 for statistics, charts, recent events and reports" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <script src="~/Content/global/plugins/jquery.min.js" type="text/javascript"></script>
+</head>
+<body style="background-repeat:no-repeat;background-size: cover;overflow-x:hidden;" background="~/Content/global/img/arkaplan.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-8" style="background-color:#eeeef0;height:800px;margin-top:70px;box-shadow: -7px 2px 21px #dbd1d1;padding:10px 10px 10px 10px;">
+                <div class="row" style="margin-bottom:10px">
+                    <img src="~/Content/global/img/votedress_logo.png" style="margin-left: 28%;margin-top: 10px;" />
+                </div>
+                <div class="row" style="text-align:center">
+                    <span style="font-family: Boing-Bold,sans-serif;font-weight: 400;font-size:24px;color:#606060">Giriş yapın</span>
+                </div>
+                <style>
+                    .validation-summary-errors {
+                        color: red;
+                        width: 50%;
+                        margin-left: 22%;
+                        margin-bottom:-10px
+                    }
+                </style>
+                @using (Html.BeginForm("Giris","Account",FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row" style="height:60px">
+                        @Html.ValidationSummary(false)
+                        @if(ViewBag.SetLink!=null)
+                        {
+                            <a href="#" style="margin-left: 35%;">Activasyon kodu gönder</a>
+                        }
+                    </div>
+                    <div class="row" style="padding:0px 120px 30px 120px">
+
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+                            <label style="font-size:20px;">E-mail adresiniz</label>
+                            <span class="help-block"> Mail adresinizi giriniz</span>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+                            <label style="font-size:20px;">Şifreniz</label>
+                            <span class="help-block">Şifrenizi giriniz</span>
+                        </div>
+                        <div class="row" style="padding-left:15px;margin-bottom:30px;margin-top:50px">
+                            <div class="md-checkbox has-success">
+                                <input type="checkbox" id="checkbox9" class="md-check">
+                                <label for="checkbox9">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> Oturumu açık tut
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn blue btn-block">Giriş yapın</button>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="row" style="margin-top:45px">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3" style="height:50px;background-color:blue;font-size:33px;">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <i class="fa fa-facebook" aria-hidden="true" style="display: block; margin-top:20px"> </i>
+                                    </div>
+                                    <div class="col-md-8 col-md-offset-1">
+                                        <a href="" style="text-decoration:none;">
+                                            <span style="color:white;">Facebook</span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;margin-top:10px">
+                            <span style="margin-left:45%;font-size:20px">Veya</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3" style="height:50px;background-color:#1da1f2;font-size:33px;">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <i class="fa fa-twitter" aria-hidden="true" style="display: block; margin-top:20px"> </i>
+                                    </div>
+                                    <div class="col-md-8 col-md-offset-1">
+                                        <a onclick="alert('Yakında');" style="text-decoration:none;">
+                                            <span style="color:white;">Twitter</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;margin-top:10px;text-align:center">
+                            <span style="font-size:20px">İle devam edin</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="text-align:center">
+                        <span>Hesabınız yok mu?</span><br>
+                        @Html.ActionLink("Hesap Oluştur", "HesapOlustur", "Account")
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+</body>
+</html>

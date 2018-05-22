@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD52C048-6296-42DF-B69B-DCCD0CA73A97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Votedress.Entities</RootNamespace>
+    <AssemblyName>Votedress.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Helpers\ResizeImage.cs" />
+    <Compile Include="Messages\ErrorMessageCode.cs" />
+    <Compile Include="Messages\ErrorMessageObj.cs" />
+    <Compile Include="Modellerim\AdminSayfasiModellerim\BedenRengi.cs" />
+    <Compile Include="Modellerim\AdminSayfasiModellerim\KategoriEkle.cs" />
+    <Compile Include="Modellerim\AdminSayfasiModellerim\UrunEkle.cs" />
+    <Compile Include="Modellerim\AdminSayfasiModellerim\UrunIcerigi.cs" />
+    <Compile Include="Modellerim\BusinessLayerResult\OnOffArkadaslar.cs" />
+    <Compile Include="Modellerim\BusinessLayerResult\CollectionManagerResult.cs" />
+    <Compile Include="Modellerim\GirisEkraniModellerim\CompanyUsersDetail.cs" />
+    <Compile Include="Modellerim\GirisEkraniModellerim\Giris.cs" />
+    <Compile Include="Modellerim\BusinessLayerResult\UserManagerResult.cs" />
+    <Compile Include="Modellerim\GirisEkraniModellerim\PersonalUsersDetail.cs" />
+    <Compile Include="Modellerim\KayıtolEkranıModellerim\KurumsalHesapKayit.cs" />
+    <Compile Include="Modellerim\KayıtolEkranıModellerim\BireyselHesapKayit.cs" />
+    <Compile Include="Modellerim\Oylamalarim\OylamalarimModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SadeModeller\Adress_sade.cs" />
+    <Compile Include="SadeModeller\Bahsedilen_sade.cs" />
+    <Compile Include="SadeModeller\Cart_sade.cs" />
+    <Compile Include="SadeModeller\Category_sade.cs" />
+    <Compile Include="SadeModeller\Collection_sade.cs" />
+    <Compile Include="SadeModeller\Friend_sade.cs" />
+    <Compile Include="SadeModeller\Magazalar_sade.cs" />
+    <Compile Include="SadeModeller\orderDetail_sade.cs" />
+    <Compile Include="SadeModeller\Order_sade.cs" />
+    <Compile Include="SadeModeller\PrivateMessage_sade.cs" />
+    <Compile Include="SadeModeller\ProductCategory_sade.cs" />
+    <Compile Include="SadeModeller\ProductColor_sade.cs" />
+    <Compile Include="SadeModeller\VotedressUser_sade.cs" />
+    <Compile Include="SadeModeller\VoteImage_sade.cs" />
+    <Compile Include="SadeModeller\VoteMessage_sade.cs" />
+    <Compile Include="SadeModeller\VoteProduct_sade.cs" />
+    <Compile Include="SadeModeller\Vote_sade.cs" />
+    <Compile Include="SadeModeller\Whisper_sade.cs" />
+    <Compile Include="VeritabaniModellerim\Area.cs" />
+    <Compile Include="VeritabaniModellerim\Bahsedilen.cs" />
+    <Compile Include="VeritabaniModellerim\BlockedUser.cs" />
+    <Compile Include="VeritabaniModellerim\Cart.cs" />
+    <Compile Include="VeritabaniModellerim\CartDetail.cs" />
+    <Compile Include="VeritabaniModellerim\Collection.cs" />
+    <Compile Include="VeritabaniModellerim\Color.cs" />
+    <Compile Include="VeritabaniModellerim\ControllerLoglama.cs" />
+    <Compile Include="VeritabaniModellerim\Franchise.cs" />
+    <Compile Include="VeritabaniModellerim\City.cs" />
+    <Compile Include="VeritabaniModellerim\Category.cs" />
+    <Compile Include="VeritabaniModellerim\County.cs" />
+    <Compile Include="VeritabaniModellerim\FollowVote.cs" />
+    <Compile Include="VeritabaniModellerim\Friend.cs" />
+    <Compile Include="VeritabaniModellerim\InVoteChat.cs" />
+    <Compile Include="VeritabaniModellerim\MyVoted.cs" />
+    <Compile Include="VeritabaniModellerim\Neighborhood.cs" />
+    <Compile Include="VeritabaniModellerim\OnlineUser.cs" />
+    <Compile Include="VeritabaniModellerim\Order.cs" />
+    <Compile Include="VeritabaniModellerim\OrderDetail.cs" />
+    <Compile Include="VeritabaniModellerim\PrivateMessage.cs" />
+    <Compile Include="VeritabaniModellerim\Product.cs" />
+    <Compile Include="VeritabaniModellerim\ProductCategory.cs" />
+    <Compile Include="VeritabaniModellerim\ProductCollection.cs" />
+    <Compile Include="VeritabaniModellerim\ProductColor.cs" />
+    <Compile Include="VeritabaniModellerim\ProductColorDetail.cs" />
+    <Compile Include="VeritabaniModellerim\ProductComment.cs" />
+    <Compile Include="VeritabaniModellerim\ProductCommentLike.cs" />
+    <Compile Include="VeritabaniModellerim\ProductCommentReply.cs" />
+    <Compile Include="VeritabaniModellerim\ProductCommentReplyLike.cs" />
+    <Compile Include="VeritabaniModellerim\ProductImageGallery.cs" />
+    <Compile Include="VeritabaniModellerim\ProductLike.cs" />
+    <Compile Include="VeritabaniModellerim\ProductSize.cs" />
+    <Compile Include="VeritabaniModellerim\SocialShare.cs" />
+    <Compile Include="VeritabaniModellerim\UserAdress.cs" />
+    <Compile Include="VeritabaniModellerim\UserDetail.cs" />
+    <Compile Include="VeritabaniModellerim\Vote.cs" />
+    <Compile Include="VeritabaniModellerim\VoteBanned.cs" />
+    <Compile Include="VeritabaniModellerim\VoteImage.cs" />
+    <Compile Include="VeritabaniModellerim\VoteMessage.cs" />
+    <Compile Include="VeritabaniModellerim\VoteProduct.cs" />
+    <Compile Include="VeritabaniModellerim\Whisper.cs" />
+    <Compile Include="ViewModellerim\AdminModel\AdminAnasayfaViewModel.cs" />
+    <Compile Include="ViewModellerim\AdminModel\chart1Model.cs" />
+    <Compile Include="ViewModellerim\AdminModel\chart2Model.cs" />
+    <Compile Include="ViewModellerim\AdminModel\chart3datasetBarChartModel.cs" />
+    <Compile Include="ViewModellerim\AdminModel\chart3datasetModel.cs" />
+    <Compile Include="ViewModellerim\AdminModel\chart3Model.cs" />
+    <Compile Include="ViewModellerim\AdminModel\colorDetail.cs" />
+    <Compile Include="ViewModellerim\AdminModel\productColor.cs" />
+    <Compile Include="ViewModellerim\AdminModel\ProductDetail.cs" />
+    <Compile Include="ViewModellerim\AdminModel\productImageGallery.cs" />
+    <Compile Include="ViewModellerim\AdminModel\UrunDetayViewModel.cs" />
+    <Compile Include="ViewModellerim\CheckoutViewModel.cs" />
+    <Compile Include="ViewModellerim\HesapOlusturViewModel.cs" />
+    <Compile Include="VeritabaniModellerim\VotedressUser.cs" />
+    <Compile Include="ViewModellerim\KısaYollarViewModel.cs" />
+    <Compile Include="ViewModellerim\OylamalarimViewModel.cs" />
+    <Compile Include="ViewModellerim\SepeteEkleViewModel.cs" />
+    <Compile Include="ViewModellerim\SohbetViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

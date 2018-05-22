@@ -1,0 +1,777 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "OylamaBaslat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/llqrcode.js"></script>
+<script src="~/Scripts/webqr.js"></script>
+<style type="text/css">
+    #canvas {
+        display: none;
+    }
+
+    #v {
+        width: 470px;
+        height: 352px;
+    }
+
+    .grayscale {
+        -webkit-filter: grayscale(1);
+        -moz-filter: grayscale(1);
+        -o-filter: grayscale(1);
+        -ms-filter: grayscale(1);
+        filter: grayscale(1);
+    }
+
+
+
+    .sepia {
+        -webkit-filter: sepia(0.8);
+        -moz-filter: sepia(0.8);
+        -o-filter: sepia(0.8);
+        -ms-filter: sepia(0.8);
+        filter: sepia(0.8);
+    }
+
+    .blur {
+        -webkit-filter: blur(3px);
+        -moz-filter: blur(3px);
+        -o-filter: blur(3px);
+        -ms-filter: blur(3px);
+        filter: blur(3px);
+    }
+
+
+
+    .brightness {
+        -webkit-filter: brightness(0.3);
+        -moz-filter: brightness(0.3);
+        -o-filter: brightness(0.3);
+        -ms-filter: brightness(0.3);
+        filter: brightness(0.3);
+    }
+
+
+
+    .contrast {
+        -webkit-filter: contrast(0.5);
+        -moz-filter: contrast(0.5);
+        -o-filter: contrast(0.5);
+        -ms-filter: contrast(0.5);
+        filter: contrast(0.5);
+    }
+
+
+
+    .hue-rotate {
+        -webkit-filter: hue-rotate(90deg);
+        -moz-filter: hue-rotate(90deg);
+        -o-filter: hue-rotate(90deg);
+        -ms-filter: hue-rotate(90deg);
+        filter: hue-rotate(90deg);
+    }
+
+
+
+    .hue-rotate2 {
+        -webkit-filter: hue-rotate(180deg);
+        -moz-filter: hue-rotate(180deg);
+        -o-filter: hue-rotate(180deg);
+        -ms-filter: hue-rotate(180deg);
+        filter: hue-rotate(180deg);
+    }
+
+
+
+    .hue-rotate3 {
+        -webkit-filter: hue-rotate(270deg);
+        -moz-filter: hue-rotate(270deg);
+        -o-filter: hue-rotate(270deg);
+        -ms-filter: hue-rotate(270deg);
+        filter: hue-rotate(270deg);
+    }
+
+
+
+    .saturate {
+        -webkit-filter: saturate(10);
+        -moz-filter: saturate(10);
+        -o-filter: saturate(10);
+        -ms-filter: saturate(10);
+        filter: saturate(10);
+    }
+
+
+
+    .invert {
+        -webkit-filter: invert(1);
+        -moz-filter: invert(1);
+        -o-filter: invert(1);
+        -ms-filter: invert(1);
+        filter: invert(1);
+    }
+
+    .product-box {
+        position: relative;
+        box-shadow: 0px 2px 10px -4px #333745;
+        cursor: pointer;
+        padding: 10px 10px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    .cap-bg-black {
+        background: #333745;
+    }
+
+    .cap-bg-red {
+        background: red;
+    }
+
+    .cap-bg-theme {
+        background: #ff3546;
+    }
+
+    .product-cap {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        color: #fff;
+        top: 0;
+        text-align: center;
+        font-weight: 600;
+        line-height: 50px;
+        font-size: 12px;
+        border-radius: 100%;
+    }
+
+    .product-title {
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #88c6fb;
+        line-height: 45px;
+        transition: all .4s ease-in;
+    }
+
+        .product-title:hover {
+            color: #333745;
+            transition: all .4s ease-in;
+        }
+
+    .product-price {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 15px;
+        color: #333745;
+    }
+
+    .product-drisc {
+        line-height: 18px;
+        margin-top: 10px;
+    }
+
+    .hoverly-item {
+        border-radius: 10px;
+        -webkit-animation: circle .50s;
+        animation: circle .50s;
+        position: absolute;
+        top: 7%;
+        opacity: 0;
+        background-color: rgba(0, 100, 100, 0.5);
+        width: 85%;
+        height: 77%;
+        left: 8%;
+        transition: all .4s ease-in;
+    }
+
+    .product-box:hover .hoverly-item {
+        opacity: 1;
+        transition: all .4s ease-in;
+    }
+
+    .hoverly-item a {
+        line-height: 200px;
+    }
+
+        .hoverly-item a i {
+            font-size: 20px;
+            background: #88c6fb;
+            color: #fff;
+            height: 40px;
+            width: 40px;
+            line-height: 35px;
+            border: 3px solid transparent;
+            transition: all .4s ease-in;
+        }
+
+            .hoverly-item a i:hover {
+                border: 3px solid #88c6fb;
+                background: #fff;
+                color: #88c6fb;
+                transition: all .4s ease-in;
+            }
+
+    .view-details-btn {
+        text-transform: uppercase;
+        line-height: 20px !important;
+        margin-top: -50%;
+        padding: 8px 25px;
+        background: #88c6fb;
+        color: #fff;
+        border-color: transparent;
+        border-radius: 0px;
+    }
+
+        .view-details-btn:hover {
+            color: #88c6fb !important;
+            border: 1px solid #88c6fb !important;
+            background: #fff !important;
+            -webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+    .buy-now {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #1350f8;
+        border-radius: 0px;
+        padding: 8px 25px;
+        border: 1px solid #5bc0de;
+        background: none;
+        white-space: nowrap;
+        letter-spacing: 0px;
+        display: inline-block;
+        text-transform: capitalize;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+        .buy-now:hover {
+            color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            background: #88c6fb !important;
+            -webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+    .product-box iframe {
+        width: 100%;
+        height: 180px;
+    }
+
+    .count-input {
+        position: relative;
+        width: 100%;
+        max-width: 165px;
+        margin: 10px 0;
+    }
+
+        .count-input input {
+            width: 100%;
+            height: 36.92307692px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            background: none;
+            text-align: center;
+        }
+
+            .count-input input:focus {
+                outline: none;
+            }
+
+        .count-input .incr-btn {
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 26px;
+            font-weight: 300;
+            text-align: center;
+            line-height: 30px;
+            top: 50%;
+            right: 0;
+            margin-top: -15px;
+            text-decoration: none;
+        }
+
+            .count-input .incr-btn:first-child {
+                right: auto;
+                left: 0;
+                top: 46%;
+            }
+
+        .count-input.count-input-sm {
+            max-width: 125px;
+        }
+
+            .count-input.count-input-sm input {
+                height: 36px;
+            }
+
+        .count-input.count-input-lg {
+            max-width: 200px;
+        }
+
+            .count-input.count-input-lg input {
+                height: 70px;
+                border-radius: 3px;
+            }
+</style>
+
+<link href="~/Content/bootstrap-imageupload.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-imageupload.min.js"></script>
+@using (Html.BeginForm("OylamaBaslat", "Oylama", FormMethod.Post, new { id = "myform", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-3 setting image_picker">
+            <div class="row">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Ürün Karekodu</h3>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default active">Aktif</button>
+                            <button type="button" class="btn btn-default">Pasif</button>
+                        </div>
+                    </div>
+                    <div class="row" id="urun1Kamera_Urun">
+
+                    </div>
+                    <div class="row" style="padding-left: 38%;padding-right: 10px;margin-bottom: 10px;padding-top: 35px;">
+                        <i class="fa fa-camera" style="font-size:60px;cursor:pointer" id="urun1Kamera" onclick="load('urun1Kamera',1)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="birinciUrunResimleri">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Resim yükle</h3>
+                    </div>
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_1_1">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_1_1" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_1_2">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_1_2" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <div class="row">
+                            <label class="btn btn-default btn-file">
+                                <span>Resim Seç</span>
+                                <!-- The file is stored here. -->
+                                <input type="file" name="urun_resim_1_3">
+                            </label>
+                            <button type="button" class="btn btn-default">Sil</button>
+                        </div>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_1_3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 setting image_picker">
+            <div class="row">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Ürün Karekodu</h3>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default active">Aktif</button>
+                            <button type="button" class="btn btn-default">Pasif</button>
+                        </div>
+                    </div>
+                    <div class="row" id="urun2Kamera_Urun">
+
+                    </div>
+                    <div class="row" style="padding-left: 38%;padding-right: 10px;margin-bottom: 10px;padding-top: 35px;">
+                        <i class="fa fa-camera" style="font-size:60px;cursor:pointer" id="urun2Kamera" onclick="load('urun2Kamera',2)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="ikinciUrunResimleri">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Resim yükle</h3>
+                    </div>
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_2_1">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_2_1" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_2_2">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_2_2" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <div class="row">
+                            <label class="btn btn-default btn-file">
+                                <span>Resim Seç</span>
+                                <!-- The file is stored here. -->
+                                <input type="file" name="urun_resim_2_3">
+                            </label>
+                            <button type="button" class="btn btn-default">Sil</button>
+                        </div>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_2_3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 setting image_picker">
+            <div class="row">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Ürün Karekodu</h3>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default active">Aktif</button>
+                            <button type="button" class="btn btn-default">Pasif</button>
+                        </div>
+                    </div>
+                    <div class="row" id="urun3Kamera_Urun">
+
+                    </div>
+                    <div class="row" style="padding-left: 38%;padding-right: 10px;margin-bottom: 10px;padding-top: 35px;">
+                        <i class="fa fa-camera" style="font-size:60px;cursor:pointer" id="urun3Kamera" onclick="load('urun3Kamera',3)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="ucuncuUrunResimleri">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Resim yükle</h3>
+                    </div>
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_3_1">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_3_1" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Resim Seç</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="urun_resim_3_2">
+                        </label>
+                        <button type="button" class="btn btn-default">Sil</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_3_2" />
+                    </div>
+                </div>
+                <div class="imageupload panel panel-default">
+                    <div class="file-tab panel-body">
+                        <div class="row">
+                            <label class="btn btn-default btn-file">
+                                <span>Resim Seç</span>
+                                <!-- The file is stored here. -->
+                                <input type="file" name="urun_resim_3_3">
+                            </label>
+                            <button type="button" class="btn btn-default">Sil</button>
+                        </div>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Sil</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
+                    <div class="row" style="padding-left:10px;padding-right:10px;margin-bottom:10px">
+                        <label style="display:block">Açıklama</label>
+                        <input style="width:100%" name="urun_aciklamasi_3_3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align:center;margin-top:30px">
+                    <h4>Oylama Süresi</h4>
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "15 dakika",
+                            Value = "15 dakika",
+                            Selected = true
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "30 dakika",
+                            Value = "30 dakika"
+
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "1 saat",
+                            Value = "1 saat"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "2 saat",
+                            Value = "2 saat"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "3 saat",
+                            Value = "3 saat"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "1 gün",
+                            Value = "1 gün"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "2 gün",
+                            Value = "2 gün"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "3 gün",
+                            Value = "3 gün"
+                        });
+                    }
+
+                    @Html.DropDownList("oylama_suresi", new SelectList(listItems, "Value", "Text"))
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align:center;margin-top:20px;">
+                    @Html.CheckBox("kimlik_durumu", true) Kimliğim Gizlensin
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align:center;margin-top:20px;">
+                    @Html.CheckBox("paylasima_acikmi", true) Paylaşıma Açık
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align:center;margin-top:20px;">
+                    <div class="row">   @Html.RadioButton("oylama_tipi", "gizli", true) Gizli Oylama</div>
+                    <div class="row"> @Html.RadioButton("oylama_tipi", "genel", false) Genel Oylama</div>
+                 
+                   
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row" style="margin-top:70px">
+
+                <div class="col-md-1">
+                    <div id="mapo1" style="display:none"></div>
+                </div>
+                <div class="col-md-10" style="text-align:center;margin-top:-35px;">
+                    <button type="submit">Oylamayı Başlat</button>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var $imageupload = $('.imageupload');
+        $imageupload.imageupload();
+
+        $('#imageupload-disable').on('click', function () {
+            $imageupload.imageupload('disable');
+            $(this).blur();
+        })
+
+        $('#imageupload-enable').on('click', function () {
+            $imageupload.imageupload('enable');
+            $(this).blur();
+        })
+
+        $('#imageupload-reset').on('click', function () {
+            $imageupload.imageupload('reset');
+            $(this).blur();
+        });
+    </script>
+
+    <div class="modal fade" id="kareKodOkuma" role="dialog">
+        <div class="modal-dialog" style="width:1000px">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Lütfen ürün karekodunu okutunuz</h4>
+                </div>
+                <div class="modal-body" style="height:auto">
+                    <div style="margin: 0 auto; text-align: center; width: 500px" class="z-depth-2">
+                        <div id="mainbody" style="display: inline;">
+                            <img class="selector" id="webcamimg" onclick="setwebcam()" align="left" style="opacity: 1;">
+                            <img class="selector" id="qrimg" onclick="setimg()" align="right" style="opacity: 0.2;">
+                            <div id="outdiv" style="margin-top: 15px; padding: 10px; margin-left: 0px;"><video id="v" autoplay="" src=""></video></div>
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div id="mapo" style="padding-top: 10px;"></div>
+                                <div id="mapo1" style="padding-top: 10px;"></div>
+                                <div style="visibility:hidden" id="mact"><b><u>Mã chi tiết:</u> </b></div>
+                                <div id="soluong" style="padding-bottom: 10px;visibility:hidden"><b><u>Số lượng:</u> </b></div>
+                            </div>
+                            <canvas id="canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+            <label ng-if="$index%2==0 ? false : true">-</label>{{color.colorName}}
+        -->
+    </div>
+
+}

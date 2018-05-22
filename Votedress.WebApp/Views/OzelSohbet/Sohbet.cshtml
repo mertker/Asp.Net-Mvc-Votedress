@@ -1,0 +1,400 @@
+﻿@model Votedress.Entities.ViewModellerim.SohbetViewModel
+
+
+
+<a href="javascript:;" class="page-quick-sidebar-toggler" id="sohbet_penceresi_kapa">
+    <i class="icon-login" style="color:black"></i>
+</a>
+<div class="page-quick-sidebar-wrapper" style="background-color:#dbd0d5;" data-close-on-body-click="false" id="sohbetAlani">
+    <div class="page-quick-sidebar" style="background-color: #dbd0d5;">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">
+                    Arkadaşlar
+             
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab">
+                    Geçmiş
+                  
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    Ayarlar
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-bell"></i> Gizlilik
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-info"></i> Bildirim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-speech"></i>  Engelleme
+                        </a>
+                    </li>
+                    <!--<li class="divider"></li>-->
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-settings"></i> Dil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                            <i class="icon-settings"></i> Hesap
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="quick_sidebar_tab_1">
+                <div class="row" style="margin-left:0px;" id="row1">
+                    <div style="position:absolute!important;width: 320px!important;transition: margin .3s;border-style: double;">
+                        <div class="portlet-body">
+                            <ul class="nav nav-pills">
+                                <li class="active">
+                                    <a href="#tab_2_1" data-toggle="tab" aria-expanded="true"> Çevrim İçi </a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_2_2" data-toggle="tab" aria-expanded="false"> Çevrim Dışı </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="tab_2_1">
+                                    <div id="cevrim_iciDiv" class="cevrim-ici" style="overflow-y:scroll">
+                                        <ul class="media-list list-items">
+                                            @for (int i = 0; i < Model.onOffArkadaslar.Count; i++)
+                                            {
+                                                if (Model.onOffArkadaslar[i].Online == true)
+                                                {
+                                                    <li id="arkadas_@Model.onOffArkadaslar[i].id" class="media" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                        <img class="img_media_object" src="@Model.onOffArkadaslar[i].ProfilImage" alt="...">
+                                                        <div class="media-body" style="padding-top:9px;position: relative;" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                            <a href="javascript:;" class="name2_in" style="font-size:20px" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false"> @Model.onOffArkadaslar[i].AdSoyad </a>
+                                                            <ul class="dropdown-menu" role="menu" style="top:56%;margin-left:0px;">
+                                                                <li>
+                                                                    <a href="#" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                                        <i class="icon-bell"></i> Mesaj yaz
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" data-event="profil_gor" data-id="@Model.onOffArkadaslar[i].id">
+                                                                        <i class="icon-bag"></i> Profili Gör
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <span class="badge badge-success" id="gorulmemis_mesaj_sayisi_@Model.onOffArkadaslar[i].id" style="margin-left:200px;margin-top:-40px">@Model.onOffArkadaslar[i].GorulmemisMesajSayisi</span>
+                                                        </div>
+                                                    </li>
+
+                                                    Model.onOffArkadaslar.RemoveAt(i);
+                                                    i--;
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab_2_2">
+                                    <div id="cevrim_disiDiv" class="cevrim-disi" style="overflow-y:scroll">
+                                        <ul class="media-list list-items">
+                                            @for (int i = 0; i < Model.onOffArkadaslar.Count; i++)
+                                            {
+                                                <li class="media" id="arkadas_@Model.onOffArkadaslar[i].id" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                    <img class="img_media_object" src="@Model.onOffArkadaslar[i].ProfilImage" alt="...">
+                                                    <div class="media-body" style="padding-top:9px;position: relative;" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                        <a href="javascript:;" class="name2_in" style="font-size:20px" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">@Model.onOffArkadaslar[i].AdSoyad</a>
+                                                        <ul class="dropdown-menu" role="menu" style="top:56%;margin-left:0px;">
+                                                            <li>
+                                                                <a href="#" data-event="mesaj_yaz" data-id="@Model.onOffArkadaslar[i].id">
+                                                                    <i class="icon-bell"></i> Mesaj yaz
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" data-event="profil_gor" data-id="@Model.onOffArkadaslar[i].id">
+                                                                    <i class="icon-bag"></i> Profili Gör
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <span class="badge badge-success" id="gorulmemis_mesaj_sayisi_@Model.onOffArkadaslar[i].id" style="margin-left:200px;margin-top:-40px">@Model.onOffArkadaslar[i].GorulmemisMesajSayisi</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row" style="margin-left:0px" id="row2">
+                    <div class="fısıltı">
+                        <div class="portlet-body">
+                            <ul class="nav nav-pills">
+                                <li class="active">
+                                    <a href="#tab_3_1" data-toggle="tab" aria-expanded="true"> Fısıldamalar </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="tab_3_1">
+                                    <div id="fisildamalar" class="fisildamalar" style="overflow-y:scroll">
+                                        <ul class="media-list list-items">
+                                            @for (int i = 0; i < Model.whisper_Sades.Count; i++)
+                                            {
+                                                <li class="media" id="whisper_@Model.whisper_Sades[i].UserId" data-event="mesaj_yaz" data-id="@Model.whisper_Sades[i].UserId">
+                                                    <img class="img_media_object" src="@Model.whisper_Sades[i].UserProfileImage" alt="...">
+                                                    <div class="media-body" style="padding-top:9px;position: relative;" data-event="mesaj_yaz" data-id="@Model.whisper_Sades[i].UserId">
+                                                        <a href="javascript:;" class="name2_in" style="font-size:20px" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="false">@Model.whisper_Sades[i].FullName</a>
+                                                        <span class="badge badge-success" style="margin-left:200px;margin-top:-40px" id="gorulmemis_mesaj_sayisi_@Model.whisper_Sades[i].UserId">@Model.whisper_Sades[i].GorulmemisMesajSayisi</span>
+                                                        <ul class="dropdown-menu" role="menu" style="top:59%;margin-left:0px">
+                                                            <li>
+                                                                <a href="#" data-event="mesaj_yaz" data-id="@Model.whisper_Sades[i].UserId">
+                                                                    <i class="icon-bell"></i> Fısılda
+                                                                </a>
+                                                            </li>
+                                                            <li >
+                                                                <a href="#" data-event="arkadas_ekle" data-id="@Model.whisper_Sades[i].UserId">
+                                                                    <i class="icon-user"></i> Arkadaş Ekle
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"  data-event="engelle" data-id="@Model.whisper_Sades[i].UserId">
+                                                                    <i class="icon-shield"></i> Engelle
+                                                                </a>
+                                                            </li>
+                                                            <li >
+                                                                <a href="#" data-event="fisiltiyi_sil" data-id="@Model.whisper_Sades[i].UserId">
+                                                                    <i class="icon-shield"></i> Fısıltıyı Sil
+                                                                </a>
+                                                            </li>
+                                                            <li >
+                                                                <a href="#" data-event="profili_gor" data-id="@Model.whisper_Sades[i].UserId">
+                                                                    <i class="icon-bag"></i> Profili Gör
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="page-quick-sidebar-item">
+                    <div class="page-quick-sidebar-chat-user">
+                        <div class="page-quick-sidebar-nav">
+                            <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+                                <i class="icon-arrow-left"></i>Back
+                            </a>
+                        </div>
+                        <div id="messageArea" class="page-quick-sidebar-chat-user-messages" style="overflow:scroll;height:795px">
+
+
+
+                        </div>
+
+                        <div class="page-quick-sidebar-chat-user-form">
+                            <div class="input-group">
+                                <input id="ozelMesaj_input" type="text" class="form-control" placeholder="Type a message here...">
+                                <div class="input-group-btn">
+                                    <button id="ozelMesaj_gonder" type="button" class="btn green">
+                                        <i class="icon-paper-clip"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
+                <div class="page-quick-sidebar-alerts-list">
+                    <h3 class="list-heading">General</h3>
+                    <ul class="feeds list-items">
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc">
+                                            "Mert İĞDİR" oy verdiniz
+                                            <span class="label label-sm label-warning ">
+                                                Oylamaya Git
+                                                <i class="fa fa-share"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 07.02.2017 </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-danger">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc">"Erdem KESKİN" ile arkadaş oldunuz </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 22.02.2017 </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc">
+                                            Sipariş verdiniz
+                                            <span class="label label-sm label-warning ">
+                                                Siparişe Git
+                                                <i class="fa fa-share"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 25.02.2017 </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc">
+                                            Sepete ürün eklediniz.
+                                            <span class="label label-sm label-warning ">
+                                                Sepete Git
+                                                <i class="fa fa-share"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 26.02.2017 </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="cont-col1">
+                                        <div class="label label-sm label-info">
+                                            <i class="fa fa-bell-o"></i>
+                                        </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                        <div class="desc">
+                                            "Mert İĞDİR" arkadaşlıkdan çıkarıldı
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                                <div class="date"> 29.02.2017 </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
+                <div class="page-quick-sidebar-settings-list">
+                    <h3 class="list-heading">General Settings</h3>
+                    <ul class="list-items borderless">
+                        <li>
+                            Enable Notifications
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                        <li>
+                            Allow Tracking
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="info" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                        <li>
+                            Log Errors
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                        <li>
+                            Auto Sumbit Issues
+                            <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                        <li>
+                            Enable SMS Alerts
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                    </ul>
+                    <h3 class="list-heading">System Settings</h3>
+                    <ul class="list-items borderless">
+                        <li>
+                            Security Level
+                            <select class="form-control input-inline input-sm input-small">
+                                <option value="1">Normal</option>
+                                <option value="2" selected>Medium</option>
+                                <option value="e">High</option>
+                            </select>
+                        </li>
+                        <li>
+                            Failed Email Attempts
+                            <input class="form-control input-inline input-sm input-small" value="5" />
+                        </li>
+                        <li>
+                            Secondary SMTP Port
+                            <input class="form-control input-inline input-sm input-small" value="3560" />
+                        </li>
+                        <li>
+                            Notify On System Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                        <li>
+                            Notify On SMTP Error
+                            <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF">
+                        </li>
+                    </ul>
+                    <div class="inner-content">
+                        <button class="btn btn-success">
+                            <i class="icon-settings"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

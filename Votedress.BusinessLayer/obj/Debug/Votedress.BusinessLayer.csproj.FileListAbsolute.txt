@@ -1,0 +1,37 @@
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.dll.config
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.DataAccessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\FakeData.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.DataAccessLayer.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\bin\Debug\FakeData.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.dll.config
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.BusinessLayer.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.DataAccessLayer.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.Entities.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\FakeData.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.DataAccessLayer.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.Entities.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\EntityFramework.xml
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\FakeData.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\bin\Debug\Votedress.DataAccessLayer.dll.config
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\merti\Source\Repos\votedress\Votedress.BusinessLayer\obj\Debug\Votedress.BusinessLayer.csproj.CopyComplete

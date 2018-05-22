@@ -1,0 +1,4 @@
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Release\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Release\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Release\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Release\Votedress.Entities.pdb

@@ -1,0 +1,154 @@
+﻿@model List<Votedress.Entities.SadeModeller.Order_sade>
+<style>
+    .checkmarkColor {
+        position: absolute;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #17c4bb;
+    }
+
+    .renk {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        margin: 9px auto;
+        border: 1px solid black;
+    }
+
+    .sepet_td_ortalama {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+</style>
+<link href="~/Content/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+
+<div class="portlet light ">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="icon-settings font-dark"></i>
+            <span class="caption-subject bold uppercase">SİPARİŞLER</span>
+        </div>
+        <div class="tools"> </div>
+    </div>
+    <div class="portlet-body" style="height:690px;overflow-y: scroll;">
+        <table class="table table-striped table-bordered table-hover dt-responsive" id="sample_1" style="width:1200px">
+            <thead>
+                <tr>
+                    <th class="all sepet_td_ortalama">Sipariş No</th>
+                    <th class="min-phone-l sepet_td_ortalama">Sipariş Tarihi</th>
+                    <th class="min-tablet sepet_td_ortalama">Sipariş Durumu</th>
+                    <th class="none sepet_td_ortalama"></th>
+                    <th class="all sepet_td_ortalama">Adres </th>
+                    <th class="desktop sepet_td_ortalama">Toplam Tutar</th>
+                    <th class="all sepet_td_ortalama">Ayarlar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr role="row" class="odd">
+                        <td>
+                            @Model[i].id
+                        </td>
+                        <td class="sepet_td_ortalama">@Model[i].orderDate</td>
+                        <td class="sepet_td_ortalama"><span class="label label-sm label-success"> @Model[i].orderStatus </span></td>
+                        <td class="sepet_td_ortalama">
+                            <div class="row">
+                                <table class="table table-hover table-light" style="margin-left:15px">
+                                    <thead>
+                                        <tr>
+                                            <th style="padding: 8px 10px">Ürün No</th>
+                                            <th style="padding: 8px 64px">Ürün Resmi</th>
+                                            <th style="padding: 8px 35px">Ürün Adı</th>
+                                            <th style="padding: 8px 10px">Fiyat</th>
+                                            <th style="padding: 8px 10px">Adet</th>
+                                            <th style="padding: 8px 35px">Toplam</th>
+                                            <th style="padding: 8px 35px">Mağaza Adı</th>
+                                            <th style="padding: 8px 35px">Beden</th>
+                                            <th style="padding: 8px 35px">Renk</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int j = 0; j < Model[i].orderDetails.Count; j++)
+                                        {
+                                            <tr>
+                                                <td style="padding: 8px 10px">
+                                                    @Model[i].orderDetails[j].id
+                                                </td>
+                                                <td style="padding: 8px 64px"> <img src="@Model[i].orderDetails[j].productImage" style="height:100px; max-width: 100%;"> </td>
+                                                <td style="padding: 8px 35px">@Model[i].orderDetails[j].productName</td>
+                                                <td style="padding: 8px 10px">@Model[i].orderDetails[j].productPrice ₺</td>
+                                                <td style="padding: 8px 10px"> @Model[i].orderDetails[j].productCount </td>
+                                                <td style="padding: 8px 35px"> @{int toplam= Model[i].orderDetails[j].productCount * Model[i].orderDetails[j].productPrice;} @toplam</td>
+                                                <td style="padding: 8px 35px"> @Model[i].orderDetails[j].productCompanyName </td>
+                                                <td style="padding: 8px 35px"> @Model[i].orderDetails[j].productSize </td>
+                                                <td style="padding: 8px 1px">
+                                                    @{ int yukseklik = Model[i].orderDetails[j].colors.Count * 43;
+                                                        string ifade = yukseklik.ToString() + "px";
+                                                    }
+                                                    <span class="checkmarkColor" style="padding-left:10px;padding-right:10px;width:@ifade;margin-top:-25px">
+
+                                                        @for (int z = 0; z < Model[i].orderDetails[j].colors.Count; z++)
+                                                        {
+                                                            int mesafe = z * 31;
+                                                            string sonuc = mesafe.ToString() + "px";
+                                                            string colorCode = Model[i].orderDetails[j].colors[z].ColorCode;
+                                                            <span style="background-color:@colorCode;margin-left:@sonuc;" class="renk">
+                                                            </span>
+
+                                                        }
+
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                        <td class="sepet_td_ortalama">@Model[i].adress_Sade.AdressTitle <br />@Model[i].adress_Sade.Adress.Substring(0,5) ...<br />@Model[i].adress_Sade.NeighborhoodName @Model[i].adress_Sade.CountyName / @Model[i].adress_Sade.CityName</td>
+                        <td class="sepet_td_ortalama">@Model[i].toplamTutar ₺</td>
+                        <td style="padding-left:6%">
+                            <div class="btn-group pull-right" style="float:none!important">
+                                <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown" style="padding: 6px 12px;margin-left:46%">
+                                    Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-print"></i> Print
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-pdf-o"></i> Save as PDF
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-file-excel-o"></i> Export to Excel
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/Content/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="~/Content/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="~/Content/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="~/Content/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
+<script>
+    $("#sample_1").css({ 'width': '1200px' });
+</script>

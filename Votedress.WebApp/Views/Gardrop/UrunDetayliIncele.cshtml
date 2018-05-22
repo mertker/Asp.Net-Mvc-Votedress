@@ -1,0 +1,1088 @@
+﻿@model object
+@{
+    ViewBag.Title = "UrunDetayliIncele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var model =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model));
+    app.value("urunDetayModel", model);
+</script>
+<style>
+    .carousel-inner {
+        position: relative;
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .carousel-control.right {
+        right: 0;
+        left: auto;
+        background-image: none !important;
+        background-repeat: repeat-x;
+    }
+
+    .carousel-control.left {
+        left: 0;
+        right: auto;
+        background-image: none !important;
+        background-repeat: repeat-x;
+    }
+
+    #carousel-example-generic {
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    #carousel-custom {
+        margin: 20px auto;
+        width: 400px;
+    }
+
+        #carousel-custom .carousel-indicators {
+            margin: 10px 0 0;
+            overflow: auto;
+            position: static;
+            text-align: left;
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+        }
+
+            #carousel-custom .carousel-indicators li {
+                background-color: transparent;
+                -webkit-border-radius: 0;
+                border-radius: 0;
+                display: inline-block;
+                height: auto;
+                margin: 0 !important;
+                width: auto;
+            }
+
+                #carousel-custom .carousel-indicators li img {
+                    display: block;
+                    opacity: 0.5;
+                }
+
+                #carousel-custom .carousel-indicators li.active img {
+                    opacity: 1;
+                }
+
+                #carousel-custom .carousel-indicators li:hover img {
+                    opacity: 0.75;
+                }
+
+        #carousel-custom .carousel-outer {
+            position: relative;
+        }
+
+    .carousel-indicators li img {
+        height: 66px;
+        width: 52px;
+    }
+
+    .kategori_urun_img {
+        height: 300px !important;
+    }
+
+    .productSize {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .productSize input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkSize {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50% !important;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .productSize:hover input ~ .checkmarkSize {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .productSize input:checked ~ .checkmarkSize {
+        background-color: #17c4bb;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkSize:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .productSize input:checked ~ .checkmarkSize:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .productSize .checkmarkSize:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50% !important;
+        background: white;
+    }
+
+
+
+    .colors {
+        display: block;
+        position: relative;
+        margin-bottom: 25px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .checkmarkColor {
+        position: absolute;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #17c4bb;
+    }
+
+    .renk {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        margin: 9px auto;
+        border: 1px solid black;
+    }
+
+    .colors input {
+        position: static;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .colors:hover input ~ .checkmarkColor {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .colors input:checked ~ .checkmarkColor {
+        border: 2px solid black;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkColor:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .colors input:checked ~ .checkmarkColor:after {
+        display: block;
+    }
+
+
+    .social_Facebook {
+        float: left;
+        height: 40px;
+        width: 40px;
+        border-radius: 50% !important;
+        background-color: #3b5998;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .fa-facebook {
+        line-height: 40px !important;
+    }
+
+    .social_Twitter {
+        float: left;
+        height: 40px;
+        width: 40px;
+        border-radius: 50% !important;
+        background-color: #1dcaff;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .fa-twitter {
+        line-height: 40px !important;
+    }
+
+    .social_Instagram {
+        float: left;
+        height: 40px;
+        width: 40px;
+        border-radius: 50% !important;
+        background-color: #8a3ab9;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .fa-instagram {
+        line-height: 40px !important;
+    }
+
+    .social_Votedress {
+        float: left;
+        height: 40px;
+        width: 40px;
+        border-radius: 50% !important;
+        background-color: #8a3ab9;
+        text-align: center;
+    }
+
+        .social_Votedress .fa-angle-down {
+            line-height: 40px !important;
+        }
+
+    .begen {
+        float: left;
+        height: 40px;
+        width: 80px;
+        background-color: #17C4BB;
+        text-align: center;
+        margin-left: 75px;
+        border-radius: 10% !important;
+    }
+
+        .begen a {
+            color: white;
+            line-height: 40px;
+        }
+
+    .sosyal_guc_p {
+        float: left;
+        line-height: 30px;
+        margin: 0;
+    }
+
+    .sosyal_guc_div {
+        margin-right: 5px;
+        height: 30px;
+        width: 30px;
+    }
+</style>
+<style>
+
+    .ortala {
+        margin: 0 auto;
+        display: block;
+        float: none;
+    }
+
+    .checkbox {
+        padding-left: 20px;
+    }
+
+        .checkbox label {
+            display: inline-block;
+            position: relative;
+            padding-left: 5px;
+        }
+
+            .checkbox label::before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 0;
+                margin-left: -20px;
+                border: 1px solid #cccccc;
+                border-radius: 3px;
+                background-color: #fff;
+                -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+                transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            }
+
+            .checkbox label::after {
+                display: inline-block;
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: 0;
+                top: 0;
+                margin-left: -20px;
+                padding-left: 3px;
+                padding-top: 1px;
+                font-size: 11px;
+                color: #555555;
+            }
+
+        .checkbox input[type="checkbox"] {
+            opacity: 0;
+        }
+
+            .checkbox input[type="checkbox"]:focus + label::before {
+                outline: thin dotted;
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px;
+            }
+
+            .checkbox input[type="checkbox"]:checked + label::after {
+                font-family: 'FontAwesome';
+                content: "\f00c";
+            }
+
+            .checkbox input[type="checkbox"]:disabled + label {
+                opacity: 0.65;
+            }
+
+                .checkbox input[type="checkbox"]:disabled + label::before {
+                    background-color: #eeeeee;
+                    cursor: not-allowed;
+                }
+
+        .checkbox.checkbox-circle label::before {
+            border-radius: 50%;
+        }
+
+        .checkbox.checkbox-inline {
+            margin-top: 0;
+        }
+
+    .checkbox-primary input[type="checkbox"]:checked + label::before {
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+
+    .checkbox-primary input[type="checkbox"]:checked + label::after {
+        color: #fff;
+    }
+
+    .checkbox-danger input[type="checkbox"]:checked + label::before {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+
+    .checkbox-danger input[type="checkbox"]:checked + label::after {
+        color: #fff;
+    }
+
+    .checkbox-info input[type="checkbox"]:checked + label::before {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+    }
+
+    .checkbox-info input[type="checkbox"]:checked + label::after {
+        color: #fff;
+    }
+
+    .checkbox-warning input[type="checkbox"]:checked + label::before {
+        background-color: #f0ad4e;
+        border-color: #f0ad4e;
+    }
+
+    .checkbox-warning input[type="checkbox"]:checked + label::after {
+        color: #fff;
+    }
+
+    .checkbox-success input[type="checkbox"]:checked + label::before {
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+    }
+
+    .checkbox-success input[type="checkbox"]:checked + label::after {
+        color: #fff;
+    }
+
+    .radio {
+        padding-left: 20px;
+    }
+
+        .radio label {
+            display: inline-block;
+            position: relative;
+            padding-left: 5px;
+        }
+
+            .radio label::before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                left: 0;
+                margin-left: -20px;
+                border: 1px solid #cccccc;
+                border-radius: 50%;
+                background-color: #fff;
+                -webkit-transition: border 0.15s ease-in-out;
+                -o-transition: border 0.15s ease-in-out;
+                transition: border 0.15s ease-in-out;
+            }
+
+            .radio label::after {
+                display: inline-block;
+                position: absolute;
+                content: " ";
+                width: 11px;
+                height: 11px;
+                left: 3px;
+                top: 3px;
+                margin-left: -20px;
+                border-radius: 50%;
+                background-color: #555555;
+                -webkit-transform: scale(0, 0);
+                -ms-transform: scale(0, 0);
+                -o-transform: scale(0, 0);
+                transform: scale(0, 0);
+                -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+                -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+                -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+                transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+            }
+
+        .radio input[type="radio"] {
+            opacity: 0;
+        }
+
+            .radio input[type="radio"]:focus + label::before {
+                outline: thin dotted;
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px;
+            }
+
+            .radio input[type="radio"]:checked + label::after {
+                -webkit-transform: scale(1, 1);
+                -ms-transform: scale(1, 1);
+                -o-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+
+            .radio input[type="radio"]:disabled + label {
+                opacity: 0.65;
+            }
+
+                .radio input[type="radio"]:disabled + label::before {
+                    cursor: not-allowed;
+                }
+
+        .radio.radio-inline {
+            margin-top: 0;
+        }
+
+    .radio-primary input[type="radio"] + label::after {
+        background-color: #428bca;
+    }
+
+    .radio-primary input[type="radio"]:checked + label::before {
+        border-color: #428bca;
+    }
+
+    .radio-primary input[type="radio"]:checked + label::after {
+        background-color: #428bca;
+    }
+
+    .radio-danger input[type="radio"] + label::after {
+        background-color: #d9534f;
+    }
+
+    .radio-danger input[type="radio"]:checked + label::before {
+        border-color: #d9534f;
+    }
+
+    .radio-danger input[type="radio"]:checked + label::after {
+        background-color: #d9534f;
+    }
+
+    .radio-info input[type="radio"] + label::after {
+        background-color: #5bc0de;
+    }
+
+    .radio-info input[type="radio"]:checked + label::before {
+        border-color: #5bc0de;
+    }
+
+    .radio-info input[type="radio"]:checked + label::after {
+        background-color: #5bc0de;
+    }
+
+    .radio-warning input[type="radio"] + label::after {
+        background-color: #f0ad4e;
+    }
+
+    .radio-warning input[type="radio"]:checked + label::before {
+        border-color: #f0ad4e;
+    }
+
+    .radio-warning input[type="radio"]:checked + label::after {
+        background-color: #f0ad4e;
+    }
+
+    .radio-success input[type="radio"] + label::after {
+        background-color: #5cb85c;
+    }
+
+    .radio-success input[type="radio"]:checked + label::before {
+        border-color: #5cb85c;
+    }
+
+    .radio-success input[type="radio"]:checked + label::after {
+        background-color: #5cb85c;
+    }
+
+    .section-tittle h2 {
+        text-transform: uppercase;
+        color: #333745;
+        font-weight: 600;
+    }
+
+        .section-tittle h2 span {
+            color: #ff3546;
+        }
+
+    .section-heading {
+        position: relative;
+    }
+
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 2px;
+            bottom: -10px;
+            left: 30%;
+            background: #ddd;
+            transform: translate(0%);
+        }
+
+    .product-box {
+        position: relative;
+        box-shadow: 0px 2px 10px -4px #333745;
+        cursor: pointer;
+        padding: 10px 10px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    .cap-bg-black {
+        background: #333745;
+    }
+
+    .cap-bg-red {
+        background: red;
+    }
+
+    .cap-bg-theme {
+        background: #ff3546;
+    }
+
+    .product-cap {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        color: #fff;
+        top: 0;
+        text-align: center;
+        font-weight: 600;
+        line-height: 50px;
+        font-size: 12px;
+        border-radius: 100%;
+    }
+
+    .product-title {
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #88c6fb;
+        line-height: 45px;
+        transition: all .4s ease-in;
+    }
+
+        .product-title:hover {
+            color: #333745;
+            transition: all .4s ease-in;
+        }
+
+    .product-price {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 15px;
+        color: #333745;
+    }
+
+    .product-drisc {
+        line-height: 18px;
+        margin-top: 10px;
+    }
+
+    .hoverly-item {
+        border-radius: 10px;
+        -webkit-animation: circle .50s;
+        animation: circle .50s;
+        position: absolute;
+        top: 7%;
+        opacity: 0;
+        background-color: rgba(0, 100, 100, 0.5);
+        width: 85%;
+        height: 77%;
+        left: 8%;
+        transition: all .4s ease-in;
+    }
+
+    .product-box:hover .hoverly-item {
+        opacity: 1;
+        transition: all .4s ease-in;
+    }
+
+    .hoverly-item a {
+        line-height: 200px;
+    }
+
+        .hoverly-item a i {
+            font-size: 20px;
+            background: #88c6fb;
+            color: #fff;
+            height: 40px;
+            width: 40px;
+            line-height: 35px;
+            border: 3px solid transparent;
+            transition: all .4s ease-in;
+        }
+
+            .hoverly-item a i:hover {
+                border: 3px solid #88c6fb;
+                background: #fff;
+                color: #88c6fb;
+                transition: all .4s ease-in;
+            }
+
+    .view-details-btn {
+        text-transform: uppercase;
+        line-height: 20px !important;
+        margin-top: -50%;
+        padding: 8px 25px;
+        background: #88c6fb;
+        color: #fff;
+        border-color: transparent;
+        border-radius: 0px;
+    }
+
+        .view-details-btn:hover {
+            color: #88c6fb !important;
+            border: 1px solid #88c6fb !important;
+            background: #fff !important;
+            -webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+    .buy-now {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #1350f8;
+        border-radius: 0px;
+        padding: 8px 25px;
+        border: 1px solid #5bc0de;
+        background: none;
+        white-space: nowrap;
+        letter-spacing: 0px;
+        display: inline-block;
+        text-transform: capitalize;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+        .buy-now:hover {
+            color: #ffffff !important;
+            border: 1px solid #ffffff !important;
+            background: #88c6fb !important;
+            -webkit-transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+    .product-box iframe {
+        width: 100%;
+        height: 180px;
+    }
+
+    .count-input {
+        position: relative;
+        width: 100%;
+        max-width: 165px;
+        margin: 10px 0;
+    }
+
+        .count-input input {
+            width: 100%;
+            height: 36.92307692px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            background: none;
+            text-align: center;
+        }
+
+            .count-input input:focus {
+                outline: none;
+            }
+
+        .count-input .incr-btn {
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 26px;
+            font-weight: 300;
+            text-align: center;
+            line-height: 30px;
+            top: 50%;
+            right: 0;
+            margin-top: -15px;
+            text-decoration: none;
+        }
+
+            .count-input .incr-btn:first-child {
+                right: auto;
+                left: 0;
+                top: 46%;
+            }
+
+        .count-input.count-input-sm {
+            max-width: 125px;
+        }
+
+            .count-input.count-input-sm input {
+                height: 36px;
+            }
+
+        .count-input.count-input-lg {
+            max-width: 200px;
+        }
+
+            .count-input.count-input-lg input {
+                height: 70px;
+                border-radius: 3px;
+            }
+</style>
+<div class="row" ng-controller="UrunDetayiCtrl" style="margin-left:0px;margin-right:0px">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="carousel-custom" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-outer">
+                        <div class="carousel-inner">
+                            <div ng-class="$index==0 ? 'item active' : 'item'" ng-repeat="productImage in productImageGallery">
+                                <img class="kategori_urun_img" ng-src="{{productImage.imagePath}}" alt="">
+                            </div>
+                        </div>
+                        <!-- sag sol -->
+                        <a class="left carousel-control" href="#carousel-custom" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-custom" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+
+                    <!-- thumb -->
+                    <ol class="carousel-indicators mCustomScrollbar meartlab">
+                        <li data-target="#carousel-custom" data-slide-to="{{$index}}" ng-class="$index==0 ? 'active' : ''" ng-repeat="productImage in productImageGallery">
+                            <img ng-src="{{productImage.imagePath}}" alt="">
+                        </li>
+                    </ol>
+                </div>
+                <div class="row" style="padding-left:150px">
+                    <div style="float:left;height:40px;text-align:center">
+                        <span style="line-height:40px;">Paylaş: </span>
+                    </div>
+                    <div class="social_Facebook">
+                        <i class="fa fa-facebook" style="font-size:24px"></i>
+                    </div>
+                    <div class="social_Twitter">
+                        <i class="fa fa-twitter" style="font-size:24px"></i>
+                    </div>
+                    <div class="social_Instagram">
+                        <i class="fa fa-instagram" style="font-size:24px"></i>
+                    </div>
+                    <div class="social_Votedress">
+                        <i class="fa fa-angle-down" style="font-size:24px"></i>
+                    </div>
+                    <div class="begen">
+                        <a><i class="fa fa-thumbs-up" style="font-size:24px"></i>Beğen</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row" style="margin-bottom:10px;padding-right:50px">
+                    <h2>{{urun.productName}}</h2>
+                    <p>{{urun.shortDescription}}</p>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <h3>{{urun.price}} ₺</h3>
+                </div>
+                <div class="row" style="margin-bottom:5px">
+                    <div class="col-md-4" style="padding-left:0px">
+                        <label class="productSize" ng-repeat="boyut in urun.detail">
+                            {{boyut.productSize}}
+                            <input type="radio" name="size" ng-checked="$index == 0" ng-model="boyutId" ng-click="boyutSecildi(boyutId)" value="{{$index}}" />
+                            <span class="checkmarkSize"></span>
+                        </label>
+                    </div>
+                    <div class="col-md-8" style="padding-left:0px">
+                        <div class="row" ng-repeat="colors in boyutRenkleri">
+                            <div class="col-md-6">
+                                <label class="colors">
+                                    <input type="radio" name="color" ng-checked="$index == 0" ng-model="renkId" ng-click="renkSecildi(renkId)" value="{{$index}}" />
+                                    <span class="checkmarkColor" style="padding-left:10px;padding-right:10px;width:{{colors.color.length*43}}px;">
+                                        <span ng-repeat="color in colors.color" style="background-color:{{color.colorCode}};margin-left:{{$index*31}}px;" class="renk"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-6" style="height:55px"><p style="margin-top:4px;margin-left:55px;">{{colors.stockCount}} adet</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="count-input space-bottom">
+                                <a class="incr-btn" ng-click="AdetAzalt()">–</a>
+                                <input class="quantity" type="text" name="quantity" ng-model="adet" value="1" />
+                                <a class="incr-btn" ng-click="AdetArttir()">&plus;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="padding-left:0px">
+                        <a href="#" class="btn btn-default buy-now" style="padding-left:10px;padding-right:10px" ng-click="SepeteEkle()">Sepete Ekle</a>
+                    </div>
+                    <div class="col-md-6" style="padding-left:0px">
+                        <a href="#" class="btn btn-default buy-now" style="padding-left:10px;padding-right:10px">Koleksiyonuma Ekle</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="text-align:center;">
+            <h3>Ürünün Sosyal Gücü</h3>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Votedress sosyal_guc_div ortala">
+                        <i class="fa fa-angle-down" style="font-size:30px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Votedress'de 3 kere beğenildi</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Votedress sosyal_guc_div ortala">
+                        <i class="fa fa-angle-down" style="font-size:30px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Votedress'de {{urun.urunSosyalGucu.votedressShareCount}} kere paylaşıldı</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Votedress sosyal_guc_div ortala">
+                        <i class="fa fa-angle-down" style="font-size:30px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Votedress'de {{urun.urunSosyalGucu.commentCount}} yorum yapıldı</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Votedress sosyal_guc_div ortala">
+                        <i class="fa fa-angle-down" style="font-size:30px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Votedress'de {{urun.urunSosyalGucu.urunluOylamalarCount}} oylamada kullanıldı</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Facebook sosyal_guc_div ortala">
+                        <i class="fa fa-facebook" style="font-size:20px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Facebook'da {{urun.urunSosyalGucu.facebookShareCount}} kere paylaşıldı</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Twitter sosyal_guc_div ortala">
+                        <i class="fa fa-twitter" style="font-size:20px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Twitter'da {{urun.urunSosyalGucu.twitterShareCount}} kere paylaşıldı</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="social_Instagram sosyal_guc_div ortala">
+                        <i class="fa fa-instagram" style="font-size:20px;line-height:30px!important"></i>
+                    </div>
+                </div>
+                <style>
+                    h5 {
+                        margin-top: 23px;
+                        font-weight: 700;
+                    }
+                </style>
+                <div class="row">
+                    <p class="sosyal_guc_p ortala">Instagram'da {{urun.urunSosyalGucu.instagramShareCount}} kere paylaşıldı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center;">
+            <h3 style="color:black">Ürünün Özellikleri</h3>
+            <div class="row" ng-bind-html="urun.longDescription"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row" style="text-align:center;">
+            <h3 style="color:black;">Kimler Ne Demiş?</h3>
+        </div>
+        <div class="row">
+            <div class="row" style="text-align:center">
+                <a ng-click="oncekiYorumlariGetir()" style="font-size:15px;color:#466bb1;">Önceki Yorumlar({{commentCount}})</a>
+            </div>
+            <div class="row" ng-repeat="yorum in urun.comments.slice(commentCount,urun.comments.length) track by $index">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="row" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img ng-src="{{yorum.commentOwnerProfilImage}}" style="width:40px;height:40px;border: 1px solid #82cde2;border-radius: 30px!important;" />
+                                </div>
+                                <div class="col-md-11" style="background-color:#e7eff9;border:1px solid #a9c3e6;border-radius:10px!important;margin-bottom:10px;padding-left:15px;padding-right:15px;padding-bottom:5px">
+                                    <div class="row" style="padding-left:10px;padding-top:10px;padding-right:10px;padding-bottom:10px">
+                                        <span><a href="" style="color:black;font-weight:bold;">{{yorum.commentOwnerFullName}}</a></span><span style="float:right">{{yorum.commentDate | mydate | date:'medium'}}</span>
+                                        <p style="margin-top:5px;margin-bottom:5px;" ng-bind-html="yorum.comment | trustAsHtml"> </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left:90px">
+                                <a href="" ng-click="anaYorumuYanitla(commentCount+$index)">Yanıtla</a>
+                                -
+                                <a href="" ng-click="anaYorumuBegenmektenVazgec(yorum)" ng-if="begendigimYorumlar[commentCount+$index].deger==true">Beğenmekten Vazgeç</a>
+                                <a href="" ng-click="anaYorumuBegen(yorum)" ng-if="begendigimYorumlar[commentCount+$index].deger==false">Beğen</a>
+
+                                <a href="" style="float:right;"><i class="fa fa-thumbs-up">{{yorum.commentLikes.length}}</i></a>
+                            </div>
+                            <div class="row" style="padding-left:90px">
+                                <a ng-click="oncekiYanitlariGetir(commentCount+$index)">Yanıtları gör({{commentReplyCounts[commentCount+$index]}})</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row" style="margin-left:50px;" ng-repeat="yorumCevap in yorum.commentReplies.slice(commentReplyCounts[commentCount+$index],yorum.commentReplies.length) track by $index">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="row" style="margin-top:20px;">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img ng-src="{{yorumCevap.commentOwnerProfilImage}}" style="width:40px;height:40px;border: 1px solid #82cde2;border-radius: 30px!important;" />
+                                </div>
+                                <div class="col-md-11" style="background-color:#e7eff9;border:1px solid #a9c3e6;border-radius:10px!important;margin-bottom:10px;padding-left:15px;padding-right:15px;padding-bottom:5px">
+                                    <div class="row" style="padding-left:10px;padding-top:10px;padding-right:10px;padding-bottom:10px">
+                                        <span><a href="" style="color:black;font-weight:bold;">{{yorumCevap.commentOwnerFullName}}</a></span>
+                                        <span style="float:right">{{yorumCevap.commentDate | mydate | date:'medium'}}</span>
+                                        <p style="margin-top:5px;margin-bottom:5px;" ng-bind-html="yorumCevap.comment | trustAsHtml"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left:90px">
+                                <a href="" ng-click="anaYorumaBahset({id:yorumCevap.commentOwnerId,kullaniciAdSoyad:yorumCevap.commentOwnerFullName,profilResmi:yorumCevap.commentOwnerProfilImage},commentCount+$parent.$index)">Yanıtla</a>
+                                -
+                                <a href="" ng-click="urunAnaYorumCevabiniBegenmektenVazgec(yorum,yorumCevap)" ng-if="begendigimYorumlar[commentCount+$parent.$index].cevap[commentReplyCounts[$parent.$index+commentCount]+$index].deger==true">Beğenmekten Vazgeç</a>
+                                <a href="" ng-click="urunAnaYorumCevabiniBegen(yorum,yorumCevap)" ng-if="begendigimYorumlar[commentCount+$parent.$index].cevap[commentReplyCounts[$parent.$index+commentCount]+$index].deger==false">Beğen</a>
+
+                                <a href="" style="float:right;"><i class="fa fa-thumbs-up" ng-bind="yorumCevap.commentLikes.length"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-left:50px;" ng-show="yorumYazmaYeri[commentCount+$index].acikmi">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="row" style="margin-top:5px;">
+                            <div class="col-md-1">
+                                <img src="/Content/img/profil_resmi.png" style="width:40px;height:40px;border: 1px solid #82cde2;border-radius: 30px!important;margin-top:5px">
+                            </div>
+                            <div class="col-md-9">
+                                <ul class="dropdown-menu" role="menu" style="margin-top:-32%;display:block;height:140px" ng-show="(yorumYapanlar | search:yorumYazmaYeri[commentCount+$index].icerik.aranan:'kullaniciAdSoyad').length > 0">
+                                    <li ng-repeat="x in yorumYapanlar | search:yorumYazmaYeri[commentCount+$index].icerik.aranan:'kullaniciAdSoyad' | limitTo :3" ng-click="bahset(x,commentCount+$parent.$index)">
+                                        <a>
+                                            <img ng-src="{{x.profilResmi}}" style="height:30px;width:30px"> {{x.kullaniciAdSoyad}}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="row scroll keydownClass2 ng-pristine ng-valid ng-empty ng-touched" style="display:block; height:55px;background-color:#dfe7f3;border:1px solid #82cde2!important;border-radius:10px!important;padding-left:5px;padding-top:5px;padding-bottom:5px;padding-right:5px" contenteditable="" data-directive="" ng-model="yorumYazmaYeri[commentCount+$index].icerik.mesaj" ng-change="ete_basildimi(commentCount+$index)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-info" style="margin-bottom:10px;background-color:#17c4bb;margin-top:10px;margin-left:10px" ng-click="urunYorumunaCevapYap(yorum.commentId,commentCount+$index)">Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="height:80px;padding-top:10px;padding-bottom:10px;">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="~/Content/img/profil_resmi.png" style="width:40px;height:40px;border: 1px solid #82cde2;border-radius: 30px!important;margin-top:5px" />
+                            </div>
+                            <div class="col-md-9">
+                                <ul class="dropdown-menu" role="menu" style="margin-top:-32%;height:140px;display:block" ng-show="(yorumYapanlar | search:arananYorum:'kullaniciAdSoyad' ).length > 0">
+                                    <li ng-repeat="x in yorumYapanlar | search : arananYorum:'kullaniciAdSoyad' | limitTo :3" ng-click="bahsetUrunYorumYeri(x)">
+                                        <a>
+                                            <img ng-src="{{x.profilResmi}}" style="height:30px;width:30px"> {{x.kullaniciAdSoyad}}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="row scroll keydownClass ng-pristine ng-valid ng-empty ng-touched" style="display:block; height:55px;background-color:#dfe7f3;border:1px solid #82cde2!important;border-radius:10px!important;padding-left:5px;padding-top:5px;padding-bottom:5px;padding-right:5px" contenteditable="" data-directive="" ng-model="urunYorumYazmaYeri" ng-change="urunYorumYazmaYeriEteBasildimi()">
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-info" style="margin-bottom:10px;background-color:#17c4bb;margin-top:10px;margin-left:10px" ng-click="uruneYorumYap()">Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

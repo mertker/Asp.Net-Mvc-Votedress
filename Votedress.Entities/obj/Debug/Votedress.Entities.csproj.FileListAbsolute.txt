@@ -1,0 +1,16 @@
+C:\Users\Mert\documents\visual studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Debug\Votedress.Entities.dll
+C:\Users\Mert\documents\visual studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Debug\Votedress.Entities.pdb
+C:\Users\Mert\documents\visual studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.dll
+C:\Users\Mert\documents\visual studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.pdb
+C:\Users\Mert\documents\visual studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.csprojResolveAssemblyReference.cache
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Debug\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\bin\Debug\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.dll
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.pdb
+C:\Users\merti\Documents\Visual Studio 2015\Projects\Votedress.WebApp\Votedress.Entities\obj\Debug\Votedress.Entities.csprojResolveAssemblyReference.cache
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\bin\Debug\Votedress.Entities.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\bin\Debug\Votedress.Entities.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\obj\Debug\Votedress.Entities.dll
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\obj\Debug\Votedress.Entities.pdb
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\obj\Debug\Votedress.Entities.csprojResolveAssemblyReference.cache
+C:\Users\merti\Source\Repos\votedress\Votedress.Entities\obj\Debug\Votedress.Entities.csproj.CoreCompileInputs.cache

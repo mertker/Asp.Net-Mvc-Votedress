@@ -1,0 +1,414 @@
+﻿@model object
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script>
+    var urunAnalizVerileri =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model));
+    console.log(urunAnalizVerileri);
+</script>
+<!-- BEGIN PAGE HEADER-->
+<!-- BEGIN THEME PANEL -->
+<style>
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #B3B3B3;
+        shape-rendering: crispEdges;
+    }
+
+    .axis text {
+        font-size: 10px;
+        fill: #6B6B6B;
+    }
+
+    .countries {
+        pointer-events: none;
+    }
+
+    .circle-wrapper {
+        fill: none;
+        pointer-events: all;
+    }
+
+    .guide {
+        pointer-events: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .popover {
+        pointer-events: none;
+    }
+
+    .legendCircle {
+        stroke-width: 1;
+        stroke: #999;
+        stroke-dasharray: 2 2;
+        fill: none;
+    }
+
+    .legendLine {
+        stroke-width: 1;
+        stroke: #D1D1D1;
+        shape-rendering: crispEdges;
+    }
+
+    .legendTitle {
+        fill: #1A1A1A;
+        color: #1A1A1A;
+        text-anchor: middle;
+        font-size: 10px;
+    }
+
+    .legendText {
+        fill: #949494;
+        text-anchor: start;
+        font-size: 9px;
+    }
+
+    @@media (min-width: 500px) {
+        .col-sm-3, .col-sm-9 {
+            float: left;
+        }
+
+        .col-sm-9 {
+            width: 75%;
+        }
+
+        .col-sm-3 {
+            width: 25%;
+        }
+    }
+</style>
+
+
+<div class="portlet light" style="overflow-y:scroll;height:800px">
+    <div class="portlet-title">
+        <div class="caption font-dark">
+            <i class="icon-settings font-dark"></i>
+            <span class="caption-subject bold uppercase">Ana Sayfa</span>
+        </div>
+        <div class="tools"> </div>
+    </div>
+    <h1 class="page-title">
+        Mağaza Ana Sayfasi
+        <small>İstatistikler, Grafikler, Raporlar</small>
+    </h1>
+    @*<div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-green-sharp">
+                                <span data-counter="counterup" data-value="7800">0</span>
+                                <small class="font-green-sharp">$</small>
+                            </h3>
+                            <small>TOTAL PROFIT</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-pie-chart"></i>
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <div class="progress">
+                            <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
+                                <span class="sr-only">76% progress</span>
+                            </span>
+                        </div>
+                        <div class="status">
+                            <div class="status-title"> progress </div>
+                            <div class="status-number"> 76% </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-red-haze">
+                                <span data-counter="counterup" data-value="1349">0</span>
+                            </h3>
+                            <small>NEW FEEDBACKS</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-like"></i>
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <div class="progress">
+                            <span style="width: 85%;" class="progress-bar progress-bar-success red-haze">
+                                <span class="sr-only">85% change</span>
+                            </span>
+                        </div>
+                        <div class="status">
+                            <div class="status-title"> change </div>
+                            <div class="status-number"> 85% </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-blue-sharp">
+                                <span data-counter="counterup" data-value="567"></span>
+                            </h3>
+                            <small>NEW ORDERS</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-basket"></i>
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <div class="progress">
+                            <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
+                                <span class="sr-only">45% grow</span>
+                            </span>
+                        </div>
+                        <div class="status">
+                            <div class="status-title"> grow </div>
+                            <div class="status-number"> 45% </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-purple-soft">
+                                <span data-counter="counterup" data-value="276"></span>
+                            </h3>
+                            <small>NEW USERS</small>
+                        </div>
+                        <div class="icon">
+                            <i class="icon-user"></i>
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <div class="progress">
+                            <span style="width: 57%;" class="progress-bar progress-bar-success purple-soft">
+                                <span class="sr-only">56% change</span>
+                            </span>
+                        </div>
+                        <div class="status">
+                            <div class="status-title"> change </div>
+                            <div class="status-number"> 57% </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="row">
+        <div id="cont" class="container-fluid text-center">
+            <div class="row scatter">
+                <h3 style="color: #3B3B3B;">Bölgesel, gelir-yaş dağılım tablosu</h3>
+                <h5 style="color: #A6A6A6;">Voronoi kırpılmış daireler</h5>
+                <div class="col-md-9">
+                    <div id="chart"></div>
+                </div>
+                <div id="legend" class="col-md-3" style="padding-right: 0px; padding-left: 0px;">
+                    <div class="legendTitle" style="font-size: 12px;">Bölgeler</div>
+                    <div id="legend"></div>
+                </div>
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <style>
+        path {
+            stroke: #fff;
+        }
+
+            path:hover {
+                opacity: 0.9;
+            }
+
+        rect:hover {
+            fill: blue;
+        }
+
+        .axis {
+            font: 10px sans-serif;
+        }
+
+        .legend tr {
+            border-bottom: 1px solid grey;
+        }
+
+            .legend tr:first-child {
+                border-top: 1px solid grey;
+            }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+            display: block;
+        }
+
+        .legend {
+            margin-bottom: 76px;
+            display: inline-block;
+            border-collapse: collapse;
+            border-spacing: 0px;
+        }
+
+            .legend td {
+                padding: 4px 5px;
+                vertical-align: bottom;
+            }
+
+        .legendFreq, .legendPerc {
+            align: right;
+            width: 50px;
+        }
+    </style>
+    <div class="row" style="margin-top:100px;">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid text-center">
+                <div class="row scatter">
+                    <h3 style="color: #3B3B3B;">Siparişlerin bölgesel renk analizi</h3>
+                    <h5 style="color: #A6A6A6;">Sutun ve pasta dilimi</h5>
+                    <div class="col-md-12">
+                        <div id='dashboard'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+
+
+        #pieChart {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 400px;
+            height: 400px;
+        }
+
+
+
+        #lineChart {
+            position: absolute;
+            top: 10px;
+            left: 410px;
+            height: 150px;
+        }
+
+        #barChart {
+            position: absolute;
+            top: 160px;
+            left: 410px;
+            height: 250px;
+        }
+
+        .slice {
+            font-size: 12pt;
+            font-family: Verdana;
+            fill: white;
+            //svg specific - instead of color font-weight: bold;
+        }
+
+        /*for line chart*/
+        .axis path, .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+            //The shape-rendering property is an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect.
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 3px;
+        }
+
+        .dot {
+            /*fill: white;*/
+            /*stroke: steelblue;*/
+            stroke-width: 1.5px;
+        }
+
+
+        .axis text {
+            font-family: Verdana;
+            font-size: 11px;
+        }
+
+        .title {
+            font-family: Verdana;
+            font-size: 15px;
+        }
+
+        .xAxis {
+            font-family: verdana;
+            font-size: 11px;
+            fill: black;
+        }
+
+        .yAxis {
+            font-family: verdana;
+            font-size: 11px;
+            fill: white;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            border: 0px;
+            font-family: Verdana;
+            color: #5C5558;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        td {
+            padding-left: 10px;
+        }
+
+        #lineChartTitle1 {
+            font-family: Verdana;
+            font-size: 14px;
+            fill: lightgrey;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        #lineChartTitle2 {
+            font-family: Verdana;
+            font-size: 72px;
+            fill: grey;
+            text-anchor: middle;
+            font-weight: bold;
+            /*font-style: italic;*/
+        }
+    </style>
+    <div class="row" style="margin-top:100px;">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid text-center">
+                <div class="row scatter">
+                    <h3 style="color: #3B3B3B;">Sipariş kategorilerinin mevsimsel dağılımı</h3>
+                    <h5 style="color: #A6A6A6;">Sutun ve pasta dilimi</h5>
+                    <div class="col-md-12">
+                        <div id="pieChart"></div>
+                        <div id="barChart"></div>
+                        <div id="lineChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/AdminJs/worldbank.js"></script>
+<script src="~/Scripts/AdminJs/script.js"></script>

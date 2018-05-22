@@ -1,0 +1,61 @@
+﻿@model Votedress.Entities.ViewModellerim.HesapOlusturViewModel
+
+
+
+@using (Ajax.BeginForm("HesapOlustur", "Account", new AjaxOptions { HttpMethod = "post",OnSuccess= "loginAjaxSuccess", UpdateTargetId = "tab_2_1" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.BireyselHesap.Ad, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.BireyselHesap.Ad, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Adınız</label>
+        <span class="help-block">Adınız ne?</span>
+
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.BireyselHesap.Soyad, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.BireyselHesap.Soyad, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Soyadınız</label>
+        <span class="help-block">Soyadınız ne?</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.BireyselHesap.Email, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.BireyselHesap.Email, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">E-mail adresiniz</label>
+        <span class="help-block">Giriş yapmak veya şifreni yenilemen gerekirse bunu kullanacaksın</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.BireyselHesap.Sifre, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.BireyselHesap.Sifre, new { htmlAttributes = new { @type = "password", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Şifreniz</label>
+        <span class="help-block">6 haneden büyük olması gerekir</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        <label style="font-size:20px;color:#888892;display:block">Doğum Tarihiniz</label>
+        @Html.ValidationMessageFor(model => model.BireyselHesap.DogumTarihi, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.BireyselHesap.DogumTarihi, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @type = "text", @class = "form-control form-control-inline input-medium date-picker", @style = "border-color:#36c6d3;", @size = "16", @value = "" } })
+        <span class="help-block"></span>
+    </div>
+    <div class="form-group form-md-radios">
+        @Html.ValidationMessageFor(model => model.BireyselHesap.Cinsiyet, "", new { @class = "text-danger" })
+        <label style="font-size:20px;margin-bottom:15px">Cinsiyetiniz</label>
+        <div class="md-radio-inline">
+
+            @Html.RadioButtonFor(m => m.BireyselHesap.Cinsiyet, "Erkek", new { Checked = "checked" }) Erkek
+            @Html.RadioButtonFor(m => m.BireyselHesap.Cinsiyet, "Kadın") Kadın
+
+
+        </div>
+    </div>
+
+    <div class="row" style="padding-left:15px;margin-bottom:30px;margin-top:35px">
+        <div class="md-checkbox has-success">
+            <span style="color:cadetblue"> Hesap Oluştur düğmesine tıklayarak, Çerez Kullanımı dahil Veri İlkemizi okuduğunu ve Koşullarımızı kabul etmiş olursun.</span>
+        </div>
+    </div>
+        <div class="row">
+            <button  class="btn blue btn-block">Hesap Oluştur</button>
+        </div>
+
+}

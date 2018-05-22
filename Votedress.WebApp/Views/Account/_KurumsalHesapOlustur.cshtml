@@ -1,0 +1,142 @@
+﻿@model Votedress.Entities.ViewModellerim.HesapOlusturViewModel
+@{ 
+   
+}
+@using (Ajax.BeginForm("HesapOlustur", "Account", new AjaxOptions { HttpMethod = "post", OnSuccess = "loginAjaxSuccess", UpdateTargetId = "tab_2_2"}))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Ad, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Ad, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Adınız</label>
+        <span class="help-block">Adınız ne?</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Soyad, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Soyad, "", new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px;" } })
+        <label style="font-size:20px;">Soyadınız</label>
+        <span class="help-block">Soyadınız ne?</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Email, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Email, "", new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px;" } })
+        <label style="font-size:20px;">E-mail adresiniz</label>
+        <span class="help-block">Giriş yapmak veya şifreni yenilemen gerekirse bunu kullanacaksın</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Sifre, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Sifre, "", new { htmlAttributes = new { @class = "form-control edited", @type = "password", @style = "margin-top:10px;font-size:17px;" } })
+        <label style="font-size:20px;">Şifreniz</label>
+        <span class="help-block">6 haneden büyük olması gerekir</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Ceptelefonno, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Ceptelefonno, "", new { htmlAttributes = new { @class = "form-control edited", @style = "margin-top:10px;font-size:17px;" } })
+        <label style="font-size:20px;">Cep Telefonunuz</label>
+        <span class="help-block">Kullanmakta olduğunuz cep telefonu numaranız</span>
+    </div>
+    <div class="form-group form-md-radios" style="margin-bottom:20px">
+        <label style="font-size:20px;margin-bottom:15px">İşletme Türü</label><br />
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Isletmeturu, "", new { @class = "text-danger" })
+        <div class="md-radio-inline">
+            @Html.RadioButtonFor(m => m.KurumsalHesap.Isletmeturu, "Şahıs Şirketi", new { Checked = "checked" }) Şahıs Şirketi
+            @Html.RadioButtonFor(m => m.KurumsalHesap.Isletmeturu, "Limited ve Anonim Şirketi") Limited ve Anonim Şirketi
+        </div>
+    </div>
+
+    <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom:65px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Ticariunvan, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Ticariunvan, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Ticari Ünvan</label>
+        <span class="help-block">Ticaret Odasına kayıtlı, ticari faaliyetlerinizi yürütürken resmi kurumlarda kullandığınız unvanınızı giriniz. Faturalarınız burada belirteceğiniz ticari unvan adına düzenlenecektir.</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom:65px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Sirketadi, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Sirketadi, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Ticari Ünvan</label>
+        <span class="help-block">Şirketinizin adı </span>
+    </div>
+
+    List<SelectListItem> elemanlar = new List<SelectListItem>() // SelectListItem içeren bir liste oluşturduk
+                                               {
+                                                    // Oluşan listeye elemanlar ekledik
+                                                   // "Seç" isimli eleman varsayılan olarak seçili gelecek
+                                                    new SelectListItem {Text = "DENEME1", Value = "1"},
+                                                    new SelectListItem {Text = "DENEME2", Value = "2"},
+                                                    new SelectListItem {Text = "DENEME3", Value = "3"},
+                                                    new SelectListItem {Text = "DENEME4", Value = "4"},
+
+
+                                                };
+
+    var dropDownList1 = new SelectList(elemanlar, "Value", "Text");
+
+    <div id="kurumsal" ng-controller="KurumsalKaydolCtrl">
+        <div class="form-group form-md-line-input has-success" style="margin-bottom:0px">
+            @Html.ValidationMessageFor(model => model.KurumsalHesap.Il, "", new { @class = "text-danger" })
+            <label style="font-size:20px;color:#888">İl</label>
+            <select class="form-control" data-val="true" data-val-required="İl ünvan zorunlu" id="KurumsalHesap_Il" name="KurumsalHesap.Il" ng-options="sehir.CityName for sehir in Sehirler track by sehir.CityID " ng-model="selected" ng-change="SehirSecildi()">
+                <option value="">-- Sehir Seç --</option>
+            </select>
+            <div class="form-control-focus"> </div>
+            <span class="help-block">Şirketin Bulunduğu ili seçtiniz</span>
+        </div>
+        <div class="form-group form-md-line-input has-success" style="margin-bottom:0px">
+            @Html.ValidationMessageFor(model => model.KurumsalHesap.Ilce, "", new { @class = "text-danger" })
+            <label style="font-size:20px;color:#888">İlçe</label>
+            <select class="form-control" data-val="true" data-val-required="İlçe ünvan zorunlu" id="KurumsalHesap_Ilce" name="KurumsalHesap.Ilce" ng-options="ilce.CountyName for ilce in Ilceler track by ilce.CountyID " ng-model="selected2" ng-change="IlceSecildi()">
+                <option value="">-- İlçe Seç --</option>
+            </select>
+            <div class="form-control-focus"> </div>
+            <span class="help-block">Şirketin Bulunduğu ilçeyi seçtiniz</span>
+        </div>
+        <div class="form-group form-md-line-input has-success" style="margin-bottom:0px">
+            @Html.ValidationMessageFor(model => model.KurumsalHesap.Mahalle, "", new { @class = "text-danger" })
+            <label style="font-size:20px;color:#888">Mahalle</label>
+            <select class="form-control" data-val="true" data-val-required="Mahalle ünvan zorunlu" id="KurumsalHesap_Mahalle" name="KurumsalHesap.Mahalle" ng-options="mahalle.NeighborhoodName for mahalle in Mahalleler track by mahalle.NeighborhoodID " ng-model="selected3">
+                <option value="">-- Mahalle Seç --</option>
+            </select>
+            <div class="form-control-focus"> </div>
+            <span class="help-block">Şirketin Bulunduğu mahalleyi seçtiniz</span>
+        </div>
+    </div>
+
+    <div class="form-group form-md-line-input has-success" style="margin-bottom:5px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Adresdetayi, "", new { @class = "text-danger" })
+        <label style="font-size:20px;color:#888">Adres Detayı</label>
+        @Html.TextAreaFor(model => model.KurumsalHesap.Adresdetayi, new { @type = "text", @class = "form-control" })
+        <div class="form-control-focus"> </div>
+        <span class="help-block">Adresinizi detaylandırınız</span>
+
+    </div>
+    <div class="form-group form-md-line-input has-success" style="margin-bottom:0px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Vergidairesi, "", new { @class = "text-danger" })
+        <label style="font-size:20px;color:#888">Vergi Dairesi</label>
+        @Html.DropDownListFor(x => x.KurumsalHesap.Vergidairesi, dropDownList1, "Seç", new { @class = "form-control" })
+        <div class="form-control-focus"> </div>
+        <span class="help-block"></span>
+    </div>
+
+    <div class="form-group form-md-line-input form-md-floating-label" style="margin-top:18px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Tcno, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Tcno, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">TC Kimlik No</label>
+        <span class="help-block">11 Haneli TC numarasını giriniz</span>
+    </div>
+    <div class="form-group form-md-line-input form-md-floating-label" style="margin-top:18px">
+        @Html.ValidationMessageFor(model => model.KurumsalHesap.Sabitno, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.KurumsalHesap.Sabitno, new { htmlAttributes = new { @type = "text", @class = "form-control edited", @style = "margin-top:10px;font-size:17px" } })
+        <label style="font-size:20px;">Sabit Telefon</label>
+        <span class="help-block"></span>
+    </div>
+
+
+    <div class="row" style="padding-left:15px;margin-bottom:30px;margin-top:35px">
+        <div class="md-checkbox has-success">
+            <span style="color:cadetblue"> Hesap Oluştur düğmesine tıklayarak, Çerez Kullanımı dahil Veri İlkemizi okuduğunu ve Koşullarımızı kabul etmiş olursun.</span>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn blue btn-block">Hesap Oluştur</button>
+    </div>
+}

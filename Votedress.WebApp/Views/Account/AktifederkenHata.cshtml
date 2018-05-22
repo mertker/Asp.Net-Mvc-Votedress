@@ -1,0 +1,12 @@
+﻿@using Votedress.Entities.Messages
+@model List<ErrorMessageObj>
+@{ 
+    ViewBag.Title = "Hesap Geçersiz";
+}
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    <h1> @Model[i].Message </h1><br>
+
+}
+

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcCodeRouting.Web.Http</name>
+    </assembly>
+    <members>
+        <member name="T:MvcCodeRouting.CodeRoutingHttpExtensions">
+            <summary>
+            Provides the extension methods to register and configure modules in a host ASP.NET Web API application.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingHttpExtensions.MapCodeRoutes(System.Web.Http.HttpConfiguration,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="configuration">The <see cref="T:System.Web.Http.HttpConfiguration"/> configuration object.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingHttpExtensions.MapCodeRoutes(System.Web.Http.HttpConfiguration,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly.
+            </summary>
+            <param name="configuration">The <see cref="T:System.Web.Http.HttpConfiguration"/> configuration object.</param>
+            <param name="rootController">The route controller for the application.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingHttpExtensions.MapCodeRoutes(System.Web.Http.HttpConfiguration,System.String,System.Type)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="configuration">The <see cref="T:System.Web.Http.HttpConfiguration"/> configuration object.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.CodeRoutingHttpExtensions.MapCodeRoutes(System.Web.Http.HttpConfiguration,System.String,System.Type,MvcCodeRouting.CodeRoutingSettings)">
+            <summary>
+            Creates routes for the specified root controller and all other controllers
+            in the same namespace or any sub-namespace, in the same assembly, and prepends the
+            provided base route to the URL of each created route.
+            </summary>
+            <param name="configuration">The <see cref="T:System.Web.Http.HttpConfiguration"/> configuration object.</param>
+            <param name="baseRoute">A base route to prepend to the URL of each created route. This parameter can be null.</param>
+            <param name="rootController">The route controller for the provided base route.</param>
+            <param name="settings">A settings object that customizes the route creation process. This parameter can be null.</param>
+            <returns>The created routes.</returns>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Http.CustomRouteAttribute">
+            <summary>
+            Represents an attribute that is used to customize the URL for the decorated
+            action method or controller class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Http.CustomRouteAttribute"/> class, 
+            using the provided URL pattern.
+            </summary>
+            <param name="url">
+            The URL pattern. Constraints can be specified using the <see cref="T:MvcCodeRouting.Web.Http.FromRouteAttribute"/>
+            on the action method parameters or controller class properties.
+            </param>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Http.CustomRouteAttribute.Url">
+            <summary>
+            The URL pattern.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Http.FromRouteAttribute">
+            <summary>
+            Represents an attribute that is used to mark action method parameters and 
+            controller properties, whose values must be bound using <see cref="T:System.Web.Http.ValueProviders.Providers.RouteDataValueProvider"/>.
+            It also instructs the route creation process to add route parameters after the {action} segment 
+            for each decorated action method parameter, and after the {controller} segment for each 
+            decorated controller property.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.FromRouteAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Http.FromRouteAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.FromRouteAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcCodeRouting.Web.Http.FromRouteAttribute"/> class 
+            using the specified name.
+            </summary>
+            <param name="name">The name of the route parameter.</param>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.FromRouteAttribute.GetBinding(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            Gets the binding for a parameter.
+            </summary>
+            <param name="parameter">The parameter to bind.</param>
+            <returns>The <see cref="T:System.Web.Http.Controllers.HttpParameterBinding"/> that contains the binding.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.FromRouteAttribute.GetValueProviderFactories(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the value providers that will be fed to the model binder.
+            </summary>
+            <param name="configuration">The <see cref="T:System.Web.Http.HttpConfiguration"/> configuration object.</param>
+            <returns>A collection of <see cref="T:System.Web.Http.ValueProviders.ValueProviderFactory"/> instances.</returns>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.FromRouteAttribute.BindModel(System.Web.Http.Controllers.HttpActionContext,System.Web.Http.ModelBinding.ModelBindingContext)">
+            <summary>
+            Binds the model to a value by using the specified action context and binding context.
+            </summary>
+            <param name="actionContext">The action context.</param>
+            <param name="bindingContext">The binding context.</param>
+            <returns>true if the model is successfully bound; otherwise, false.</returns>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Http.FromRouteAttribute.Constraint">
+            <summary>
+            Gets or sets a regular expression that specify valid values for the decorated parameter or property.
+            </summary>
+        </member>
+        <member name="P:MvcCodeRouting.Web.Http.FromRouteAttribute.CatchAll">
+            <summary>
+            true if the parameter represents a catch-all parameter; otherwise, false.
+            This setting is ignored when used on controller properties.
+            </summary>
+        </member>
+        <member name="T:MvcCodeRouting.Web.Http.HttpExtensions">
+            <summary>
+            Extensions methods that provide utility functions for various ASP.NET Web API classes.
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.HttpExtensions.BindRouteProperties(System.Web.Http.ApiController)">
+            <summary>
+            Binds controller properties decorated with <see cref="T:MvcCodeRouting.Web.Http.FromRouteAttribute"/>
+            using the current route values.
+            </summary>
+            <param name="controller">The controller to bind.</param>
+            <remarks>You can call this method from <see cref="M:System.Web.Http.ApiController.Initialize(System.Web.Http.Controllers.HttpControllerContext)"/>.</remarks>
+        </member>
+    </members>
+</doc>

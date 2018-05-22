@@ -1,0 +1,133 @@
+﻿@model Votedress.Entities.ViewModellerim.OylamalarimViewModel
+@{
+    ViewBag.Title = "Oylamalarim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+        var oylamalarimModel = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+</script>
+<style>
+    .done{
+        background-color:lawngreen;
+    }
+</style>
+
+
+
+<div class="row" ng-controller="OylamalarimCtrl">
+    <div class="col-md-3">
+        <div class="portlet-body">
+            <div class="mt-element-list">
+                <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                    <div class="list-head-title-container">
+                        <h3 class="list-title">Oylamalarım</h3>
+                    </div>
+                </div>
+                <div class="mt-list-container list-simple ext-1">
+                    <ul>
+                        <li class="mt-list-item {{suankiOylamam==oylamam.OylamaId?'done':''}}" ng-repeat="oylamam in Oylamalarim" ng-click="OylamaDegis(oylamam.OylamaId,$index)">
+                            <div class="list-icon-container">
+                                <i class="{{oylamam.OylamaDurumu==true?'icon-check':'icon-question'}}"></i>
+                            </div>
+                            <div class="list-datetime" style="width:100px!important;margin-top:-8px"> {{oylamam.OylamaBaslangicZamani  | mydate | date:'medium'}}</div>
+                            <div class="list-item-content">
+                                <h3 class="uppercase">
+                                    <a href="javascript:;">{{Oylamalarim.length-$index}}.Oylamam</a>
+                                </h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+        <div class="portlet-body">
+            <div class="mt-element-list">
+                <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp" style="background:#69a9af;padding-bottom:15px">
+                    <div class="list-head-title-container">
+                        <h3 class="list-title" style="text-align:center">{{suankiOylamamSayi}}.Oylamam</h3>
+                    </div>
+                </div>
+                <div class="mt-list-container list-simple ext-1" style="margin-top:15px;border-bottom:none;">
+                    <div class="col-md-5" style="    border-radius: 25px!important; padding-left: 5%; border: 1px solid #dae2ea; padding-top: 10px;">
+                        <div class="row" style="margin-bottom:10px" ng-repeat="oylamaUrunleri in Vote.OylamaUrunleri">
+                            <div class="col-md-6">
+                                <img class="img-thumbnail" ng-src="{{oylamaUrunleri.ProductImage}}" style="height:200px" />
+                            </div>
+                            <div class="col-md-4" style="padding-top:20%">
+                                <span style="font-size: 20px;font-weight: 900;">{{oylamaUrunleri.VoteCount}} Oy</span>
+                                <span style="display:block;font-size: 17px;font-weight: 500;"><i class="icon-star"></i>3200 puan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div id="testDiv_{{Vote.id}}" class="testDiv" style="overflow-y:scroll; width: auto;border-radius: 25px!important;">
+                            <div class="post_in2" ng-repeat="x in Vote.OylamaMesajlari">
+                                <img class="avatar2_in" alt="" ng-src="{{x.MesajSahibi.ProfileImage}}">
+                                <div class="message2_in">
+                                    <span class="arrow2_in"></span>
+                                    <a href="javascript:;" class="name2_in" dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true" aria-expanded="true">{{x.MesajSahibi.Name}} {{x.MesajSahibi.SurName}}</a>
+                                    <ul class="dropdown-menu" role="menu" style="top:35%">
+                                        <li ng-click="Fisilda(x.MesajSahibi)">
+                                            <a>
+                                                <i class="icon-bell"></i> Fısılda
+                                            </a>
+                                        </li>
+                                        <li ng-click="ArkadasEkle(x.MesajSahibi)">
+                                            <a>
+                                                <i class="icon-user"></i> Arkadaş Ekle
+                                            </a>
+                                        </li>
+                                        <li ng-click="Engelle(x.MesajSahibi,Vote.id)">
+                                            <a>
+                                                <i class="icon-user"></i> Engelle
+                                            </a>
+                                        </li>
+                                        <li ng-click="ProfiliGor(x.MesajSahibi)">
+                                            <a>
+                                                <i class="icon-bag"></i> Profili Gör
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <span class="datetime2">{{x.GondermeTarihi | mydate | date:'medium'}}</span>
+
+                                    <span class="message_body_in" ng-bind-html="x.Message|trustAsHtml"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:5px;">
+                            <div class="col-md-1 col-xs-2">
+                                <img class="avatar2_in" style="margin-left: 5px;" alt="" ng-src="{{kullaniciResmi}}">
+                            </div>
+                            <div class="col-md-9 col-xs-6">
+                                <div style="display:block; height:55px;background-color:white;">
+                                    <ul class="dropdown-menu" role="menu" style="margin-top:-32%;height:140px;display:block" id="bahsedilecek_list" ng-show="(Chattekiler | search:aranan:'kullaniciAdSoyad').length > 0">
+                                        <li ng-repeat="x in Chattekiler | search:aranan:'kullaniciAdSoyad' | limitTo :3" ng-click="bahset(x)">
+                                            <a>
+                                                <img ng-src="{{x.profilResmi}}" style="height:30px;width:30px"> {{x.kullaniciAdSoyad}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="col-md-10 scroll" id="chatMesajAlani" style="display:block; height:55px;background-color:white;" contenteditable data-directive ng-model="OylamaMesaj" ng-change="ete_basildimi()">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <i class="fa fa-sign-in" style="font-size:50px;margin-top:20px;cursor:pointer"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-xs-4" style="padding-top:10px;margin-left: -10px;">
+                                <button type="button" class="btn green" ng-click="OylamaMesajGonder()">Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{ChatScrollPosition()}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

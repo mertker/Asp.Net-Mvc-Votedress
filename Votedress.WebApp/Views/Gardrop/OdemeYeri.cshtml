@@ -1,0 +1,438 @@
+﻿@model object
+@{
+    ViewBag.Title = "OdemeYeri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+      var odemeYeriModel =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model));
+</script>
+<style>
+    .checkmarkColor {
+        position: absolute;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #17c4bb;
+    }
+
+    .renk {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        margin: 9px auto;
+        border: 1px solid black;
+    }
+
+    .det {
+        font-size: 12px;
+        margin-bottom: 15px
+    }
+
+    .seciliAdres {
+        border-color: red !important;
+    }
+
+
+    .map-c {
+        border: 1px solid grey;
+        padding: 5px 6px 10px 20px;
+    }
+
+    button {
+        margin: 15px 4px;
+        padding: 13px 9px;
+        display: inline-block;
+        cursor: pointer;
+        background: none;
+        color: #546973;
+        border: 2px solid #78909C;
+        transition: all 0.3s;
+        border-radius: 8px;
+        outline: 0
+    }
+
+        button:hover {
+            border-color: rgb(90, 90, 90);
+            color: rgb(90, 90, 90)
+        }
+
+        button:after {
+            content: 'Directions';
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            font-size: 11px;
+            margin-top: 8px
+        }
+
+    .fa-envelope:after {
+        content: 'Email';
+        margin: 8px 13px 0
+    }
+
+    @@media only screen and (max-width: 720px) {
+
+
+        #map {
+            width: 100%;
+            height: 200px;
+        }
+
+        .map-c {
+            float: right;
+            width: 100%;
+        }
+
+        button {
+            float: right;
+            margin-top: -75px
+        }
+    }
+
+    @@media only screen and (max-width: 460px) {
+        p {
+            display: none
+        }
+
+        h1 {
+            margin-bottom: 20px
+        }
+
+        button {
+            float: none;
+            margin-top: 10px
+        }
+
+        .det {
+            margin-bottom: 9px
+        }
+    }
+</style>
+<div class='row' style='padding-top:25px; padding-bottom:25px;' ng-controller="CheckoutCtrl">
+    <div class='col-md-12' ng-show="SepetBos">
+        <div id='mainContentWrapper'>
+            <div class="col-md-8 col-md-offset-2">
+                <h2 style="text-align: center;">
+                    Siparişinizi İnceleyin & Ödemeyi Tamamlayın
+                </h2>
+                <hr />
+                <a href="@Url.Action("Index","Gardrop")" class="btn btn-info" style="width: 100%;">Daha fazla ürün ekle</a>
+                <hr />
+                <div class="shopping_cart">
+                    <form class="form-horizontal" id="payment-form">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            Sipariş
+                                            Özeti
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="items">
+                                            <div class="col-md-9">
+                                                <table class="table table-striped" ng-repeat="cart in Carts">
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <img class="img-circle" height="50" width="50" ng-src="{{cart.ProductImage}}" />
+                                                            <a class="btn btn-warning btn-sm pull-right"
+                                                               href="http://www.startajobboard.com/"
+                                                               title="Remove Item">X</a>
+
+                                                            <h3 style="float:right;margin-right:200px;margin-top:15px"> <strong>{{cart.ProductPrice}}₺</strong> x1</h3>
+
+                                                            <b>
+                                                                {{cart.ProductName}}
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <ul>
+                                                                <li style="margin-bottom:5px">Beden: {{cart.Size}}</li>
+                                                                <li style="height:50px">
+                                                                    <span class="checkmarkColor" style="padding-left:10px;padding-right:10px;width:{{cart.ProductColor.length*43}}px;">
+                                                                        <span ng-repeat="color in cart.ProductColor" style="background-color:{{color.colorCode}};margin-left:{{$index*31}}px;" class="renk">
+                                                                        </span>
+                                                                    </span>
+                                                                </li>
+                                                                <li>Adet: {{cart.Count}} </li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>
+                                                            <b>Toplam tutar: {{cart.ProductPrice*cart.Count}} ₺</b>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div style="text-align: center;">
+                                                    <h3>Sepetin Toplamı</h3>
+                                                    <h3><span style="color:green;">{{SepetToplami}} ₺</span></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <div style="text-align: center; width:100%;">
+                                        <a style="width:100%;"
+                                           data-toggle="collapse"
+                                           data-parent="#accordion"
+                                           href="#collapseTwo"
+                                           class=" btn btn-success"
+                                           onclick="$(this).fadeOut(); $('#payInfo').fadeIn();">
+                                            Kargo adresi bilgilerini gir »
+                                        </a>
+                                    </div>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        İletişim
+                                        ve Adres Bilgileri
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <b>
+                                        Kargonuzun ve faturanızın size doğru ulaşması için lütfen bilgilerinizi doğru ve eksiksiz giriniz
+                                    </b>
+                                    <br /><br />
+                                    <div class="{{seciliAdres==adress.id?'col-md-3 map-c seciliAdres':'col-md-3 map-c'}}" ng-repeat="adress in Adresses" ng-click="AdresSec(adress.id)" style="margin-right:5px">
+                                        <h1>{{adress.AdresBasligi}}</h1>
+                                        <p>{{adress.Adres}}</p>
+                                        <div class="det"><i class="fa fa-map-marker"></i> {{adress.Mahalle}}, {{adress.Ilce}}/{{adress.Sehir}}</div>
+                                        <div class="det"><i class="fa fa-phone"></i> {{adress.TelefonNumarasi}}</div>
+                                        <div class="det"><i class="fa fa-globe"></i> {{adress.Email}}</div>
+                                    </div>
+                                    <div class="{{seciliAdres==0?'seciliAdres col-md-3 map-c':'col-md-3 map-c'}}" ng-click="AdresSec(0)">
+                                        <h1>Adres Başlığı</h1>
+                                        <p>Yeni Adres.....</p>
+                                        <div class="det"><i class="fa fa-map-marker"></i> Mahalle , ilçe , Şehir</div>
+                                        <div class="det"><i class="fa fa-phone"></i> 0000-000-00-00</div>
+                                        <div class="det"><i class="fa fa-globe"></i> email@email.com</div>
+                                    </div>
+                                    <table class="table table-striped" style="font-weight: bold;">
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="addresTitle">Adres Başlığı:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="addresTitle" name="addresTitle" ng-model="adresTitle" ng-disabled="seciliAdres!=0"
+                                                       required="required" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="email">Email:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="email" name="email" ng-model="email" ng-disabled="seciliAdres!=0"
+                                                       required="required" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="name">İsim:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="name" name="name" ng-model="name" ng-disabled="seciliAdres!=0"
+                                                       required="required" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="surName">Soy isim:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="surName" name="surName" ng-model="surName" ng-disabled="seciliAdres!=0"
+                                                       required="required" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="phoneNumber">Telefon:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="phoneNumber" name="phoneNumber" type="text" ng-model="phoneNumber" ng-disabled="seciliAdres!=0" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="adress">Adres:</label>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" id="adress" ng-model="adress" ng-disabled="seciliAdres!=0"
+                                                       name="adress" required="required" type="text" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="city">Şehir:</label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" data-val="true" data-val-required="İl ünvan zorunlu" ng-options="sehir.CityName for sehir in Sehirler track by sehir.CityID" ng-model="selected" ng-change="SehirSecildi()" ng-disabled="seciliAdres!=0">
+                                                    <option value="" id="sehirAdi">-- Sehir Seç --</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="country">İlçe:</label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" data-val="true" data-val-required="İlçe ünvan zorunlu" ng-options="ilce.CountyName for ilce in Ilceler track by ilce.CountyID " ng-model="selected2" ng-change="IlceSecildi()" ng-disabled="seciliAdres!=0">
+                                                    <option value="" id="ilceAdi">-- İlçe Seç --</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 175px;">
+                                                <label for="neighborhood">Mahalle:</label>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" data-val="true" data-val-required="Mahalle ünvan zorunlu" ng-options="mahalle.NeighborhoodName for mahalle in Mahalleler track by mahalle.NeighborhoodID" ng-model="selected3" ng-disabled="seciliAdres!=0">
+                                                    <option value="" id="mahalleAdi">-- Mahalle Seç --</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <div style="text-align: center;">
+                                        <a data-toggle="collapse"
+                                           data-parent="#accordion"
+                                           href="#collapseThree"
+                                           class=" btn   btn-success" id="payInfo"
+                                           style="width:100%;display: none;" onclick="$(this).fadeOut();document.getElementById('collapseThree').scrollIntoView()">Kart bilgilerini gir»</a>
+                                    </div>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        <b>Payment Information</b>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <span class='payment-errors'></span>
+                                    <fieldset>
+                                        <legend>Kart bilgileriniz tamamen güvende</legend>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-holder-name">
+                                              Kart üzerindeki isim
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" stripe-data="name"
+                                                       id="name-on-card" placeholder="Card Holder's Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="card-number">
+                                               Kart Numarası
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" stripe-data="number"
+                                                       id="card-number" placeholder="Debit/Credit Card Number">
+                                                <br />
+                                                <div>
+                                                    <img class="pull-right"
+                                                         src="https://s3.amazonaws.com/hiresnetwork/imgs/cc.png"
+                                                         style="max-width: 250px; padding-bottom: 20px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label" for="expiry-month">
+                                                   Son kullanma tarihi
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <div class="row">
+                                                        <div class="col-xs-3">
+                                                            <select class="form-control col-sm-2"
+                                                                    data-stripe="exp-month" id="card-exp-month"
+                                                                    style="margin-left:5px;">
+                                                                <option>Month</option>
+                                                                <option value="01">Jan (01)</option>
+                                                                <option value="02">Feb (02)</option>
+                                                                <option value="03">Mar (03)</option>
+                                                                <option value="04">Apr (04)</option>
+                                                                <option value="05">May (05)</option>
+                                                                <option value="06">June (06)</option>
+                                                                <option value="07">July (07)</option>
+                                                                <option value="08">Aug (08)</option>
+                                                                <option value="09">Sep (09)</option>
+                                                                <option value="10">Oct (10)</option>
+                                                                <option value="11">Nov (11)</option>
+                                                                <option value="12">Dec (12)</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <select class="form-control" data-stripe="exp-year"
+                                                                    id="card-exp-year">
+                                                                <option value="2016">2016</option>
+                                                                <option value="2017">2017</option>
+                                                                <option value="2018">2018</option>
+                                                                <option value="2019">2019</option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2021">2021</option>
+                                                                <option value="2022">2022</option>
+                                                                <option value="2023">2023</option>
+                                                                <option value="2024">2024</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label" for="cvv">Kart CVC</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control" stripe-data="cvc"
+                                                           id="card-cvc" placeholder="Security Code">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                </div>
+                                            </div>
+                                    </fieldset>
+                                    <button type="submit" class="btn btn-success btn-lg" style="width:100%;" ng-click="OdemeyiTamamla()">
+                                        Ödemeyi Tamamla
+                                    </button>
+                                    <br />
+                                    <div style="text-align: left;">
+                                        <br />
+                                        Bu siparişi vererek evrensel faturalandırma sözleşmemizi ve hizmet şartlarımızı kabul etmiş olursunuz. Ürünlerimiz veya hizmetlerimiz hakkında herhangi bir sorunuz varsa, lütfen bu siparişi vermeden önce bizimle iletişime geçin.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div ng-hide="SepetBos" style="margin-top:200px;text-align:center">
+        <h1>Sepet boş</h1>
+    </div>
+
+</div>

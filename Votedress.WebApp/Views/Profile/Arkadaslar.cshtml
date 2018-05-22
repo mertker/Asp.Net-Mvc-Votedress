@@ -1,0 +1,93 @@
+﻿@model object
+<script>
+    var arkadaslarimModel =@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model));
+</script>
+<style>
+    .notifyjs-foo-base {
+  opacity: 0.85;
+  width: 200px;
+  background: #80f7f1;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.notifyjs-foo-base .title {
+  width: 100px;
+  float: left;
+  margin: 10px 0 0 10px;
+  text-align: right;
+}
+
+.notifyjs-foo-base .buttons {
+  width: 70px;
+  float: right;
+  font-size: 9px;
+  padding: 5px;
+  margin: 2px;
+}
+
+.notifyjs-foo-base button {
+  font-size: 9px;
+  padding: 5px;
+  margin: 2px;
+  width: 60px;
+  color:black;
+  font-weight:600;
+  font-size:14px;
+}
+</style>
+<div ng-controller="ArkadaslarimCtrl">
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="col-md-6">
+                <div class="caption font-dark" style="margin-left:20px;font-size:20px">
+                    <i class="fa fa-user"></i>
+                    <span class="caption-subject bold uppercase">ARKADAŞLAR</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <input style="float:right;" width="100" height="30" ng-model="arananArkadas" /><label style="float:right;margin-right:15px;margin-top:5px;">Ara</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" style="margin-right:2.1666667%" ng-repeat="friend in friends | filter:arananArkadas">
+                <div class="portlet light portlet-fit " style="background-color:whitesmoke">
+                    <i class="fa fa-close arkadas_sil" id="arkadas2_{{friend.friendId}}" style="float: right;margin-top: 10px; margin-right: 10px;" ng-click="ArkadasSil(friend.friendFullName,friend.friendId)">
+                    </i>
+                    <div class="portlet-title"  style="padding-bottom:0px" >
+                        <div class="caption">
+                            <span class="caption-subject bold uppercase" style="font-size:13px"><a>{{friend.friendFullName}}</a></span>
+                            <div class="caption-desc font-grey-cascade"><pre class="mt-code">{{friend.friendCount}} arkadaş</pre></div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="mt-element-overlay">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mt-overlay-1">
+                                        <img ng-src="{{friend.friendProfileImage}}">
+                                        <div class="mt-overlay">
+                                            <ul class="mt-info">
+                                                <li>
+                                                    <a class="btn default btn-outline" href="javascript:;">
+                                                        <i class="icon-magnifier"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btn default btn-outline" href="javascript:;">
+                                                        <i class="icon-link"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PROFILE CONTENT -->
