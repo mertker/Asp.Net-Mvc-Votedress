@@ -5,4 +5,6 @@ Günümüzde bilgi ve iletişim teknolojilerinde yaşanan hızlı gelişmeler; t
 
 Bu problem günümüz sosyal medyalarında(instagram vs.) kullanılmasına rağmen verimli olmamaktadır. Size yaşadığım bir örnekle açıklamak isterim.  Bir gün mağazada 2 kıyafet arasında kararsızlıkta kaldım. İnstagram da hangi kıyafeti seçeceğime karar vermek için denediğim 2 kıyafetin resimlerini attım ve diğer arkadaşlarımın yorumlarına göre birini seçmek istedim. Fakat arkadaş sayım çok olduğundan ve çok fazla yorum olduğundan hangi kıyafetimin en çok beğenildiğinin takibini yapmakta çok zorlandım. Ve o zaman farklı bir sosyal medya gereksinimi olduğunu düşündüm. 
 
+## Projenin tanıtımı
+
 ![giris](https://user-images.githubusercontent.com/24223180/40380404-ab7814a6-5e01-11e8-832c-47d626173c60.png)
