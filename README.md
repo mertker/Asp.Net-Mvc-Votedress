@@ -52,20 +52,27 @@ Bunun neye benzediğini aşağıdaki resimde görebilirsiniz. Oylama sayfasını
 
 ![oylamabaslat_giris](https://user-images.githubusercontent.com/24223180/40382193-729b2e20-5e06-11e8-8139-d81d31bd9777.png)
 
+Sağ kısımdaki oylama süresi; oylamanın ne kadar süre boyunca aktif olacağını gösterir 15 dakika 1 saat 3 gün 1 ay gibi seçenekleri içerir. Oylamamız belirlediğimiz süre boyunca oylanabilir olacaktır. Kimliğim gizlensin seçeneği şuan yapılmadı anca yapıldığında resimlerimizde yüzler bulanıklaştırılacak ki yüzümüz görülmesin. Diğer bir seçenek ise paylaşıma açık olup olmaması eğer tiklenirse oylamamız diğer kullanıcılar tarafında paylaşılabilir olmakta. Bir diğeri oylama tipi; genel ve gizli olarak iki seçenek var genel oylama sistemdeki herkez tarafından görülür, gizli oylama ise sadece bizim paylaştığımız kişiler tarafında görülebilir(Örneğin: Facebook hesabımızda paylaşırsak facebook arkadaşlarımız katılır. Whatsapp grubumuzda paylaşırsak oradaki arkadaşlarımız katılabilir.)
 
-Bu sayfada gördüğünüz siyah kamera resimleri oylamada kullanacağımız ürünleri oylamaya eklememizi sağlıyor. 
+
+Sol kısımda gördüğünüz siyah kamera resimleri oylamada kullanacağımız ürünleri oylamaya eklememizi sağlıyor. 
 
 Not: Kurumsal kullanıcı(Mağaza) sisteme ürünlerini eklediğinde sistem o ürün için tekrar üretilmesi imkansız bir karekod oluşturuyor mağaza bu karekodu ürün etiketine yapıştırıyor.
 
-
-
-Ürün etiketi üzerindeki kare kod telefon kameramızdan okutularak oylamaya ekliyoruz
+Ürün etiketi üzerindeki karekodu telefon kameramızdan okutularak oylamaya ekliyoruz
 
 ![oylamabaslat_karekod](https://user-images.githubusercontent.com/24223180/40382478-3a1e9554-5e07-11e8-86df-91658535f7c5.png)
 
-Daha sonra eklediğimiz her ürünü üstümüzde deneyip farklı farklı resimlerini çekip onlarıda ekliyoruz.
+Daha sonra eklediğimiz her ürünü üstümüzde deneyip farklı farklı resimlerini çekip onlarıda ekliyoruz. İstersek her ürün için kendi açıklamızıda yazabiliriz
 
 ![oylamabaslat_resimlereklendi](https://user-images.githubusercontent.com/24223180/40382615-7a2d8114-5e07-11e8-9667-1d7501e8ee29.png)
+
+ve artık oylamamız başlatılmaya hazır
+
+### Başlattığımız Oylamaları takip etme (Oylamalarım Sayfası)
+
+
+
 
 
 
