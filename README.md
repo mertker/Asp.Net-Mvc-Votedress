@@ -33,4 +33,13 @@ Bireysel kullanıcı ile giriş yaptıkdan sonra bizi ilk olarak anasayfamız ka
 
 ### Oylama Sayfası
 
-Oylama sayfasına sol taraftaki oylamalar linki ile ulaşılmaktadır
+Oylama sayfasına sol taraftaki oylamalar linki ile ulaşılmaktadır. Öncelikle oylama nedirden bahsedeyim. Oylama, arasında seçim yapamadığımız kıyafetleri ister sistemdeki tüm kullanıcılara istersekte sadece bizim belirlediğimiz kişilere sunduğumuz bir yapıdır.
+Bunun neye benzediğini aşağıdaki resimde görebilirsiniz. Oylama sayfasının devamını oylama başlatmayı anlattıkdan sonra anlatacağım
+
+
+![oylama](https://user-images.githubusercontent.com/24223180/40381812-62253f96-5e05-11e8-9b48-8cb80a56e70c.png)
+
+
+
+Örneğin; Bir mağazaya gittik ve 3 adet kıyafetten birini almak istiyoruz ama karar vermekte zorlandık bu kıyafetleri üzerimizde deneyerek resimlerini çekip sisteme yüklüyoruz sistem bizim için bir oylama başlatıyor.
+
