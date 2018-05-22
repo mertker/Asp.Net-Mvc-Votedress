@@ -73,8 +73,7 @@ ve artık oylamamız başlatılmaya hazır
 
 Oylamamızı başlattıkdan sonra aşağıdaki gibi bir sayfaya yönleniyoruz. Bu sayfada oylamamızdaki ürünlerimizin kaç oy ve kaç puan aldığının takibini yapabiliriz. Oylamamıza katılan kişilerle anlık olarak konuşabilir önerilini alabiliriz. Bu sayfadaki ek özellikler resimlerin üzerinde belirtilmiştir.
 
-![oylama_mesajlasma_ve_bahsetme](https://user-images.githubusercontent.com/24223180/40388303-cf24b77c-5e17-11e8-960a-9c8e8103dd29.png)
-
+![oylama_mesajlasma_ve_bahsetme](https://user-images.githubusercontent.com/24223180/40392939-2cd682ca-5e26-11e8-9892-af8bef330133.png)
 
 ![oylama_mesajlasma_ve_bahsetme_2](https://user-images.githubusercontent.com/24223180/40388471-5471bed4-5e18-11e8-8198-77307cb7421c.png)
 
@@ -120,6 +119,9 @@ Alıcı Tarafında görünen şekil
 
 ![fisilda_4](https://user-images.githubusercontent.com/24223180/40392635-f9a1e6d4-5e24-11e8-9de9-59eeea65685e.png)
 
+Eğer bir kişi sizi fısıltıdan rahatsız ediyorsa onu engellebilirsiniz.
+Eğer fısıltıyı silerseniz sadece sizden silinir karşı taraf size tekrar fısıldar ise fısıltı sizde tekrar oluşur.
+Eğer fısıltıdaki kişiyle arkadaş olmak isterseniz arkadaş eklebilirsiniz. Örneği aşağıdaki resimlerde
 
 
 
