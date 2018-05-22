@@ -125,5 +125,16 @@ Eğer fısıltıdaki kişiyle arkadaş olmak isterseniz arkadaş eklebilirsiniz.
 
 
 
+### Arkadaş Ekleme
+
+Bu örnekte Zekeriya kullanıcısı Erdem kullanıcısına arkadaşlık isteğinde bulunmuş ve Erdem kullanıcısına istek gelmiştir
+Eğer istek kabul edilirse artık bu kullanıcılar birbirlerini çevrim içi veya çevrim dışı görebilecekler ilave olarak profil ziyaretlerinde ekstra ayrıcalıklara sahip olabilecekler.
+
+![arkadaslik_istegi](https://user-images.githubusercontent.com/24223180/40392987-675ec42a-5e26-11e8-92eb-463163a4724d.png)
+
+İstek kabul edildikten sonra
+
+![arkadaslik_istegi_kabul_edildi](https://user-images.githubusercontent.com/24223180/40393089-c4cfe1f2-5e26-11e8-950f-ad1180524c13.png)
+
 
 
