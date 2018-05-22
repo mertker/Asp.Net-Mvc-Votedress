@@ -81,7 +81,9 @@ Oylamamızı başlattıkdan sonra aşağıdaki gibi bir sayfaya yönleniyoruz. B
 ![oylama_mesajlasma_ve_bahsetme_3](https://user-images.githubusercontent.com/24223180/40388511-6f122300-5e18-11e8-9c43-f7c74c486afd.png)
 
 
-Bir kişi bir oylamaya yorumunu yapıp oyunu verdikten sonra o oylamayla bağlantısı kaybediyor ve yeni bir oylamaya geçiyor eğer önceki oylamalardan birinde biri bu kişiden bahsederse bu kişiye bir bildirim gelmekte kişide bu bildirimle tekrar o oylamaya bağlanıp cevap verebilmekte
+Bir kişi bir oylamaya yorumunu yapıp oyunu verdikten sonra o oylamayla bağlantısı kaybediyor ve yeni bir oylamaya geçiyor eğer önceki oylamalardan birinde biri bu kişiden bahsederse bu kişiye bir bildirim gelmekte kişide bu bildirimle tekrar o oylamaya bağlanıp cevap verebilmekte. Tabi oylamaya katılmanın normal yolu bu örnekte Zekeriya'dan bahsedilği için bu şekilde katıldı. Normal yolu Oylama linkine tıklanılarak gidilir. 
+
+Not: Oylamalar tamamen kullanıcılara rastgele dağıtılmakta ve bir kişi bir anda tek bir oylama görebilmekte bunun sebeblerinden en önemlisi kullanıcıların oylamayı beğenmediğinde geçmesini engellemek yeni bir oylamaya geçmenin tek yolu o an gelen oylamaya oy vermektir. Kullanıcı oylamayı beğenmeyip hızlıca geçmek istediğinde rastgele bir ürüne oy verirse bu kişinin oy etki puanı düşürülmekte böylelikle verdiği oyların getirdiği puan azalmakta.
 
 Yukarıdaki örnekte oylama sahibi Erdem oylamasına katılan Zekeriyadan bahsetmiş bu durumu birde zekeriyanın gözünden görelim.
 
