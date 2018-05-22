@@ -43,3 +43,34 @@ Bunun neye benzediğini aşağıdaki resimde görebilirsiniz. Oylama sayfasını
 
 Örneğin; Bir mağazaya gittik ve 3 adet kıyafetten birini almak istiyoruz ama karar vermekte zorlandık bu kıyafetleri üzerimizde deneyerek resimlerini çekip sisteme yüklüyoruz sistem bizim için bir oylama başlatıyor.
 
+Öncelikle oylama başlatma sayfasına gidiyoruz
+
+![oylamabaslat_link](https://user-images.githubusercontent.com/24223180/40382140-514c48c6-5e06-11e8-9c68-5252a8f058f2.png)
+
+
+### Oylama Başlatma Sayfası
+
+![oylamabaslat_giris](https://user-images.githubusercontent.com/24223180/40382193-729b2e20-5e06-11e8-8139-d81d31bd9777.png)
+
+
+Bu sayfada gördüğünüz siyah kamera resimleri oylamada kullanacağımız ürünleri oylamaya eklememizi sağlıyor. 
+
+Not: Kurumsal kullanıcı(Mağaza) sisteme ürünlerini eklediğinde sistem o ürün için tekrar üretilmesi imkansız bir karekod oluşturuyor mağaza bu karekodu ürün etiketine yapıştırıyor.
+
+
+
+Ürün etiketi üzerindeki kare kod telefon kameramızdan okutularak oylamaya ekliyoruz
+
+![oylamabaslat_karekod](https://user-images.githubusercontent.com/24223180/40382478-3a1e9554-5e07-11e8-86df-91658535f7c5.png)
+
+Daha sonra eklediğimiz her ürünü üstümüzde deneyip farklı farklı resimlerini çekip onlarıda ekliyoruz.
+
+![oylamabaslat_resimlereklendi](https://user-images.githubusercontent.com/24223180/40382615-7a2d8114-5e07-11e8-9667-1d7501e8ee29.png)
+
+
+
+
+
+
+
+
