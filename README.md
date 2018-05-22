@@ -116,6 +116,11 @@ Alıcı Tarafında görünen şekil
 ![fisildama_ornek](https://user-images.githubusercontent.com/24223180/40391971-c980f0fa-5e22-11e8-9d55-8f895ba4df85.png)
 
 
+Şimdi bu sayfayı biraz daha detaylandıralım açıklamalar aşağıdaki resimde
+
+![fisilda_4](https://user-images.githubusercontent.com/24223180/40392635-f9a1e6d4-5e24-11e8-9de9-59eeea65685e.png)
+
+
 
 
 
