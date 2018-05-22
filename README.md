@@ -12,6 +12,25 @@ Votedress'i kısaca tanımlamak gerekirse klasik e-ticaret sistemlerindeki gibi 
 
 Sisteme girdiğimizde  bizi ilk olarak giriş sayfası karşılıyor önce burdan hesap oluşturmalı veya sosyal medya hesaplarımızdan birisiyle giriş yapmalıyız. Sistemde iki tip hesap bulunmakta bunlardan birincisi Bireysel hesap diğeri ise kurumsal hesap. Kurumsal hesap bir şirketin votedressdeki hesabıdır. Kurumsal hesap oluşturan kişi sisteme ürünlerini ekleyip bu ürünlerini takip etmekte işte bu noktada votedress'in kurumsal kullanıcay sunduğu en etkili avantajlardan birisi devreye girmekte bu avantaj, kurumsal kullanıcının hiçbir uğraş veya emek harcamaksızın ürünlerinin reklamını yapabilmesidir, bunu nasıl yaptığını ileride anlatağım. 
 
-#### Giriş Ekranı
+### Giriş Ekranı
 
 ![giris](https://user-images.githubusercontent.com/24223180/40380404-ab7814a6-5e01-11e8-832c-47d626173c60.png)
+
+### Bireysel Kayıt
+
+![bireysel kayit](https://user-images.githubusercontent.com/24223180/40381218-cf5dd246-5e03-11e8-8ae2-ff9819544d78.png)
+
+
+### Kurumsal Kayıt
+
+![kurumsal kayit](https://user-images.githubusercontent.com/24223180/40381279-f6b6efc6-5e03-11e8-989b-6ddf759164bf.png)
+
+### Bireysel Kullanıcı Hesabı ile giriş
+
+Bireysel kullanıcı ile giriş yaptıkdan sonra bizi ilk olarak anasayfamız karşılamakda burda takip ettigimiz kişilerin paylaştıkları oylamalar, ürünler veya koleksiyonları görebilmekteyiz tüm paylaşımlar kiyafetler üstüne olmaktadır
+
+![anasayfa](https://user-images.githubusercontent.com/24223180/40381380-36f8d770-5e04-11e8-9a6a-1294709231a0.png)
+
+### Oylama Sayfası
+
+Oylama sayfasına sol taraftaki oylamalar linki ile ulaşılmaktadır
