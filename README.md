@@ -94,6 +94,29 @@ Yukarıdaki resimde zekeriya gardrop sayfasında(gardrop sayfası daha anlatılm
 Katıldığında şöyle bir sayfa ile karşılaşacak
 Detayları resmin üzerine yazıldı
 
-![oylama2](https://user-images.githubusercontent.com/24223180/40389636-9f314b8a-5e1b-11e8-8661-998c6387913a.png)
+![oylama2](https://user-images.githubusercontent.com/24223180/40391648-b727e752-5e21-11e8-856f-4be8724bdee2.png)
+
+
+### Oylama Sayfasının Devamı
+
+Oylama sayfasının altında 4 kategori bulunmakta:
+
+##### Oylama Sayfası -- Fikrini Söyle
+Fikrini Söyle sayfası daha öncede anlattığım oylamanın sohbet odası gibi düşünülebilir.
+Bir üstteki resimde zaten nasıl gözüktüğü görülmekte ek özellikler aşağıdaki resimde.
+
+![fisildama](https://user-images.githubusercontent.com/24223180/40391777-22489040-5e22-11e8-9032-6d19e88f2f79.png)
+
+Gönderen tarafından görünen şekil
+
+![fisilda_ornek2](https://user-images.githubusercontent.com/24223180/40391910-9735e394-5e22-11e8-83e8-6ec4643d8eec.png)
+
+Alıcı Tarafında görünen şekil 
+
+![fisildama_ornek](https://user-images.githubusercontent.com/24223180/40391971-c980f0fa-5e22-11e8-9d55-8f895ba4df85.png)
+
+
+
+
 
 
