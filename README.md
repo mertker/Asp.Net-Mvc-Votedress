@@ -125,7 +125,7 @@ Eğer fısıltıdaki kişiyle arkadaş olmak isterseniz arkadaş eklebilirsiniz.
 
 
 
-### Arkadaş Ekleme
+#### Arkadaş Ekleme 
 
 Bu örnekte Zekeriya kullanıcısı Erdem kullanıcısına arkadaşlık isteğinde bulunmuş ve Erdem kullanıcısına istek gelmiştir
 Eğer istek kabul edilirse artık bu kullanıcılar birbirlerini çevrim içi veya çevrim dışı görebilecekler ilave olarak profil ziyaretlerinde ekstra ayrıcalıklara sahip olabilecekler.
@@ -136,5 +136,18 @@ Eğer istek kabul edilirse artık bu kullanıcılar birbirlerini çevrim içi ve
 
 ![arkadaslik_istegi_kabul_edildi](https://user-images.githubusercontent.com/24223180/40393089-c4cfe1f2-5e26-11e8-950f-ad1180524c13.png)
 
+#### Oylama Sayfası -- Kıyafetler Hakkında
 
+Şimdi diyelimki bir oylamadayız ve oylamada kullanılan ürünlerden bir tanesini çok beğendiniz satın almak veya incelemek istiyorsunuz fikrini söyle sekmesi yanındaki Kıyafetler hakkında sekmesine tıklayarak oylamada kullanılan ürünleri görebiliyor sepetinize ekleyebiliyor ve detaylı inceleyebiliyorsunuz. Örnek resim aşağıda
+
+
+![oylama_urunleri](https://user-images.githubusercontent.com/24223180/40393205-2d6363d8-5e27-11e8-8259-202ece6f876c.png)
+
+Hızlı incele sayfasından hemen sepetinize ekleyebiliyorsunuz.
+
+![oylama_urunleri_hizli_incele](https://user-images.githubusercontent.com/24223180/40393312-8aadcca4-5e27-11e8-9580-c3d21eb4131c.png)
+
+
+Yukarıdaki resimde görüldüğü gibi her ürünün farklı bedenleri olabilir her bedende farklı renk kombinasyonları olabilmekte.
+Seçilen renk kombinasyonuna göre slider'daki resimler farklılık göstermekte
 
