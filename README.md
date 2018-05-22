@@ -71,13 +71,27 @@ ve artık oylamamız başlatılmaya hazır
 
 ### Başlattığımız Oylamaları takip etme (Oylamalarım Sayfası)
 
+Oylamamızı başlattıkdan sonra aşağıdaki gibi bir sayfaya yönleniyoruz. Bu sayfada oylamamızdaki ürünlerimizin kaç oy ve kaç puan aldığının takibini yapabiliriz. Oylamamıza katılan kişilerle anlık olarak konuşabilir önerilini alabiliriz. Bu sayfadaki ek özellikler resimlerin üzerinde belirtilmiştir.
+
+![oylama_mesajlasma_ve_bahsetme](https://user-images.githubusercontent.com/24223180/40388303-cf24b77c-5e17-11e8-960a-9c8e8103dd29.png)
 
 
+![oylama_mesajlasma_ve_bahsetme_2](https://user-images.githubusercontent.com/24223180/40388471-5471bed4-5e18-11e8-8198-77307cb7421c.png)
+
+![oylama_mesajlasma_ve_bahsetme_3](https://user-images.githubusercontent.com/24223180/40388511-6f122300-5e18-11e8-9c43-f7c74c486afd.png)
 
 
+Bir kişi bir oylamaya yorumunu yapıp oyunu verdikten sonra o oylamayla bağlantısı kaybediyor ve yeni bir oylamaya geçiyor eğer önceki oylamalardan birinde biri bu kişiden bahsederse bu kişiye bir bildirim gelmekte kişide bu bildirimle tekrar o oylamaya bağlanıp cevap verebilmekte
+
+Yukarıdaki örnekte oylama sahibi Erdem oylamasına katılan Zekeriyadan bahsetmiş bu durumu birde zekeriyanın gözünden görelim.
+
+![oylamabahset](https://user-images.githubusercontent.com/24223180/40388915-8dc4ab1e-5e19-11e8-8253-f1ad498e3267.png)
+
+Yukarıdaki resimde zekeriya gardrop sayfasında(gardrop sayfası daha anlatılmadı) ve kendisine bildirim gelmiş bu bildirime tıklayarak tekrar oylama odasına katılabilir.
+
+Katıldığında şöyle bir sayfa ile karşılaşacak
+Detayları resmin üzerine yazıldı
 
 
-
-
-
+![oylama2](https://user-images.githubusercontent.com/24223180/40389431-19258664-5e1b-11e8-9365-009bdc60d974.png)
 
