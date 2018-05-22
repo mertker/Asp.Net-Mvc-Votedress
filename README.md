@@ -100,7 +100,7 @@ Detayları resmin üzerine yazıldı
 
 Oylama sayfasının altında 4 kategori bulunmakta:
 
-##### Oylama Sayfası -- Fikrini Söyle
+##### Oylama Sayfası -- Fikrini Söyle Sekmesi
 Fikrini Söyle sayfası daha öncede anlattığım oylamanın sohbet odası gibi düşünülebilir.
 Bir üstteki resimde zaten nasıl gözüktüğü görülmekte ek özellikler aşağıdaki resimde.
 
@@ -136,8 +136,8 @@ Eğer istek kabul edilirse artık bu kullanıcılar birbirlerini çevrim içi ve
 
 ![arkadaslik_istegi_kabul_edildi](https://user-images.githubusercontent.com/24223180/40393089-c4cfe1f2-5e26-11e8-950f-ad1180524c13.png)
 
-#### Oylama Sayfası -- Kıyafetler Hakkında
-
+#### Oylama Sayfası -- Kıyafetler Hakkında Sekmesi
+ 
 Şimdi diyelimki bir oylamadayız ve oylamada kullanılan ürünlerden bir tanesini çok beğendiniz satın almak veya incelemek istiyorsunuz fikrini söyle sekmesi yanındaki Kıyafetler hakkında sekmesine tıklayarak oylamada kullanılan ürünleri görebiliyor sepetinize ekleyebiliyor ve detaylı inceleyebiliyorsunuz. Örnek resim aşağıda
 
 
@@ -150,4 +150,22 @@ Hızlı incele sayfasından hemen sepetinize ekleyebiliyorsunuz.
 
 Yukarıdaki resimde görüldüğü gibi her ürünün farklı bedenleri olabilir her bedende farklı renk kombinasyonları olabilmekte.
 Seçilen renk kombinasyonuna göre slider'daki resimler farklılık göstermekte
+
+Bir sonraki sekmemiz Satış yeri hakkında
+
+#### Oylama Sayfası -- Satış Yeri Hakkında Sekmesi
+
+Evet ürünleri inceledik şimdi birde bu ürünlerin mağazası hakkında bilgi edinmek istiyoruz ozamanda satış yeri hakkında sekmesine tıklıyoruz. Karşımıza aşağıdaki gibi bir sekme çıkıyor.
+
+![oylama_satisyerihakkinda](https://user-images.githubusercontent.com/24223180/40393472-41642f60-5e28-11e8-96c8-6f1b5c206bff.png)
+
+Buradan direk mağazaya mesaj yazabilir, google map üzerinde mağazayı görebilir, Mağazanın genel bilgilerini öğrenebiliriz.
+Bir diğer sekme oylama sahibinin genel bilgileri(izin verdiği ölçüde)
+
+#### Oylama Sayfası -- Oylama Sahibi Hakkında Sekmesi
+
+Bu sekmede oylama başlatan kişinin genel özelliklerini görmekteyiz. Projenin bahsetmediğim ancak ileride yapılacak bazı özellikleri gereği kişiler rekabet halinde olacağından bu sekmede birbirlerini ölçebilecekler.
+
+![oylama_oylamasahibi](https://user-images.githubusercontent.com/24223180/40393664-0b03de88-5e29-11e8-9e7a-deb547cb8d1f.png)
+
 
