@@ -92,6 +92,6 @@ Yukarıdaki resimde zekeriya gardrop sayfasında(gardrop sayfası daha anlatılm
 Katıldığında şöyle bir sayfa ile karşılaşacak
 Detayları resmin üzerine yazıldı
 
+![oylama2](https://user-images.githubusercontent.com/24223180/40389636-9f314b8a-5e1b-11e8-8661-998c6387913a.png)
 
-![oylama2](https://user-images.githubusercontent.com/24223180/40389431-19258664-5e1b-11e8-9365-009bdc60d974.png)
 
