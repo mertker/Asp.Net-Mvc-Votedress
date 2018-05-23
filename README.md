@@ -263,20 +263,20 @@ Not: Resimlerdeki veriler fakedata kullanılarak oluşturulmuştur. Veri analizi
 
 Bu chart, bu mağazanın ürünlerini içeren siparişleri veren kullanıcıların yaş, sipariş yeri, sipariş tutarı ve bölgesel olarak analiz sonuçlarının görselleştirilmesi ile oluşturulmuştur.
 
-Not: Dairelerin büyüklüğü o yaş grubunda, o şehirde  toplam kaç kişi olduğu hakkında fikir vermektedir.
+Not: Dairelerin büyüklüğü o yaş grubunda, o şehirde  toplam kaç sipariş olduğu hakkında fikir vermektedir.
 
 ![admin_chart1](https://user-images.githubusercontent.com/24223180/40415372-618b0506-5e83-11e8-8d21-81143b7148d2.png)
 
 #### Kurumsal Kullanıcı -- Anasayfa -- chart 2
 
-Bu chart, satılan ürünlerin renklerine göre bölgesel analizi yapılmıştır.
+Bu chart, satılan ürünlerin renklerine göre bölgesel analizi yapılmıştır. Hangi bölgede hangi renkden kaç adet sipariş olduğu sonucu çıkar.
 
 ![admin_chart2](https://user-images.githubusercontent.com/24223180/40415639-0d95ab94-5e84-11e8-884f-208d310c1c17.png)
 
 
 #### Kurumsal Kullanıcı -- Anasayfa -- chart 3
 
-Bu chart, siparişlerdeki ürünlerin kategorilerinin mevsimsel olarak satışlarını ve toplam tutarlarını göstermektedir. Sonuç olarak hangi mevsimde hangi kategorinin ne kadarlık bir gelir getirisinin olduğu bilgisini göstermekte
+Bu chartda, siparişlerdeki ürünlerin kategorilerinin mevsimsel olarak satışlarını ve toplam tutarlarını göstermektedir. Sonuç olarak hangi mevsimde hangi kategorinin ne kadarlık bir gelir getirisinin olduğu bilgisini göstermekte
 
 
 ![admin_chart3](https://user-images.githubusercontent.com/24223180/40415873-9cc533f2-5e84-11e8-9be5-5b75b479332f.png)
