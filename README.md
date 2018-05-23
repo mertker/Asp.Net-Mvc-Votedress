@@ -257,7 +257,7 @@ Buraya kadar anlattığım sayfalar Bireysel kullanıcının kullanabildiği say
 
 Eğer sisteme bir kurumsal kullanıcı hesabı ile giriş yaparsak karşımıza çıkan sayfada mağazanın tüm ürünlerinin genel analizlerinin dinamik tablolarla analizi gösterilmektedir
 
-Not: Resimlerdeki veriler fakedata kullanılarak oluşturulmuştur. Veri analizi ve veri görselliştirme teknikleri kullanılmıştır. Veri görselleştirmesi için d3.js javascript kütüphanesi kullanılmıştır.
+Not: Resimlerdeki veriler fakedata kütüphanesi kullanılarak oluşturulan veritabanından gelmektedir. Veri analizi ve veri görselliştirme teknikleri kullanılmıştır. Veri görselleştirmesi için d3.js javascript kütüphanesi kullanılmıştır.
 
 #### Kurumsal Kullanıcı -- Anasayfa -- chart 1
 
