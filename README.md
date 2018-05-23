@@ -183,7 +183,7 @@ Bir mağazaya giriş yapalım. Burada ürünleri filtreleyip listeleyebiliriz.
 ![magaza_ici](https://user-images.githubusercontent.com/24223180/40412997-689855ca-5e7d-11e8-82c8-fef0600fa2e7.png)
 
 
-Bir ürüne detayli incelediğimizde aşağıdaki gibi bir sayfa bizi karşılıyor. Bu sayfada ürünü sepete ekleyebiliriz. Ürüne yorum yazabiliriz. Yorumlara yani verebiliriz.Yorumlarda birinden bahsedebiliriz. Yorumlara yanıt verebiliriz. Yorumları beğenebiliriz. Bu sayfadaki değişimler anlık olarak bu sayfada bulunan tüm kullanıcıları etkiler
+Bir ürünü detayli incelediğimizde aşağıdaki gibi bir sayfa bizi karşılıyor. Bu sayfada ürünü sepete ekleyebiliriz. Ürüne yorum yazabiliriz. Yorumlara yanıt verebiliriz.Yorumlarda birinden bahsedebiliriz. Yorumlara yanıt verebiliriz. Yorumları beğenebiliriz. Bu sayfadaki değişimler anlık olarak bu sayfada bulunan tüm kullanıcıları etkiler
 
 ![urun_detay](https://user-images.githubusercontent.com/24223180/40413077-9d4b6c12-5e7d-11e8-9ac7-15c2ac841046.png)
 
@@ -191,6 +191,63 @@ Bir ürüne detayli incelediğimizde aşağıdaki gibi bir sayfa bizi karşılı
 
 
 
+### Bireysel Kullanıcı Profil Sayfası -- Anasayfa Sekmesi
 
+Bu sayfa kişinin kendi profilidir ilk açılışta karşımıza profilimizin anasayfası çıkmakta burada kendi paylaşımlarımızı görmekteyiz.
+Diğer kullanıcılar bizim profilimizi ziyaret ettiğinde bizim izin verdiğimiz ölçüde profilimizi görebilmektedir.
+
+![profil](https://user-images.githubusercontent.com/24223180/40413877-9c5de6ac-5e7f-11e8-91a0-6a38d48bd2e1.png)
+
+
+### Bireysel Kullanıcı Profil Sayfası -- Sepet Sekmesi
+
+Bu sayfada sepetimizdeki ürünleri silebilir, adetlerini güncelleyebiliriz ve alışverişimizi tamamlamak için ödeme sayfasına geçebiliriz.
+
+![sepet](https://user-images.githubusercontent.com/24223180/40414158-33f77456-5e80-11e8-9a0e-99757ca833e2.png)
+
+##### Ödeme Sayfası 
+
+Bu sayfada ilk olarak vereceğimiz şiparişin içeriğini görürüz.
+
+![siparisitamamla](https://user-images.githubusercontent.com/24223180/40414288-818239ea-5e80-11e8-88c8-55e6a27a7652.png)
+
+Bir sonraki kısımda ise adres bilgilerini gireriz. Her sipariş verdiğimizde eğer farklı bir adres girdiksey o adres kaydedilir ve daha sonraki siparişlerimizde adreslerimiz arasından seçim yapabiliriz.
+Örnek resimler aşağıda
+
+![siparisitamamla_2](https://user-images.githubusercontent.com/24223180/40414439-d959d880-5e80-11e8-800c-b51ddad90ea0.png)
+
+![siparisitamamla_3](https://user-images.githubusercontent.com/24223180/40414447-df0042f6-5e80-11e8-9a2a-f64ba765057f.png)
+
+Son olarakda kart bilgilerimizi girip siparişimizi tamamlıyoruz.
+
+![siparisitamamla_4](https://user-images.githubusercontent.com/24223180/40414490-01e4335e-5e81-11e8-9e54-f89db21df520.png)
+
+Siparişimiz tamamlandıkdan sonra sistem bizi profil sayfasının altında bulunan siparişler sekmesine yönlendirir.
+
+#### Bireysel Kullanıcı Profil Sayfası -- Siparişler Sekmesi
+
+Bu sayfada daha önceden verdiğimiz siparişlerimizi görebiliriz
+
+![siparisler](https://user-images.githubusercontent.com/24223180/40414541-27af3b7e-5e81-11e8-9927-bfd680543ee4.png)
+
+Bu siparişlerden birine tıkladığımızda, siparişlerimizin detaylarını görürüz.
+
+![siparisler2](https://user-images.githubusercontent.com/24223180/40414620-63865b96-5e81-11e8-8449-566c810934b2.png)
+
+#### Bireysel Kullanıcı Profil Sayfası -- Arkadaşlar Sekmesi
+
+Bu sayfada arkadaşlarımız listelenir
+
+![arkadaslar](https://user-images.githubusercontent.com/24223180/40414692-a12c45dc-5e81-11e8-99d1-e47ce58c5f47.png)
+
+Çarpı işareti ile arkadaşımızı silebiliriz. Sildiğimiz zaman silinen kişidende kendimiz siliniriz.
+
+![arkadaslar2](https://user-images.githubusercontent.com/24223180/40414721-b584b898-5e81-11e8-98ec-2d655fa8ff69.png)
+
+#### Bireysel Kullanıcı Profil Sayfası -- Ayarlar Sekmesi
+
+Bu sekmenin için profil bilgilerimizi düzenleyebiliriz. Engellediğimiz kullanıcıların engellerini açabiliriz. Profilimizin gizlilik ayarlarını yapabiliriz.
+
+![ayarlar](https://user-images.githubusercontent.com/24223180/40414794-e9b38194-5e81-11e8-8873-4f4b54309fa4.png)
 
 
