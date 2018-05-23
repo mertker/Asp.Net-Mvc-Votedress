@@ -168,4 +168,29 @@ Bu sekmede oylama başlatan kişinin genel özelliklerini görmekteyiz. Projenin
 
 ![oylama_oylamasahibi](https://user-images.githubusercontent.com/24223180/40393664-0b03de88-5e29-11e8-9e7a-deb547cb8d1f.png)
 
+### Gardrop Sayfası
+
+Bu sayfada sisteme kayıtlı olan mağazaları göreceğiz bu mağazalara filtreler uygulanabilir. Mağazada o an kaç kişinin olduğu görülebilir. 
+
+![gardrop](https://user-images.githubusercontent.com/24223180/40412833-15c47cac-5e7d-11e8-8867-9e86797ea18c.png)
+
+![gardrop_2](https://user-images.githubusercontent.com/24223180/40412861-22886066-5e7d-11e8-82a4-03d4510b600f.png)
+
+![gardrop_3](https://user-images.githubusercontent.com/24223180/40412869-2566c3f4-5e7d-11e8-8288-5c01c71a5996.png)
+
+Bir mağazaya giriş yapalım. Burada ürünleri filtreleyip listeleyebiliriz.
+
+![magaza_ici](https://user-images.githubusercontent.com/24223180/40412997-689855ca-5e7d-11e8-82c8-fef0600fa2e7.png)
+
+
+Bir ürüne detayli incelediğimizde aşağıdaki gibi bir sayfa bizi karşılıyor. Bu sayfada ürünü sepete ekleyebiliriz. Ürüne yorum yazabiliriz. Yorumlara yani verebiliriz.Yorumlarda birinden bahsedebiliriz. Yorumlara yanıt verebiliriz. Yorumları beğenebiliriz. Bu sayfadaki değişimler anlık olarak bu sayfada bulunan tüm kullanıcıları etkiler
+
+![urun_detay](https://user-images.githubusercontent.com/24223180/40413077-9d4b6c12-5e7d-11e8-9ac7-15c2ac841046.png)
+
+![urun_detay_3](https://user-images.githubusercontent.com/24223180/40413143-c4b09d0e-5e7d-11e8-8da0-aa405743bcd0.png)
+
+
+
+
+
 
