@@ -251,3 +251,50 @@ Bu sekmenin için profil bilgilerimizi düzenleyebiliriz. Engellediğimiz kullan
 ![ayarlar](https://user-images.githubusercontent.com/24223180/40414794-e9b38194-5e81-11e8-8873-4f4b54309fa4.png)
 
 
+Buraya kadar anlattığım sayfalar Bireysel kullanıcının kullanabildiği sayfalardı şimdi ise Kurumsal kullanıcıların kullandığı sayfaları göstereceğim
+
+### Kurumsal Kullanıcı -- Anasayfa
+
+Eğer sisteme bir kurumsal kullanıcı hesabı ile giriş yaparsak karşımıza çıkan sayfada mağazanın tüm ürünlerinin genel analizlerinin dinamik tablolarla analizi gösterilmektedir
+
+Not: Resimlerdeki veriler fakedata kullanılarak oluşturulmuştur. Veri analizi ve veri görselliştirme teknikleri kullanılmıştır. Veri görselleştirmesi için d3.js javascript kütüphanesi kullanılmıştır.
+
+#### Kurumsal Kullanıcı -- Anasayfa -- chart 1
+
+Bu chart, bu mağazanın ürünlerini içeren siparişleri veren kullanıcıların yaş, sipariş yeri, sipariş tutarı ve bölgesel olarak analiz sonuçlarının görselleştirilmesi ile oluşturulmuştur.
+
+Not: Dairelerin büyüklüğü o yaş grubunda, o şehirde  toplam kaç kişi olduğu hakkında fikir vermektedir.
+
+![admin_chart1](https://user-images.githubusercontent.com/24223180/40415372-618b0506-5e83-11e8-8d21-81143b7148d2.png)
+
+#### Kurumsal Kullanıcı -- Anasayfa -- chart 2
+
+Bu chart, satılan ürünlerin renklerine göre bölgesel analizi yapılmıştır.
+
+![admin_chart2](https://user-images.githubusercontent.com/24223180/40415639-0d95ab94-5e84-11e8-884f-208d310c1c17.png)
+
+
+#### Kurumsal Kullanıcı -- Anasayfa -- chart 3
+
+Bu chart, siparişlerdeki ürünlerin kategorilerinin mevsimsel olarak satışlarını ve toplam tutarlarını göstermektedir. Sonuç olarak hangi mevsimde hangi kategorinin ne kadarlık bir gelir getirisinin olduğu bilgisini göstermekte
+
+
+![admin_chart3](https://user-images.githubusercontent.com/24223180/40415873-9cc533f2-5e84-11e8-9be5-5b75b479332f.png)
+
+
+#### Kurumsal Kullanıcı -- Ürünler
+
+Bu sayfada ürünleri listeleyebilir, güncelleyebilir, ürün ekleyebilir, ürün silebilir, ürünlerin bireysel analizlerini yapabiliriz.
+
+
+#### Kurumsal Kullanıcı -- Ürünler -- Ürün Ekleme
+
+Bu sayfada ürün ekleyebiliriz. Ürünlere 1 den fazla kategori girebiliriz. Ürünlerin stokta olan bedenlerine göre ekleme yapabiliriz.
+Ürünün her bedeni için farklı renk kombinasyonları ekleyebilir her renk kombinasyonunada farklı renkler ekleyebiliriz.
+
+![urunekleme1](https://user-images.githubusercontent.com/24223180/40416038-fd35fb0e-5e84-11e8-8e4e-d2981f9de958.png)
+
+![urunekleme2](https://user-images.githubusercontent.com/24223180/40416169-460b4b7c-5e85-11e8-8f76-5ebcc05508bd.png)
+
+![urunekleme3](https://user-images.githubusercontent.com/24223180/40416176-4dfab75a-5e85-11e8-9f2b-9f9ba390a445.png)
+
