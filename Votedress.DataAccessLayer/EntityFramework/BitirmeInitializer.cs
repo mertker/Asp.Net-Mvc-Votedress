@@ -1843,7 +1843,7 @@ namespace Votedress.DataAccessLayer.EntityFramework
             {
                 id=Guid.NewGuid(),
                 SocialId = null,
-                Email = "erdem.keskin@hotmail.com ",
+                Email = "erdem.keskin@hotmail.com",
                 Password = "123123",
                 Role = "bireysel",
                 IsActive = true,
@@ -2043,7 +2043,7 @@ namespace Votedress.DataAccessLayer.EntityFramework
 
             //Bireysel kullanici Serii
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
                 City randomCity = veriTabaniSehirler[FakeData.NumberData.GetNumber(0, veriTabaniSehirler.Count)];
                 County randomCounty = randomCity.Counties[FakeData.NumberData.GetNumber(0, randomCity.Counties.Count)];
@@ -2375,9 +2375,9 @@ namespace Votedress.DataAccessLayer.EntityFramework
 
             //Siparis
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
-                VotedressUser userrrr = users[FakeData.NumberData.GetNumber(0, 999)];
+                VotedressUser userrrr = users[FakeData.NumberData.GetNumber(0, 10)];
 
                 Order order = new Order()
                 {
